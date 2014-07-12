@@ -7,4 +7,4 @@ Clicky Analytics Dashboard displays detailed analytics data and statistics about
 
 More details about <a href="http://deconf.com/clicky-analytics-dashboard-wordpress/" title="Clicky Analytics for WordPress">Clicky Analytics for WordPress</a>
 
-Clicky Analytics Dashboard for WP on <a href="http://wordpress.org/plugins/clicky-analytics/">wordpress.org</a>
+Clicky Analytics on <a href="http://wordpress.org/plugins/clicky-analytics/">wordpress.org</a>
