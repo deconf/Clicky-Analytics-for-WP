@@ -126,7 +126,7 @@ clicky_site_ids.push(".get_option('ca_siteid').");
 			}	
 		}  
 			catch(exception $e) {
-			return "<br />ERROR LOG:<br /><br />".$e; 
+			return "<p>" . __ ( "ERROR LOG:", 'clicky-analytics' ) . "</p><p>" . $e . "</p>";
 		}
 		$i=0;
 		foreach( $result as $item ) {
@@ -173,7 +173,7 @@ clicky_site_ids.push(".get_option('ca_siteid').");
 			}	
 		}  
 			catch(exception $e) {
-			return "<br />ERROR LOG:<br /><br />".$e; 
+			return "<p>" . __ ( "ERROR LOG:", 'clicky-analytics' ) . "</p><p>" . $e . "</p>";
 		}
 		$i=0;
 		foreach( $result as $item ) {
@@ -220,7 +220,7 @@ clicky_site_ids.push(".get_option('ca_siteid').");
 			}	
 		}  
 			catch(exception $e) {
-			return "<br />ERROR LOG:<br /><br />".$e; 
+			return "<p>" . __ ( "ERROR LOG:", 'clicky-analytics' ) . "</p><p>" . $e . "</p>";
 		}
 		$i=0;
 		foreach( $result as $item ) {

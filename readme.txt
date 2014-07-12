@@ -80,50 +80,54 @@ This plugin it's released under the GPLv2, you can use it free of charge on your
 
 == Changelog ==
 
-=v1.4 =
+=v1.4=
 - data validation and sanitization
 - switching from cURL to wp_remote_get
 - additional dedicated dashboard for Clicky stats
 - css tweaks 
 - code optimizations
- 
-=v1.3.5 =
+- display stats in frontend even if there are no organic searches
+- added install/uninstall functions
+- updated translations
+- default options update
+
+=v1.3.5=
 - all clicky analytics requests are now made using cURL 
 
-=v1.3.4 =
+=v1.3.4=
 - hidding error messages on frontend 
 
-=v1.3.3 =
+=v1.3.3=
 - updates on clicky tracking code and some action hooks
 
-=v1.3.2 =
+=v1.3.2=
 - notices and warnings fixes
 - less error prone 
 
-=v1.3.1 =
+=v1.3.1=
 - minor fixes and updates
 
-=v1.3 =
+=v1.3=
 - added additional error messages
 - fixed some minor issues
 
-=v1.2.1 =
+=v1.2.1=
 - fixed article view crash when no stats are available
 
-=v1.2 =
+=v1.2=
 - switched to cURL, to increase compatibility with some webhostings
 - removed trailing commas on charts, for IE8 compatibility
 
-=v1.1.1 =
+=v1.1.1=
 - table title fix for top pages
 - language file updated
 
-=v1.1 =
+=v1.1=
 
 * switch to internal jQuery library
 * added video actions tracking for Youtube
 * added video actions tracking for HTML5
 
-=v1.0 =
+=v1.0=
 
 * first release
