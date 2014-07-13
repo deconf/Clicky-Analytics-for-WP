@@ -42,12 +42,6 @@ if (ca_safe_get ( 'ca_hidden' ) == 'Y') {
 		$ca_sd = ca_safe_get ( 'ca_sd' );
 		update_option ( 'ca_sd', $ca_sd );
 		
-		$ca_map = ca_safe_get ( 'ca_map' );
-		update_option ( 'ca_map', $ca_map );
-		
-		$ca_traffic = ca_safe_get ( 'ca_traffic' );
-		update_option ( 'ca_traffic', $ca_traffic );
-		
 		$ca_frontend = ca_safe_get ( 'ca_frontend' );
 		update_option ( 'ca_frontend', $ca_frontend );
 		
@@ -56,9 +50,6 @@ if (ca_safe_get ( 'ca_hidden' ) == 'Y') {
 		
 		$ca_tracking = ca_safe_get ( 'ca_tracking' );
 		update_option ( 'ca_tracking', $ca_tracking );
-		
-		$ca_tracking_type = ca_safe_get ( 'ca_tracking_type' );
-		update_option ( 'ca_tracking_type', $ca_tracking_type );
 		
 		$ca_track_username = ca_safe_get ( 'ca_track_username' );
 		update_option ( 'ca_track_username', $ca_track_username );
@@ -101,12 +92,9 @@ $dashaccess = get_option ( 'ca_access' );
 $ca_pgd = get_option ( 'ca_pgd' );
 $ca_rd = get_option ( 'ca_rd' );
 $ca_sd = get_option ( 'ca_sd' );
-$ca_map = get_option ( 'ca_map' );
-$ca_traffic = get_option ( 'ca_traffic' );
 $ca_frontend = get_option ( 'ca_frontend' );
 $ca_cachetime = get_option ( 'ca_cachetime' );
 $ca_tracking = get_option ( 'ca_tracking' );
-$ca_tracking_type = get_option ( 'ca_tracking_type' );
 $ca_track_username = get_option ( 'ca_track_username' );
 $ca_track_email = get_option ( 'ca_track_email' );
 $ca_track_youtube = get_option ( 'ca_track_youtube' );
