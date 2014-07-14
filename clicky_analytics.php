@@ -40,7 +40,7 @@ add_filter ( "plugin_action_links_$plugin", 'ca_dash_settings_link' );
 // Admin Styles
 add_action ( 'admin_enqueue_scripts', 'ca_dash_admin_enqueue_styles' );
 function ca_dashboard_menu() {
-	add_dashboard_page ( __ ( 'Clicky Analytics', 'clicky-analytics' ), __ ( 'Clicky Analytics', 'clicky' ), 'manage_options', 'clicky_analytics', 'ca_dashboard_page' );
+	add_dashboard_page ( __ ( 'Clicky Analytics', 'clicky-analytics' ), __ ( 'Clicky Analytics', 'clicky' ), get_option('ca_access'), 'clicky_analytics', 'ca_dashboard_page' );
 }
 function ca_dashboard_page() {
 	$siteid = get_option ( 'ca_siteid' );

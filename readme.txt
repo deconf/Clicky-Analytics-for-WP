@@ -15,9 +15,9 @@ Using a widget, [Clicky Analytics Plugin](http://deconf.com/clicky-analytics-das
 
 This plugin automatically inserts <a href="http://clicky.com/66508224" target="_blank">Clicky Web Analytics</a> tracking code in each page of your website.
 
-Authorized users can also view statistics like Visitors and Top Searches, on frontend, at the end of each article.
+Authorized users can also view Clicky statistics like visitors and yop searches, on frontend, at the end of each article.
 
-Dashboard features:
+Clicky Admin Dashboard features:
 
 - you can access your website's basic statistics in a widget on your Admin Dashboard
 - cache feature, this improves loading speeds
@@ -26,7 +26,7 @@ Dashboard features:
 - option to display Clicky Analytics statistics on frontend, at the end of each article
 - has multilingual support, a POT file is available for translations.
 
-Tracking features:
+Clicky Tracking features:
 
 - enable/disable Clicky Web Analytics tracking code
 - usernames tracking feature
@@ -34,6 +34,11 @@ Tracking features:
 - video actions tracking for Youtube
 - video actions tracking for HTML5
 - asynchronously load of Clicky Web Analytics tracking code
+
+Clicky Custom Dashboard
+
+- today's traffic overview, links, content and searches
+- visitors overview for predifined ranges or a custom date range 
 
 Some features like video analytics and custom data tracking will require a <a href="http://clicky.com/66508224" target="_blank">Clicky Analytics Pro</a> account.
  
@@ -80,7 +85,10 @@ This plugin it's released under the GPLv2, you can use it free of charge on your
 
 == Changelog ==
 
-=v1.4=
+= v1.4.1 =
+- allow specified access level to view the custom dashboard
+
+= v1.4 =
 - data validation and sanitization
 - switching from cURL to wp_remote_get
 - additional dedicated dashboard for Clicky stats
@@ -91,43 +99,42 @@ This plugin it's released under the GPLv2, you can use it free of charge on your
 - updated translations
 - default options update
 
-=v1.3.5=
+= v1.3.5 =
 - all clicky analytics requests are now made using cURL 
 
-=v1.3.4=
+= v1.3.4 =
 - hidding error messages on frontend 
 
-=v1.3.3=
+= v1.3.3 =
 - updates on clicky tracking code and some action hooks
 
-=v1.3.2=
+= v1.3.2 =
 - notices and warnings fixes
 - less error prone 
 
-=v1.3.1=
+= v1.3.1 =
 - minor fixes and updates
 
-=v1.3=
+= v1.3 =
 - added additional error messages
 - fixed some minor issues
 
-=v1.2.1=
+= v1.2.1 =
 - fixed article view crash when no stats are available
 
-=v1.2=
+= v1.2 =
 - switched to cURL, to increase compatibility with some webhostings
 - removed trailing commas on charts, for IE8 compatibility
 
-=v1.1.1=
+= v1.1.1 =
+
 - table title fix for top pages
 - language file updated
 
-=v1.1=
+= v1.1 =
+- switch to internal jQuery library
+- added video actions tracking for Youtube
+- added video actions tracking for HTML5
 
-* switch to internal jQuery library
-* added video actions tracking for Youtube
-* added video actions tracking for HTML5
-
-=v1.0=
-
-* first release
+= v1.0 = 
+- first release

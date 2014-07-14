@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Clicky Analytics\n"
-"POT-Creation-Date: 2014-07-13 12:19+0200\n"
-"PO-Revision-Date: 2014-07-13 12:20+0200\n"
+"POT-Creation-Date: 2014-07-13 12:20+0200\n"
+"PO-Revision-Date: 2014-07-13 12:32+0200\n"
 "Last-Translator: Alin Marcu <admin@deconf.com>\n"
 "Language-Team: Deconf <admin@deconf.com>\n"
 "Language: en_US\n"
@@ -38,10 +38,9 @@ msgstr ""
 msgid "Visits"
 msgstr ""
 
-#: .././clicky_analytics.php:363
-msgid ""
-"For further help go to <a href='http://deconf.com/ask/'>DeConf Help Center</"
-"a>"
+#: .././clicky_analytics.php:363 .././clicky_analytics.php:453
+#: .././clicky_analytics.php:508
+msgid "For further help go to"
 msgstr ""
 
 #: .././clicky_analytics.php:385 .././clicky_analytics.php:652
@@ -80,10 +79,6 @@ msgid ""
 "If this is a new account, make sure that your Site ID and Site Key are "
 "correct and that Tracking is Enabled. After enough data is collected, the "
 "graphs will start showing up! For further help go to"
-msgstr ""
-
-#: .././clicky_analytics.php:453 .././clicky_analytics.php:508
-msgid "For further help go to"
 msgstr ""
 
 #: .././clicky_analytics.php:562
