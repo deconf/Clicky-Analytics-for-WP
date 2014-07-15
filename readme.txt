@@ -37,8 +37,8 @@ Clicky Tracking features:
 
 Clicky Custom Dashboard
 
-- today's traffic overview, links, content and searches
-- visitors overview for predifined ranges or a custom date range 
+- all clicky stats are available in a custom dashboard, under your blog's administration panel.
+
 
 Some features like video analytics and custom data tracking will require a <a href="http://clicky.com/66508224" target="_blank">Clicky Analytics Pro</a> account.
  
@@ -87,6 +87,7 @@ This plugin it's released under the GPLv2, you can use it free of charge on your
 
 = v1.4.1 =
 - allow specified access level to view the custom dashboard
+- custom dashboard is now able to display all clicky stats
 
 = v1.4 =
 - data validation and sanitization
