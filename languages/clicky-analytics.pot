@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Clicky Analytics\n"
-"POT-Creation-Date: 2014-07-13 12:20+0200\n"
-"PO-Revision-Date: 2014-07-13 12:32+0200\n"
+"POT-Creation-Date: 2014-07-20 12:32+0200\n"
+"PO-Revision-Date: 2014-07-20 12:32+0200\n"
 "Last-Translator: Alin Marcu <admin@deconf.com>\n"
 "Language-Team: Deconf <admin@deconf.com>\n"
 "Language: en_US\n"
@@ -16,104 +16,104 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: ../.\n"
 
-#: .././clicky_analytics.php:43 .././clicky_analytics.php:78
+#: .././clicky_analytics.php:43 .././clicky_analytics.php:71
 msgid "Clicky Analytics"
 msgstr ""
 
-#: .././clicky_analytics.php:95
+#: .././clicky_analytics.php:88
 msgid "Settings"
 msgstr ""
 
-#: .././clicky_analytics.php:262 .././clicky_analytics.php:272
-#: .././clicky_analytics.php:536 .././clicky_analytics.php:546
+#: .././clicky_analytics.php:255 .././clicky_analytics.php:265
+#: .././clicky_analytics.php:529 .././clicky_analytics.php:539
 msgid "Date"
 msgstr ""
 
-#: .././clicky_analytics.php:335 .././clicky_analytics.php:612
+#: .././clicky_analytics.php:328 .././clicky_analytics.php:605
 msgid "Top Searches"
 msgstr ""
 
-#: .././clicky_analytics.php:335 .././clicky_analytics.php:562
-#: .././clicky_analytics.php:587 .././clicky_analytics.php:612
+#: .././clicky_analytics.php:328 .././clicky_analytics.php:555
+#: .././clicky_analytics.php:580 .././clicky_analytics.php:605
 msgid "Visits"
 msgstr ""
 
-#: .././clicky_analytics.php:363 .././clicky_analytics.php:453
-#: .././clicky_analytics.php:508
+#: .././clicky_analytics.php:356 .././clicky_analytics.php:446
+#: .././clicky_analytics.php:501
 msgid "For further help go to"
 msgstr ""
 
-#: .././clicky_analytics.php:385 .././clicky_analytics.php:652
+#: .././clicky_analytics.php:378 .././clicky_analytics.php:645
 msgid "Actions"
 msgstr ""
 
-#: .././clicky_analytics.php:389 .././clicky_analytics.php:656
+#: .././clicky_analytics.php:382 .././clicky_analytics.php:649
 msgid "Searches"
 msgstr ""
 
-#: .././clicky_analytics.php:394
+#: .././clicky_analytics.php:387
 msgid "Time Average"
 msgstr ""
 
-#: .././clicky_analytics.php:399
+#: .././clicky_analytics.php:392
 msgid "Bounce Rate"
 msgstr ""
 
-#: .././clicky_analytics.php:404 .././clicky_analytics.php:650
+#: .././clicky_analytics.php:397 .././clicky_analytics.php:643
 msgid "Visitors"
 msgstr ""
 
-#: .././clicky_analytics.php:423 .././clicky_analytics.php:430
-#: .././clicky_analytics.php:439 .././clicky_analytics.php:484
-#: .././clicky_analytics.php:494 .././functions.php:129 .././functions.php:176
+#: .././clicky_analytics.php:416 .././clicky_analytics.php:423
+#: .././clicky_analytics.php:432 .././clicky_analytics.php:477
+#: .././clicky_analytics.php:487 .././functions.php:129 .././functions.php:176
 #: .././functions.php:223
 msgid "ERROR LOG:"
 msgstr ""
 
-#: .././clicky_analytics.php:430
+#: .././clicky_analytics.php:423
 msgid "Check your Site ID and Site Key! For further help go to"
 msgstr ""
 
-#: .././clicky_analytics.php:439 .././clicky_analytics.php:494
+#: .././clicky_analytics.php:432 .././clicky_analytics.php:487
 msgid ""
 "If this is a new account, make sure that your Site ID and Site Key are "
 "correct and that Tracking is Enabled. After enough data is collected, the "
 "graphs will start showing up! For further help go to"
 msgstr ""
 
-#: .././clicky_analytics.php:562
+#: .././clicky_analytics.php:555
 msgid "Top Pages"
 msgstr ""
 
-#: .././clicky_analytics.php:587
+#: .././clicky_analytics.php:580
 msgid "Top Referrers"
 msgstr ""
 
-#: .././clicky_analytics.php:635
+#: .././clicky_analytics.php:628
 msgid "Today"
 msgstr ""
 
-#: .././clicky_analytics.php:636
+#: .././clicky_analytics.php:629
 msgid "Yesterday"
 msgstr ""
 
-#: .././clicky_analytics.php:637
+#: .././clicky_analytics.php:630
 msgid "Last 7 Days"
 msgstr ""
 
-#: .././clicky_analytics.php:638
+#: .././clicky_analytics.php:631
 msgid "Last 30 Days"
 msgstr ""
 
-#: .././clicky_analytics.php:648
+#: .././clicky_analytics.php:641
 msgid "Online"
 msgstr ""
 
-#: .././clicky_analytics.php:658
+#: .././clicky_analytics.php:651
 msgid "Time AVG"
 msgstr ""
 
-#: .././clicky_analytics.php:660
+#: .././clicky_analytics.php:653
 msgid "Bounce"
 msgstr ""
 
@@ -221,103 +221,103 @@ msgstr ""
 msgid "Cache Time: "
 msgstr ""
 
-#: .././clicky_analytics_admin.php:170
+#: .././clicky_analytics_admin.php:169
 msgid "30 minutes"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:172
+#: .././clicky_analytics_admin.php:170
 msgid "1 hour"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:174
+#: .././clicky_analytics_admin.php:171
 msgid "3 hours"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:178
+#: .././clicky_analytics_admin.php:175
 msgid "Clicky Analytics Tracking"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:180
+#: .././clicky_analytics_admin.php:177
 msgid "Enable Tracking: "
 msgstr ""
 
-#: .././clicky_analytics_admin.php:183
+#: .././clicky_analytics_admin.php:179
 msgid "Enabled"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:185
+#: .././clicky_analytics_admin.php:180
 msgid "Disabled"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:192
+#: .././clicky_analytics_admin.php:187
 msgid " track usernames"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:196
+#: .././clicky_analytics_admin.php:191
 msgid " track emails"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:200
+#: .././clicky_analytics_admin.php:195
 msgid " track Youtube videos"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:204
+#: .././clicky_analytics_admin.php:199
 msgid " track HTML5 videos"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:208
+#: .././clicky_analytics_admin.php:203
 msgid "Update Options"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:210
+#: .././clicky_analytics_admin.php:205
 msgid "Clear Cache"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:221
+#: .././clicky_analytics_admin.php:216
 msgid "Setup Tutorial & Demo"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:232
+#: .././clicky_analytics_admin.php:227
 msgid "Support & Reviews"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:239
+#: .././clicky_analytics_admin.php:234
 msgid "You can find support on"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:239
+#: .././clicky_analytics_admin.php:234
 msgid "DeConf Help Center"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:246
+#: .././clicky_analytics_admin.php:241
 msgid "Your feedback and review are both important,"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:246
+#: .././clicky_analytics_admin.php:241
 msgid "rate this plugin"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:251
+#: .././clicky_analytics_admin.php:246
 msgid "Further Reading"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:258
+#: .././clicky_analytics_admin.php:253
 msgid "Other"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:258
+#: .././clicky_analytics_admin.php:253
 msgid "WordPress Plugins"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:258
+#: .././clicky_analytics_admin.php:253
 msgid "written by the same author"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:264
+#: .././clicky_analytics_admin.php:259
 msgid "Web Analytics"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:264
+#: .././clicky_analytics_admin.php:259
 msgid "service with visitors tracking at IP level."
 msgstr ""
 

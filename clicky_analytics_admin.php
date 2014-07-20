@@ -110,7 +110,7 @@ if (is_rtl ()) {
 
 ?>
 <div class="wrap">
-		<?php echo "<h2>" . __( "Clicky Analytics Settings", 'ga-dash' ) . "</h2>"; ?><hr>
+		<?php echo "<h2>" . __( "Clicky Analytics Settings",'clicky-analytics' ) . "</h2>"; ?><hr>
 </div>
 
 <div id="poststuff">
@@ -161,17 +161,14 @@ if (is_rtl ()) {
 								<?php if (get_option('ca_rd')) echo " checked='checked'"; ?> /><?php _e(" show top referrers", 'clicky-analytics' ); ?></p>
 						<p>
 							<input name="ca_sd" type="checkbox" id="ca_sd" value="1"
-								<?php if (get_option('ca_sd')) echo " checked='checked'"; ?> /><?php _e(" show top searches", 'clicky-analytics' ); ?></p>	
+								<?php if (get_option('ca_sd')) echo " checked='checked'"; ?> /><?php _e(" show top searches", 'clicky-analytics' ); ?></p>
 						<hr>			
 		<?php echo "<h2>" . __( 'Cache Settings', 'clicky-analytics' ). "</h2>";?>
 		<p><?php _e("Cache Time: ", 'clicky-analytics' ); ?>
 		<select id="ca_cachetime" name="ca_cachetime">
-								<option value="1800"
-									<?php selected( $ca_cachetime, 1800 ); ?>><?php echo __("30 minutes", 'clicky-analytics');?></option>
-								<option value="3600"
-									<?php selected( $ca_cachetime, 3600 ); ?>><?php echo __("1 hour", 'clicky-analytics');?></option>
-								<option value="10800"
-									<?php selected( $ca_cachetime, 10800 ); ?>><?php echo __("3 hours", 'clicky-analytics');?></option>
+								<option value="1800" <?php selected( $ca_cachetime, 1800 ); ?>><?php echo __("30 minutes", 'clicky-analytics');?></option>
+								<option value="3600" <?php selected( $ca_cachetime, 3600 ); ?>><?php echo __("1 hour", 'clicky-analytics');?></option>
+								<option value="10800" <?php selected( $ca_cachetime, 10800 ); ?>><?php echo __("3 hours", 'clicky-analytics');?></option>
 							</select>
 						</p>
 						<hr>
@@ -179,10 +176,8 @@ if (is_rtl ()) {
 
 		<p><?php _e("Enable Tracking: ", 'clicky-analytics' ); ?>
 		<select id="ca_tracking" name="ca_tracking">
-								<option value="1"
-									<?php selected( $ca_tracking, 1 ); ?>><?php echo __("Enabled", 'clicky-analytics');?></option>
-								<option value="2"
-									<?php selected( $ca_tracking, 2 ); ?>><?php echo __("Disabled", 'clicky-analytics');?></option>
+								<option value="1" <?php selected( $ca_tracking, 1 ); ?>><?php echo __("Enabled", 'clicky-analytics');?></option>
+								<option value="2" <?php selected( $ca_tracking, 2 ); ?>><?php echo __("Disabled", 'clicky-analytics');?></option>
 							</select>
 						</p>
 
@@ -218,7 +213,7 @@ if (is_rtl ()) {
 			<div class="meta-box-sortables">
 				<div class="postbox">
 					<h3>
-						<span><?php _e("Setup Tutorial & Demo",'ga-dash') ?></span>
+						<span><?php _e("Setup Tutorial & Demo",'clicky-analytics') ?></span>
 					</h3>
 					<div class="inside">
 						<a href="http://deconf.com/clicky-analytics-dashboard-wordpress/"
@@ -229,39 +224,39 @@ if (is_rtl ()) {
 				</div>
 				<div class="postbox">
 					<h3>
-						<span><?php _e("Support & Reviews",'ga-dash')?></span>
+						<span><?php _e("Support & Reviews",'clicky-analytics')?></span>
 					</h3>
 					<div class="inside">
 						<div class="cadash-title">
 							<a href="http://deconf.com/clicky-analytics-dashboard-wordpress/"><img
 								src="<?php echo plugins_url( 'images/help.png' , __FILE__ ); ?>" /></a>
 						</div>
-						<div class="cadash-desc"><?php echo  __('You can find support on', 'ga-dash') . ' <a href="http://deconf.com/ask/">'.__('DeConf Help Center', 'ga-dash').'</a>.'; ?></div>
+						<div class="cadash-desc"><?php echo  __('You can find support on','clicky-analytics') . ' <a href="http://deconf.com/ask/">'.__('DeConf Help Center','clicky-analytics').'</a>.'; ?></div>
 						<br />
 						<div class="cadash-title">
 							<a
 								href="http://wordpress.org/support/view/plugin-reviews/clicky-analytics#plugin-info"><img
 								src="<?php echo plugins_url( 'images/star.png' , __FILE__ ); ?>" /></a>
 						</div>
-						<div class="cadash-desc"><?php echo  __('Your feedback and review are both important,', 'ga-dash').' <a href="http://wordpress.org/support/view/plugin-reviews/clicky-analytics#plugin-info">'.__('rate this plugin', 'ga-dash').'</a>!'; ?></div>
+						<div class="cadash-desc"><?php echo  __('Your feedback and review are both important,','clicky-analytics').' <a href="http://wordpress.org/support/view/plugin-reviews/clicky-analytics#plugin-info">'.__('rate this plugin','clicky-analytics').'</a>!'; ?></div>
 					</div>
 				</div>
 				<div class="postbox">
 					<h3>
-						<span><?php _e("Further Reading",'ga-dash')?></span>
+						<span><?php _e("Further Reading",'clicky-analytics')?></span>
 					</h3>
 					<div class="inside">
 						<div class="cadash-title">
 							<a href="http://deconf.com/wordpress/"><img
 								src="<?php echo plugins_url( 'images/wp.png' , __FILE__ ); ?>" /></a>
 						</div>
-						<div class="cadash-desc"><?php echo  __('Other', 'ga-dash').' <a href="http://deconf.com/wordpress/">'.__('WordPress Plugins', 'ga-dash').'</a> '.__('written by the same author', 'ga-dash').'.'; ?></div>
+						<div class="cadash-desc"><?php echo  __('Other','clicky-analytics').' <a href="http://deconf.com/wordpress/">'.__('WordPress Plugins','clicky-analytics').'</a> '.__('written by the same author','clicky-analytics').'.'; ?></div>
 						<br />
 						<div class="cadash-title">
 							<a href="http://deconf.com/clicky-web-analytics-review/"><img
 								src="<?php echo plugins_url( 'images/clicky.png' , __FILE__ ); ?>" /></a>
 						</div>
-						<div class="cadash-desc"><?php echo  '<a href="http://deconf.com/clicky-web-analytics-review/">'.__('Web Analytics', 'ga-dash').'</a> '.__('service with visitors tracking at IP level.', 'ga-dash'); ?></div>
+						<div class="cadash-desc"><?php echo  '<a href="http://deconf.com/clicky-web-analytics-review/">'.__('Web Analytics','clicky-analytics').'</a> '.__('service with visitors tracking at IP level.','clicky-analytics'); ?></div>
 					</div>
 				</div>
 			</div>
