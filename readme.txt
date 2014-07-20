@@ -85,10 +85,14 @@ This plugin it's released under the GPLv2, you can use it free of charge on your
 
 == Changelog ==
 
+= v1.4.2 =
+- bugfix: notices and warnings in main dashboard
+- language file updates
+- hardening security
+
 = v1.4.1 =
 - allow specified access level to view the custom dashboard
 - custom dashboard is now able to display all clicky stats
-- bugfix: notices and warnings in main dashboard
 
 = v1.4 =
 - data validation and sanitization

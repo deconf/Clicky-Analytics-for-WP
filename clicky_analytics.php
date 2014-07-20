@@ -235,7 +235,7 @@ function ca_front_content($content) {
 			}
 		}
 		
-		$ca_statsdata = wp_kses ( rtrim ( $ca_statsdata, ',' ), CADASH_ALLOW );
+		$ca_statsdata = wp_kses ( rtrim ( $ca_statsdata, ',' ), $GLOBALS ['CADASH_ALLOW'] );
 		
 		$code = '<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<script type="text/javascript">
@@ -318,7 +318,7 @@ function ca_front_content($content) {
 			$ca_organicdata .= "['" . $goores [$j] [0] . "'," . $goores [$j] [1] . "],";
 		}
 		
-		$ca_organicdata = wp_kses ( rtrim ( $ca_organicdata, ',' ), CADASH_ALLOW );
+		$ca_organicdata = wp_kses ( rtrim ( $ca_organicdata, ',' ), $GLOBALS ['CADASH_ALLOW'] );
 		if ($ca_organicdata) {
 			$code .= '<script type="text/javascript">
 					google.load("visualization", "1", {packages:["table"]})
@@ -353,7 +353,7 @@ function ca_content() {
 	
 	if ((! get_option ( 'ca_siteid' )) or (! get_option ( 'ca_sitekey' ))) {
 		
-		echo "<p>" . __ ( "For further help go to",'clicky-analytics')." <a href='http://deconf.com/ask/'>DeConf Help Center</a></p>";
+		echo "<p>" . __ ( "Check your Site ID and Site Key! For further help go to", 'clicky-analytics' ) . " <a href='http://deconf.com/ask/'>DeConf Help Center</a></p>";
 		ca_clear_cache ();
 		return;
 	}
@@ -455,7 +455,7 @@ function ca_content() {
 		$chart1_data .= "['" . $goores [$j] [0] . "'," . $goores [$j] [1] . "],";
 	}
 	
-	$chart1_data = wp_kses ( rtrim ( $chart1_data, ',' ), CADASH_ALLOW );
+	$chart1_data = wp_kses ( rtrim ( $chart1_data, ',' ), $GLOBALS ['CADASH_ALLOW'] );
 	
 	$metrics = 'type=visitors,actions,visitors-online,traffic-sources,time-average,bounce-rate';
 	
