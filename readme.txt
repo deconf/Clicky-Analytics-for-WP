@@ -1,17 +1,17 @@
 === Clicky Analytics ===
 Contributors: deconf
-Donate link: http://deconf.com/donate/
+Donate link: https://deconf.com/donate/
 Tags: clicky,analytics,dashboard,tracking,tracking code,statistics,clicky analytics,clicky code,wpmu,multisite
 Requires at least: 2.8
-Tested up to: 3.9.1
-Stable tag: 1.4.2
+Tested up to: 4.0
+Stable tag: 1.4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin will display Clicky Web Analytics data and statistics inside your WordPress Blog.
 
 == Description ==
-Using a widget, [Clicky Analytics Plugin](http://deconf.com/clicky-analytics-dashboard-wordpress/) displays detailed info and statistics about: online users, number of visits, number of actions, bounce rates, organic searches, time average directly on your Admin Dashboard.
+Using a widget, [Clicky Analytics Plugin](https://deconf.com/clicky-analytics-dashboard-wordpress/) displays detailed info and statistics about: online users, number of visits, number of actions, bounce rates, organic searches, time average directly on your Admin Dashboard.
 
 This plugin automatically inserts <a href="http://clicky.com/66508224" target="_blank">Clicky Web Analytics</a> tracking code in each page of your website.
 
@@ -44,9 +44,9 @@ Some features like video analytics and custom data tracking will require a <a hr
  
 More Reading:
 
-* [Clicky Analytics Plugin](http://deconf.com/clicky-analytics-dashboard-wordpress/) homepage
-* Other [WordPress Plugins](http://deconf.com/wordpress/) by same author
-* [Clicky Analytics Plugin](http://deconf.com/ask/) translations and support
+* [Clicky Analytics Plugin](https://deconf.com/clicky-analytics-dashboard-wordpress/) homepage
+* Other [WordPress Plugins](https://deconf.com/wordpress/) by same author
+* [Clicky Analytics Plugin](https://deconf.com/ask/) translations and support
 
 == Installation ==
 
@@ -55,13 +55,13 @@ More Reading:
 3. Open the plugin configuration page, which is located under Settings -> Clicky Analytics and enter your Site Key and Site ID
 4. Save your configuration
 
-A step by step tutorial is available here: [Clicky Analytics video tutorial](http://deconf.com/clicky-analytics-dashboard-wordpress/)
+A step by step tutorial is available here: [Clicky Analytics video tutorial](https://deconf.com/clicky-analytics-dashboard-wordpress/)
 
 == Frequently Asked Questions == 
 
 = Where can I find my Clicky Site Key and Site ID? =
 
-Follow this step by step video tutorial: [Clicky Analytics](http://deconf.com/clicky-analytics-dashboard-wordpress/)
+Follow this step by step video tutorial: [Clicky Analytics](https://deconf.com/clicky-analytics-dashboard-wordpress/)
 
 = Some settings are missing from your video tutorial ... =
 
@@ -69,7 +69,7 @@ We are constantly improving our plugin, sometimes the video tutorial may be a li
 
 = More Questions? =
 
-A dedicated section for Wordpress Plugins is available here: [Wordpress Plugins Support](http://deconf.com/ask/)
+A dedicated section for Wordpress Plugins is available here: [Wordpress Plugins Support](https://deconf.com/ask/)
 
 == Screenshots ==
 
@@ -84,6 +84,11 @@ A dedicated section for Wordpress Plugins is available here: [Wordpress Plugins 
 This plugin it's released under the GPLv2, you can use it free of charge on your personal or commercial website.
 
 == Changelog ==
+
+= v1.4.3 =
+- bugfix: display mixed content when using https
+- bugfix: some frontend stats were not generated properly
+- tweak: all api requests are made using https
 
 = v1.4.2 =
 - bugfix: notices and warnings in main dashboard

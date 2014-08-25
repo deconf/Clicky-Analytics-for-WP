@@ -1,7 +1,7 @@
 <?php
 /**
  * Author: Alin Marcu
- * Author URI: http://deconf.com
+ * Author URI: https://deconf.com
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -10,7 +10,7 @@ function file_get_contents_clicky($url) {
 			'timeout' => 15,
 			'redirection' => 1,
 			'httpversion' => '1.0',
-			'user-agent' => 'Clicky Analytics (+http://deconf.com/clicky-analytics-dashboard-wordpress/)' 
+			'user-agent' => 'Clicky Analytics (+https://deconf.com/clicky-analytics-dashboard-wordpress/)' 
 	);
 	$result = wp_remote_get ( $url );
 	if (is_array ( $result ) and 200 == $result ['response'] ['code']) {
@@ -73,11 +73,11 @@ clicky_site_ids.push(" . get_option ( 'ca_siteid' ) . ");
 		$video_tracking .= '<script src="//static.getclicky.com/inc/javascript/video/html.js"></script>';
 	}
 	
-	$tracking = "\n<!-- BEGIN Clicky Analytics v" . CADASH_CURRENT_VERSION . " Tracking - http://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n";
+	$tracking = "\n<!-- BEGIN Clicky Analytics v" . CADASH_CURRENT_VERSION . " Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n";
 	
 	$tracking .= $custom_tracking . $main_tracking . $video_tracking;
 	
-	$tracking .= "\n<!-- END Clicky Analytics v" . CADASH_CURRENT_VERSION . " Tracking - http://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n";
+	$tracking .= "\n<!-- END Clicky Analytics v" . CADASH_CURRENT_VERSION . " Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n";
 	
 	return $tracking;
 }

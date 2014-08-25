@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Clicky Analytics\n"
-"POT-Creation-Date: 2014-07-20 12:32+0200\n"
-"PO-Revision-Date: 2014-07-20 12:32+0200\n"
+"POT-Creation-Date: 2014-08-25 20:38+0200\n"
+"PO-Revision-Date: 2014-08-25 20:38+0200\n"
 "Last-Translator: Alin Marcu <admin@deconf.com>\n"
 "Language-Team: Deconf <admin@deconf.com>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.6\n"
+"X-Generator: Poedit 1.6.7\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -38,9 +38,8 @@ msgstr ""
 msgid "Visits"
 msgstr ""
 
-#: .././clicky_analytics.php:356 .././clicky_analytics.php:446
-#: .././clicky_analytics.php:501
-msgid "For further help go to"
+#: .././clicky_analytics.php:356 .././clicky_analytics.php:423
+msgid "Check your Site ID and Site Key! For further help go to"
 msgstr ""
 
 #: .././clicky_analytics.php:378 .././clicky_analytics.php:645
@@ -65,13 +64,9 @@ msgstr ""
 
 #: .././clicky_analytics.php:416 .././clicky_analytics.php:423
 #: .././clicky_analytics.php:432 .././clicky_analytics.php:477
-#: .././clicky_analytics.php:487 .././functions.php:129 .././functions.php:176
-#: .././functions.php:223
+#: .././clicky_analytics.php:487 .././functions.php:116 .././functions.php:162
+#: .././functions.php:208
 msgid "ERROR LOG:"
-msgstr ""
-
-#: .././clicky_analytics.php:423
-msgid "Check your Site ID and Site Key! For further help go to"
 msgstr ""
 
 #: .././clicky_analytics.php:432 .././clicky_analytics.php:487
@@ -79,6 +74,10 @@ msgid ""
 "If this is a new account, make sure that your Site ID and Site Key are "
 "correct and that Tracking is Enabled. After enough data is collected, the "
 "graphs will start showing up! For further help go to"
+msgstr ""
+
+#: .././clicky_analytics.php:446 .././clicky_analytics.php:501
+msgid "For further help go to"
 msgstr ""
 
 #: .././clicky_analytics.php:555
@@ -281,43 +280,51 @@ msgstr ""
 msgid "Support & Reviews"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:234
+#: .././clicky_analytics_admin.php:235
 msgid "You can find support on"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:234
+#: .././clicky_analytics_admin.php:235
 msgid "DeConf Help Center"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:241
+#: .././clicky_analytics_admin.php:242
 msgid "Your feedback and review are both important,"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:241
+#: .././clicky_analytics_admin.php:242
 msgid "rate this plugin"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:246
+#: .././clicky_analytics_admin.php:247
 msgid "Further Reading"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:253
+#: .././clicky_analytics_admin.php:254
+msgid "Improve search rankings"
+msgstr ""
+
+#: .././clicky_analytics_admin.php:254
+msgid "by moving your website to HTTPS/SSL."
+msgstr ""
+
+#: .././clicky_analytics_admin.php:260
 msgid "Other"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:253
+#: .././clicky_analytics_admin.php:260
 msgid "WordPress Plugins"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:253
+#: .././clicky_analytics_admin.php:260
 msgid "written by the same author"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:259
+#: .././clicky_analytics_admin.php:266
 msgid "Web Analytics"
 msgstr ""
 
-#: .././clicky_analytics_admin.php:259
+#: .././clicky_analytics_admin.php:266
 msgid "service with visitors tracking at IP level."
 msgstr ""
 

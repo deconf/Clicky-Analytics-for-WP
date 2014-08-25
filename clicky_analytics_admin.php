@@ -1,7 +1,7 @@
 <?php
 /**
  * Author: Alin Marcu
- * Author URI: http://deconf.com
+ * Author URI: https://deconf.com
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -123,7 +123,7 @@ if (is_rtl ()) {
 						<?php wp_nonce_field('cadash_form','cadash_security'); ?>
 						<input type="hidden" name="ca_hidden" value="Y">
 		<?php echo "<h2>". __( 'Clicky Analytics API', 'clicky-analytics' )."</h2>"; ?>  
-        <?php echo __("You should watch this", 'clicky-analytics')." <a href='http://deconf.com/clicky-analytics-dashboard-wordpress/' target='_blank'>". __("Step by step video tutorial")."</a> ".__("to learn how to properly setup this plugin", 'clicky-analytics').". ".__("If you don't have a Clicky Account, you can", 'clicky-analytics')." <a href='http://clicky.com/66508224' target='_blank'>". __("create one here")."</a>.";?>
+        <?php echo __("You should watch this", 'clicky-analytics')." <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/' target='_blank'>". __("Step by step video tutorial")."</a> ".__("to learn how to properly setup this plugin", 'clicky-analytics').". ".__("If you don't have a Clicky Account, you can", 'clicky-analytics')." <a href='http://clicky.com/66508224' target='_blank'>". __("create one here")."</a>.";?>
 		<p><?php echo "<strong>".__("Site ID:", 'clicky-analytics')." </strong>"; ?><input
 								type="text" name="ca_siteid"
 								value="<?php echo esc_attr($siteid); ?>" size="30">
@@ -216,7 +216,7 @@ if (is_rtl ()) {
 						<span><?php _e("Setup Tutorial & Demo",'clicky-analytics') ?></span>
 					</h3>
 					<div class="inside">
-						<a href="http://deconf.com/clicky-analytics-dashboard-wordpress/"
+						<a href="https://deconf.com/clicky-analytics-dashboard-wordpress/"
 							target="_blank"><img
 							src="<?php echo plugins_url( 'images/clicky-analytics-dashboard.png' , __FILE__ );?>"
 							width="100%" alt="" /></a>
@@ -228,10 +228,11 @@ if (is_rtl ()) {
 					</h3>
 					<div class="inside">
 						<div class="cadash-title">
-							<a href="http://deconf.com/clicky-analytics-dashboard-wordpress/"><img
+							<a
+								href="https://deconf.com/clicky-analytics-dashboard-wordpress/"><img
 								src="<?php echo plugins_url( 'images/help.png' , __FILE__ ); ?>" /></a>
 						</div>
-						<div class="cadash-desc"><?php echo  __('You can find support on','clicky-analytics') . ' <a href="http://deconf.com/ask/">'.__('DeConf Help Center','clicky-analytics').'</a>.'; ?></div>
+						<div class="cadash-desc"><?php echo  __('You can find support on','clicky-analytics') . ' <a href="https://deconf.com/ask/">'.__('DeConf Help Center','clicky-analytics').'</a>.'; ?></div>
 						<br />
 						<div class="cadash-title">
 							<a
@@ -247,16 +248,22 @@ if (is_rtl ()) {
 					</h3>
 					<div class="inside">
 						<div class="cadash-title">
-							<a href="http://deconf.com/wordpress/"><img
-								src="<?php echo plugins_url( 'images/wp.png' , __FILE__ ); ?>" /></a>
+							<a href="https://deconf.com/move-website-https-ssl/"><img
+								src="<?php echo plugins_url( 'images/ssl.png' , __FILE__ ); ?>" /></a>
 						</div>
-						<div class="cadash-desc"><?php echo  __('Other','clicky-analytics').' <a href="http://deconf.com/wordpress/">'.__('WordPress Plugins','clicky-analytics').'</a> '.__('written by the same author','clicky-analytics').'.'; ?></div>
+						<div class="cadash-desc"><?php echo  '<a href="https://deconf.com/move-website-https-ssl/">'.__('Improve search rankings', 'ga-dash').'</a> '.__('by moving your website to HTTPS/SSL.', 'ga-dash'); ?></div>
 						<br />
 						<div class="cadash-title">
-							<a href="http://deconf.com/clicky-web-analytics-review/"><img
+							<a href="https://deconf.com/wordpress/"><img
+								src="<?php echo plugins_url( 'images/wp.png' , __FILE__ ); ?>" /></a>
+						</div>
+						<div class="cadash-desc"><?php echo  __('Other','clicky-analytics').' <a href="https://deconf.com/wordpress/">'.__('WordPress Plugins','clicky-analytics').'</a> '.__('written by the same author','clicky-analytics').'.'; ?></div>
+						<br />
+						<div class="cadash-title">
+							<a href="https://deconf.com/clicky-web-analytics-review/"><img
 								src="<?php echo plugins_url( 'images/clicky.png' , __FILE__ ); ?>" /></a>
 						</div>
-						<div class="cadash-desc"><?php echo  '<a href="http://deconf.com/clicky-web-analytics-review/">'.__('Web Analytics','clicky-analytics').'</a> '.__('service with visitors tracking at IP level.','clicky-analytics'); ?></div>
+						<div class="cadash-desc"><?php echo  '<a href="https://deconf.com/clicky-web-analytics-review/">'.__('Web Analytics','clicky-analytics').'</a> '.__('service with visitors tracking at IP level.','clicky-analytics'); ?></div>
 					</div>
 				</div>
 			</div>
