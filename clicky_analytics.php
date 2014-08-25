@@ -49,7 +49,7 @@ function ca_dashboard_page() {
 <br />
 <iframe id="clicky-analytics"
 	style="margin-left: 20px; width: 100%; height: 1000px;" 
-	src="https://clicky.com/?site_id=<?php echo esc_attr($siteid); ?>&amp;sitekey=<?php echo esc_attr($sitekey); ?>"></iframe>
+	src="https://clicky.com/?site_id=<?php echo esc_attr($siteid); ?>&sitekey=<?php echo esc_attr($sitekey); ?>"></iframe>
 <?php
 }
 function ca_dash_admin_enqueue_styles($hook) {

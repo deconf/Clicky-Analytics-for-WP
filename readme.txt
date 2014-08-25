@@ -88,6 +88,7 @@ This plugin it's released under the GPLv2, you can use it free of charge on your
 = v1.4.3 =
 - bugfix: display mixed content when using https
 - bugfix: some frontend stats were not generated properly
+- bugfix: custom dashboard fix
 - tweak: all api requests are made using https
 
 = v1.4.2 =
