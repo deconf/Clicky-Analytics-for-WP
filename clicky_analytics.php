@@ -187,7 +187,7 @@ function ca_front_content($content) {
 		</style>';
 		
 		$page_url = $_SERVER ["REQUEST_URI"];
-		
+
 		$post_id = $post->ID;
 		$metric = 'type=pages';
 		$from = "date=last-30-days";
