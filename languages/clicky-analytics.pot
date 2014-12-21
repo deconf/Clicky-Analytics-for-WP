@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Clicky Analytics\n"
-"POT-Creation-Date: 2014-08-25 20:38+0200\n"
-"PO-Revision-Date: 2014-08-25 20:38+0200\n"
+"POT-Creation-Date: 2014-12-21 15:01+0200\n"
+"PO-Revision-Date: 2014-12-21 15:01+0200\n"
 "Last-Translator: Alin Marcu <admin@deconf.com>\n"
 "Language-Team: Deconf <admin@deconf.com>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Poedit 1.7.1\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -24,95 +24,101 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: .././clicky_analytics.php:255 .././clicky_analytics.php:265
-#: .././clicky_analytics.php:529 .././clicky_analytics.php:539
+#: .././clicky_analytics.php:257 .././clicky_analytics.php:267
+#: .././clicky_analytics.php:531 .././clicky_analytics.php:541
 msgid "Date"
 msgstr ""
 
-#: .././clicky_analytics.php:328 .././clicky_analytics.php:605
+#: .././clicky_analytics.php:330 .././clicky_analytics.php:607
 msgid "Top Searches"
 msgstr ""
 
-#: .././clicky_analytics.php:328 .././clicky_analytics.php:555
-#: .././clicky_analytics.php:580 .././clicky_analytics.php:605
+#: .././clicky_analytics.php:330 .././clicky_analytics.php:557
+#: .././clicky_analytics.php:582 .././clicky_analytics.php:607
 msgid "Visits"
 msgstr ""
 
-#: .././clicky_analytics.php:356 .././clicky_analytics.php:423
-msgid "Check your Site ID and Site Key! For further help go to"
+#: .././clicky_analytics.php:358 .././clicky_analytics.php:425
+msgid "Check your Site ID and Site Key! For further help check"
 msgstr ""
 
-#: .././clicky_analytics.php:378 .././clicky_analytics.php:645
+#: .././clicky_analytics.php:358 .././clicky_analytics.php:425
+#: .././clicky_analytics.php:434 .././clicky_analytics.php:448
+#: .././clicky_analytics.php:489 .././clicky_analytics.php:503
+msgid "the documentation"
+msgstr ""
+
+#: .././clicky_analytics.php:380 .././clicky_analytics.php:647
 msgid "Actions"
 msgstr ""
 
-#: .././clicky_analytics.php:382 .././clicky_analytics.php:649
+#: .././clicky_analytics.php:384 .././clicky_analytics.php:651
 msgid "Searches"
 msgstr ""
 
-#: .././clicky_analytics.php:387
+#: .././clicky_analytics.php:389
 msgid "Time Average"
 msgstr ""
 
-#: .././clicky_analytics.php:392
+#: .././clicky_analytics.php:394
 msgid "Bounce Rate"
 msgstr ""
 
-#: .././clicky_analytics.php:397 .././clicky_analytics.php:643
+#: .././clicky_analytics.php:399 .././clicky_analytics.php:645
 msgid "Visitors"
 msgstr ""
 
-#: .././clicky_analytics.php:416 .././clicky_analytics.php:423
-#: .././clicky_analytics.php:432 .././clicky_analytics.php:477
-#: .././clicky_analytics.php:487 .././functions.php:116 .././functions.php:162
-#: .././functions.php:208
+#: .././clicky_analytics.php:418 .././clicky_analytics.php:425
+#: .././clicky_analytics.php:434 .././clicky_analytics.php:479
+#: .././clicky_analytics.php:489 .././functions.php:117 .././functions.php:163
+#: .././functions.php:209
 msgid "ERROR LOG:"
 msgstr ""
 
-#: .././clicky_analytics.php:432 .././clicky_analytics.php:487
+#: .././clicky_analytics.php:434 .././clicky_analytics.php:489
 msgid ""
 "If this is a new account, make sure that your Site ID and Site Key are "
 "correct and that Tracking is Enabled. After enough data is collected, the "
-"graphs will start showing up! For further help go to"
+"graphs will start showing up! For further help check"
 msgstr ""
 
-#: .././clicky_analytics.php:446 .././clicky_analytics.php:501
-msgid "For further help go to"
+#: .././clicky_analytics.php:448 .././clicky_analytics.php:503
+msgid "For further help check"
 msgstr ""
 
-#: .././clicky_analytics.php:555
+#: .././clicky_analytics.php:557
 msgid "Top Pages"
 msgstr ""
 
-#: .././clicky_analytics.php:580
+#: .././clicky_analytics.php:582
 msgid "Top Referrers"
 msgstr ""
 
-#: .././clicky_analytics.php:628
+#: .././clicky_analytics.php:630
 msgid "Today"
 msgstr ""
 
-#: .././clicky_analytics.php:629
+#: .././clicky_analytics.php:631
 msgid "Yesterday"
 msgstr ""
 
-#: .././clicky_analytics.php:630
+#: .././clicky_analytics.php:632
 msgid "Last 7 Days"
 msgstr ""
 
-#: .././clicky_analytics.php:631
+#: .././clicky_analytics.php:633
 msgid "Last 30 Days"
 msgstr ""
 
-#: .././clicky_analytics.php:641
+#: .././clicky_analytics.php:643
 msgid "Online"
 msgstr ""
 
-#: .././clicky_analytics.php:651
+#: .././clicky_analytics.php:653
 msgid "Time AVG"
 msgstr ""
 
-#: .././clicky_analytics.php:653
+#: .././clicky_analytics.php:655
 msgid "Bounce"
 msgstr ""
 
@@ -265,7 +271,7 @@ msgid " track HTML5 videos"
 msgstr ""
 
 #: .././clicky_analytics_admin.php:203
-msgid "Update Options"
+msgid "Save Changes"
 msgstr ""
 
 #: .././clicky_analytics_admin.php:205
@@ -281,11 +287,11 @@ msgid "Support & Reviews"
 msgstr ""
 
 #: .././clicky_analytics_admin.php:235
-msgid "You can find support on"
+msgid "Plugin documentation and support on"
 msgstr ""
 
 #: .././clicky_analytics_admin.php:235
-msgid "DeConf Help Center"
+msgid "deconf.com"
 msgstr ""
 
 #: .././clicky_analytics_admin.php:242
