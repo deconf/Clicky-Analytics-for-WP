@@ -15,11 +15,11 @@ Using a widget, [Clicky Analytics Plugin](https://deconf.com/clicky-analytics-da
 
 This plugin automatically inserts <a href="http://clicky.com/66508224" target="_blank">Clicky Web Analytics</a> tracking code in each page of your website.
 
-Authorized users can also view Clicky statistics like visitors and yop searches, on frontend, at the end of each article.
+Authorized users can also view Clicky statistics like visitors and top searches, on frontend, at the end of each article.
 
 Clicky Admin Dashboard features:
 
-- you can access your website's basic statistics in a widget on your Admin Dashboard
+- you can access your website's basic statistics in a widget on your Administration Dashboard
 - cache feature, this improves loading speeds
 - access level settings
 - option to display top 30 pages, referrers and searches (sortable by columns)
@@ -29,7 +29,7 @@ Clicky Admin Dashboard features:
 Clicky Tracking features:
 
 - enable/disable Clicky Web Analytics tracking code
-- usernames tracking feature
+- user names tracking feature
 - e-mails tracking feature
 - video actions tracking for Youtube
 - video actions tracking for HTML5
