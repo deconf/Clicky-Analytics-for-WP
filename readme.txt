@@ -85,11 +85,15 @@ This plugin it's released under the GPLv2, you can use it free of charge on your
 
 == Changelog ==
 
+= v1.4.4 =
+- Bug Fix: updated error text
+- Bug Fix: plugin options cleared during deactivation/activation 
+- Enhancement: adding noscript tracking capability
+
 = v1.4.3 =
-- bugfix: display mixed content when using https
-- bugfix: some frontend stats were not generated properly
-- bugfix: custom dashboard fix
-- tweak: all api requests are made using https
+- Bug Fix: display mixed content when using https
+- Bug Fix: some frontend stats were not generated properly
+- Bug Fix: custom dashboard fix
 
 = v1.4.2 =
 - bugfix: notices and warnings in main dashboard

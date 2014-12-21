@@ -64,7 +64,8 @@ clicky_site_ids.push(" . get_option ( 'ca_siteid' ) . ");
   s.src = '//static.getclicky.com/js';
   ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
 })();
-</script>";
+</script>
+<noscript><p><img alt='Clicky' width='1' height='1' src='//in.getclicky.com/100746374ns.gif' /></p></noscript>";
 	$video_tracking = "";
 	if (get_option ( 'ca_track_youtube' )) {
 		$video_tracking .= "<script src='//static.getclicky.com/inc/javascript/video/youtube.js'></script>";

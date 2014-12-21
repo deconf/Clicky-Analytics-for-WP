@@ -100,19 +100,21 @@ function ca_tracking() {
 	}
 }
 function cadash_install() {
-	update_option ( 'ca_sitekey', '' );
-	update_option ( 'ca_siteid', '' );
-	update_option ( 'ca_access', 'manage_options' );
-	update_option ( 'ca_pgd', 1 );
-	update_option ( 'ca_rd', 1 );
-	update_option ( 'ca_sd', 1 );
-	update_option ( 'ca_frontend', 1 );
-	update_option ( 'ca_cachetime', 3600 );
-	update_option ( 'ca_tracking', 1 );
-	update_option ( 'ca_track_username', 1 );
-	update_option ( 'ca_track_email', 1 );
-	update_option ( 'ca_track_youtube', 0 );
-	update_option ( 'ca_track_html5', 0 );
+    if (!get_option('ca_sitekey')){
+    	update_option ( 'ca_sitekey', '' );
+    	update_option ( 'ca_siteid', '' );
+    	update_option ( 'ca_access', 'manage_options' );
+    	update_option ( 'ca_pgd', 1 );
+    	update_option ( 'ca_rd', 1 );
+    	update_option ( 'ca_sd', 1 );
+    	update_option ( 'ca_frontend', 1 );
+    	update_option ( 'ca_cachetime', 3600 );
+    	update_option ( 'ca_tracking', 1 );
+    	update_option ( 'ca_track_username', 1 );
+    	update_option ( 'ca_track_email', 1 );
+    	update_option ( 'ca_track_youtube', 0 );
+    	update_option ( 'ca_track_html5', 0 );
+    }	
 }
 function cadash_uninstall() {
 	global $wpdb;
@@ -164,7 +166,7 @@ function ca_front_content($content) {
 		
 		require_once 'functions.php';
 		
-		$api_url = "https://api.clicky.com/api/stats/4?";
+		$api_url = "http://api.clicky.com/api/stats/4?";
 		$siteid = get_option ( 'ca_siteid' );
 		$sitekey = get_option ( 'ca_sitekey' );
 		
@@ -353,7 +355,7 @@ function ca_content() {
 	
 	if ((! get_option ( 'ca_siteid' )) or (! get_option ( 'ca_sitekey' ))) {
 		
-		echo "<p>" . __ ( "Check your Site ID and Site Key! For further help go to", 'clicky-analytics' ) . " <a href='https://deconf.com/ask/'>DeConf Help Center</a></p>";
+		echo "<p>" . __ ( "Check your Site ID and Site Key! For further help check", 'clicky-analytics' ) . " <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/'>".__("the documentation",'clicky-analytics')."</a></p>";
 		ca_clear_cache ();
 		return;
 	}
@@ -420,7 +422,7 @@ function ca_content() {
 	$i = 0;
 	
 	if (! is_array ( $result )) {
-		echo "<p>" . __ ( "ERROR LOG:", 'clicky-analytics' ) . "</p><p>" . __ ( "Check your Site ID and Site Key! For further help go to", 'clicky-analytics' ) . " <a href='https://deconf.com/ask/'>DeConf Help Center</a></p>";
+		echo "<p>" . __ ( "ERROR LOG:", 'clicky-analytics' ) . "</p><p>" . __ ( "Check your Site ID and Site Key! For further help check", 'clicky-analytics' ) . " <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/'>".__("the documentation",'clicky-analytics')."</a></p>";
 		ca_clear_cache ();
 		return;
 	}
@@ -429,7 +431,7 @@ function ca_content() {
 		if (is_array ( $item )) {
 			foreach ( $item as $date => $item1 ) {
 				if (! $item1) {
-					echo "<p>" . __ ( "ERROR LOG:", 'clicky-analytics' ) . "</p><p>" . __ ( "If this is a new account, make sure that your Site ID and Site Key are correct and that Tracking is Enabled. After enough data is collected, the graphs will start showing up! For further help go to", 'clicky-analytics' ) . " <a href='https://deconf.com/ask/'>DeConf Help Center</a></p>";
+					echo "<p>" . __ ( "ERROR LOG:", 'clicky-analytics' ) . "</p><p>" . __ ( "If this is a new account, make sure that your Site ID and Site Key are correct and that Tracking is Enabled. After enough data is collected, the graphs will start showing up! For further help check", 'clicky-analytics' ) . " <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/'>".__("the documentation",'clicky-analytics')."</a></p>";
 					ca_clear_cache ();
 					return;
 				}
@@ -443,7 +445,7 @@ function ca_content() {
 				$i ++;
 			}
 		} else {
-			echo $item . "<p>" . __ ( "For further help go to", 'clicky-analytics' ) . " <a href='https://deconf.com/ask/'>DeConf Help Center</a></p>";
+			echo $item . "<p>" . __ ( "For further help check", 'clicky-analytics' ) . " <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/'>".__("the documentation",'clicky-analytics')."</a></p>";
 			ca_clear_cache ();
 			return;
 		}
@@ -484,7 +486,7 @@ function ca_content() {
 		if (is_array ( $item )) {
 			foreach ( $item as $date => $item1 ) {
 				if (! $item1) {
-					echo "<p>" . __ ( "ERROR LOG:", 'clicky-analytics' ) . "</p><p>" . __ ( "If this is a new account, make sure that your Site ID and Site Key are correct and that Tracking is Enabled. After enough data is collected, the graphs will start showing up! For further help go to", 'clicky-analytics' ) . " <a href='https://deconf.com/ask/'>DeConf Help Center</a></p>";
+					echo "<p>" . __ ( "ERROR LOG:", 'clicky-analytics' ) . "</p><p>" . __ ( "If this is a new account, make sure that your Site ID and Site Key are correct and that Tracking is Enabled. After enough data is collected, the graphs will start showing up! For further help check", 'clicky-analytics' ) . " <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/'>".__("the documentation",'clicky-analytics')."</a></p>";
 					ca_clear_cache ();
 					return;
 				}
@@ -498,7 +500,7 @@ function ca_content() {
 				$i ++;
 			}
 		} else {
-			echo $item . "<p>" . __ ( "For further help go to", 'clicky-analytics' ) . " <a href='https://deconf.com/ask/'>DeConf Help Center</a></p>";
+			echo $item . "<p>" . __ ( "For further help check", 'clicky-analytics' ) . " <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/'>".__("the documentation",'clicky-analytics')."</a></p>";
 			return;
 		}
 	}

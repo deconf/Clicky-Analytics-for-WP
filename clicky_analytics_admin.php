@@ -200,7 +200,7 @@ if (is_rtl ()) {
 						<hr>
 						<p class="submit">
 							<input type="submit" name="Submit" class="button button-primary"
-								value="<?php _e('Update Options', 'clicky-analytics' ) ?>" />&nbsp;&nbsp;&nbsp;<input
+								value="<?php _e('Save Changes', 'clicky-analytics' ) ?>" />&nbsp;&nbsp;&nbsp;<input
 								type="submit" name="Clear" class="button button-secondary"
 								value="<?php _e('Clear Cache', 'clicky-analytics' ) ?>" />
 						</p>
@@ -232,7 +232,7 @@ if (is_rtl ()) {
 								href="https://deconf.com/clicky-analytics-dashboard-wordpress/"><img
 								src="<?php echo plugins_url( 'images/help.png' , __FILE__ ); ?>" /></a>
 						</div>
-						<div class="cadash-desc"><?php echo  __('You can find support on','clicky-analytics') . ' <a href="https://deconf.com/ask/">'.__('DeConf Help Center','clicky-analytics').'</a>.'; ?></div>
+						<div class="cadash-desc"><?php echo  __('Plugin documentation and support on','clicky-analytics') . ' <a href="https://deconf.com/clicky-analytics-dashboard-wordpress/">'.__('deconf.com','clicky-analytics').'</a>.'; ?></div>
 						<br />
 						<div class="cadash-title">
 							<a
