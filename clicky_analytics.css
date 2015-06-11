@@ -9,8 +9,7 @@
 	-moz-box-shadow: inset 0px 1px 0px 0px #F4935A;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #F4935A;
 	box-shadow: inset 0px 1px 0px 0px #F4935A;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #EA3E00
-		), color-stop(1, #EF925F));
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #EA3E00), color-stop(1, #EF925F));
 	background: -moz-linear-gradient(center top, #EA3E00 5%, #EF925F 100%);
 	/*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=\'#EA3E00\', endColorstr=\'#EF925F\');*/
 	background-color: #EA3E00;
@@ -29,8 +28,7 @@
 }
 
 .clickybutton:hover {
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #EF925F
-		), color-stop(1, #EA3E00));
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #EF925F), color-stop(1, #EA3E00));
 	background: -moz-linear-gradient(center top, #EF925F 5%, #EA3E00 100%);
 	/*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=\'#EF925F\', endColorstr=\'#EA3E00\');*/
 	background-color: #EF925F;
@@ -66,8 +64,7 @@ table.clickytable {
 	-moz-box-shadow: inset 0px 1px 0px 0px #F4935A;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #F4935A;
 	box-shadow: inset 0px 1px 0px 0px #F4935A;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #EA3E00
-		), color-stop(1, #EF925F));
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #EA3E00), color-stop(1, #EF925F));
 	background: -moz-linear-gradient(center top, #EA3E00 5%, #EF925F 100%);
 	/*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=\'#EA3E00\', endColorstr=\'#EF925F\');*/
 	background-color: #EA3E00;
