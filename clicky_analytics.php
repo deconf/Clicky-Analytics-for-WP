@@ -1,22 +1,22 @@
 <?php
 /**
- * Plugin Name: Clicky Analytics 
- * Plugin URI: https://deconf.com 
- * Description: Displays Clicky Analytics Reports in your Dashboard. Automatically inserts the tracking code in every page of your website. 
- * Author: Alin Marcu 
- * Version: 1.4.4 
+ * Plugin Name: Clicky Analytics
+ * Plugin URI: https://deconf.com
+ * Description: Displays Clicky Analytics Reports in your Dashboard. Automatically inserts the tracking code in every page of your website.
+ * Author: Alin Marcu
+ * Version: 1.4.5
  * Author URI: https://deconf.com
  */
-define ( 'CADASH_CURRENT_VERSION', '1.4.3' );
+define ( 'CADASH_CURRENT_VERSION', '1.4.5' );
 
 $GLOBALS ['CADASH_ALLOW'] = array (
 		'a' => array (
 				'href' => array (),
-				'title' => array () 
+				'title' => array ()
 		),
 		'br' => array (),
 		'em' => array (),
-		'strong' => array () 
+		'strong' => array ()
 );
 
 /*
@@ -48,18 +48,18 @@ function ca_dashboard_page() {
 	?>
 <br />
 <iframe id="clicky-analytics"
-	style="margin-left: 20px; width: 100%; height: 1000px;" 
-	src="https://clicky.com/?site_id=<?php echo esc_attr($siteid); ?>&sitekey=<?php echo esc_attr($sitekey); ?>"></iframe>
+	style="margin-left: 20px; width: 100%; height: 1000px;"
+	src="https://clicky.com/stats/wp-iframe?site_id=<?php echo esc_attr($siteid); ?>&sitekey=<?php echo esc_attr($sitekey); ?>"></iframe>
 <?php
 }
 function ca_dash_admin_enqueue_styles($hook) {
 	$valid_hooks = array (
-			'settings_page_Clicky_Analytics_Dashboard' 
+			'settings_page_Clicky_Analytics_Dashboard'
 	);
-	
+
 	if (! in_array ( $hook, $valid_hooks ) and 'index.php' != $hook)
 		return;
-	
+
 	wp_register_style ( 'clicky_analytics', plugins_url ( 'clicky_analytics.css', __FILE__ ) );
 	wp_enqueue_style ( 'clicky_analytics' );
 }
@@ -91,7 +91,7 @@ function ca_dash_settings_link($links) {
 }
 function ca_tracking() {
 	$ca_traking = get_option ( 'ca_tracking' );
-	
+
 	if ($ca_traking != 2) {
 		require_once 'functions.php';
 		global $current_user;
@@ -114,7 +114,7 @@ function cadash_install() {
     	update_option ( 'ca_track_email', 1 );
     	update_option ( 'ca_track_youtube', 0 );
     	update_option ( 'ca_track_html5', 0 );
-    }	
+    }
 }
 function cadash_uninstall() {
 	global $wpdb;
@@ -161,19 +161,19 @@ function ca_front_content($content) {
 	if (! current_user_can ( get_option ( 'ca_access' ) ) or ! get_option ( 'ca_frontend' )) {
 		return $content;
 	}
-	
+
 	if ((is_page () || is_single ()) && ! is_preview ()) {
-		
+
 		require_once 'functions.php';
-		
+
 		$api_url = "http://api.clicky.com/api/stats/4?";
 		$siteid = get_option ( 'ca_siteid' );
 		$sitekey = get_option ( 'ca_sitekey' );
-		
+
 		if (! get_option ( 'ca_cachetime' )) {
 			update_option ( 'ca_cachetime', "3600" );
 		}
-		
+
 		$content .= '<style>
 		#ca_sdata td{
 			line-height:1.5em;
@@ -185,9 +185,9 @@ function ca_front_content($content) {
 		}
 		#ca_div, #ca_sdata{
 			clear:both;
-		}		
+		}
 		</style>';
-		
+
 		$page_url = $_SERVER ["REQUEST_URI"];
 
 		$post_id = $post->ID;
@@ -228,7 +228,7 @@ function ca_front_content($content) {
 		} else {
 			return $content;
 		}
-		
+
 		$j = 0;
 		$ca_statsdata = "";
 		for($j = $i - 1; $j >= 0; $j --) {
@@ -236,9 +236,9 @@ function ca_front_content($content) {
 				$ca_statsdata .= "['" . $goores [$j] [0] . "'," . $goores [$j] [1] . "],";
 			}
 		}
-		
+
 		$ca_statsdata = wp_kses ( rtrim ( $ca_statsdata, ',' ), $GLOBALS ['CADASH_ALLOW'] );
-		
+
 		$code = '<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<script type="text/javascript">
 		  google.load("visualization", "1", {packages:["corechart"]});
@@ -249,17 +249,17 @@ function ca_front_content($content) {
 				ca_drawstats();
 				if(typeof ca_drawsd == "function"){
 					ca_drawsd();
-				}				
-		  }			  
-		  
+				}
+		  }
+
 		  function ca_drawstats() {
 			var data = google.visualization.arrayToDataTable([' . "
-			  ['" . __ ( "Date", 'clicky-analytics' ) . "', 'Visitors']," . $ca_statsdata . "  
+			  ['" . __ ( "Date", 'clicky-analytics' ) . "', 'Visitors']," . $ca_statsdata . "
 			]);
 
 			var options = {
 			  legend: {position: 'none'},
-			  colors:['darkorange','#004411'],		  
+			  colors:['darkorange','#004411'],
 			  pointSize: 3,
 			  title: 'Visitors',
 			  vAxis: {minValue: 0},
@@ -269,13 +269,13 @@ function ca_front_content($content) {
 
 			var chart = new google.visualization.AreaChart(document.getElementById('ca_div'));
 			chart.draw(data, options);
-			
+
 		  }
 		";
-		
+
 		$code .= "</script>";
 		$content .= $code . '<p><div id="ca_div"></div></p>';
-		
+
 		$metric = 'type=segmentation&segments=searches';
 		$from = "date=last-30-days";
 		try {
@@ -291,7 +291,7 @@ function ca_front_content($content) {
 		} catch ( exception $e ) {
 			return $content;
 		}
-		
+
 		$i = 0;
 		if (is_array ( $result )) {
 			foreach ( $result as $item ) {
@@ -307,38 +307,38 @@ function ca_front_content($content) {
 						}
 					}
 				} else {
-					
+
 					return $content;
 				}
 			}
 		}
-		
+
 		$j = 0;
 		$ca_organicdata = "";
 		for($j = 0; $j <= $i - 1; $j ++) {
-			
+
 			$ca_organicdata .= "['" . $goores [$j] [0] . "'," . $goores [$j] [1] . "],";
 		}
-		
+
 		$ca_organicdata = wp_kses ( rtrim ( $ca_organicdata, ',' ), $GLOBALS ['CADASH_ALLOW'] );
 		if ($ca_organicdata) {
 			$code .= '<script type="text/javascript">
 					google.load("visualization", "1", {packages:["table"]})
 					function ca_drawsd() {
-					
+
 					var datas = google.visualization.arrayToDataTable([' . "
-					  ['" . __ ( "Top Searches", 'clicky-analytics' ) . "', '" . __ ( "Visits", 'clicky-analytics' ) . "']," . $ca_organicdata . "  
+					  ['" . __ ( "Top Searches", 'clicky-analytics' ) . "', '" . __ ( "Visits", 'clicky-analytics' ) . "']," . $ca_organicdata . "
 					]);
-					
+
 					var options = {
 						page: 'enable',
 						pageSize: 6,
 						width: '99%',
-					};        
-					
+					};
+
 					var chart = new google.visualization.Table(document.getElementById('ca_sdata'));
 					chart.draw(datas, options);
-					
+
 				  }";
 		}
 		$code .= "</script>";
@@ -348,34 +348,34 @@ function ca_front_content($content) {
 }
 function ca_content() {
 	require_once 'functions.php';
-	
+
 	$api_url = "https://api.clicky.com/api/stats/4?";
 	$siteid = get_option ( 'ca_siteid' );
 	$sitekey = get_option ( 'ca_sitekey' );
-	
+
 	if ((! get_option ( 'ca_siteid' )) or (! get_option ( 'ca_sitekey' ))) {
-		
+
 		echo "<p>" . __ ( "Check your Site ID and Site Key! For further help check", 'clicky-analytics' ) . " <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/'>".__("the documentation",'clicky-analytics')."</a></p>";
 		ca_clear_cache ();
 		return;
 	}
-	
+
 	if (isset ( $_REQUEST ['ca_query'] )) {
 		$ca_query = $_REQUEST ['ca_query'];
 	} else {
 		$ca_query = "visits";
 	}
-	
+
 	if (isset ( $_REQUEST ['ca_period'] )) {
 		$ca_period = $_REQUEST ['ca_period'];
 	} else {
 		$ca_period = "last-30-days";
 	}
-	
+
 	$from = "date=" . $ca_period;
-	
+
 	switch ($ca_query) {
-		
+
 		case 'actions' :
 			$title = __ ( "Actions", 'clicky-analytics' );
 			$metric = "type=actions";
@@ -384,27 +384,27 @@ function ca_content() {
 			$title = __ ( "Searches", 'clicky-analytics' );
 			$metric = "type=traffic-sources";
 			break;
-		
+
 		case 'time-average' :
 			$title = __ ( "Time Average", 'clicky-analytics' );
 			$metric = "type=time-average";
 			break;
-		
+
 		case 'bounce-rate' :
 			$title = __ ( "Bounce Rate", 'clicky-analytics' );
 			$metric = "type=bounce-rate";
 			break;
-		
+
 		default :
 			$title = __ ( "Visitors", 'clicky-analytics' );
 			$metric = "type=visitors";
 	}
-	
+
 	try {
 		$serial = 'clicky_qr1' . str_replace ( array (
 				',',
 				'-',
-				date ( 'Y' ) 
+				date ( 'Y' )
 		), "", $from . $metric );
 		$transient = get_transient ( $serial );
 		if (empty ( $transient )) {
@@ -420,13 +420,13 @@ function ca_content() {
 		return;
 	}
 	$i = 0;
-	
+
 	if (! is_array ( $result )) {
 		echo "<p>" . __ ( "ERROR LOG:", 'clicky-analytics' ) . "</p><p>" . __ ( "Check your Site ID and Site Key! For further help check", 'clicky-analytics' ) . " <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/'>".__("the documentation",'clicky-analytics')."</a></p>";
 		ca_clear_cache ();
 		return;
 	}
-	
+
 	foreach ( $result as $item ) {
 		if (is_array ( $item )) {
 			foreach ( $item as $date => $item1 ) {
@@ -453,19 +453,19 @@ function ca_content() {
 	$j = 0;
 	$chart1_data = "";
 	for($j = $i - 1; $j >= 0; $j --) {
-		
+
 		$chart1_data .= "['" . $goores [$j] [0] . "'," . $goores [$j] [1] . "],";
 	}
-	
+
 	$chart1_data = wp_kses ( rtrim ( $chart1_data, ',' ), $GLOBALS ['CADASH_ALLOW'] );
-	
+
 	$metrics = 'type=visitors,actions,visitors-online,traffic-sources,time-average,bounce-rate';
-	
+
 	try {
 		$serial = 'clicky_qr2' . str_replace ( array (
 				',',
 				'-',
-				date ( 'Y' ) 
+				date ( 'Y' )
 		), "", $from );
 		$transient = get_transient ( $serial );
 		if (empty ( $transient )) {
@@ -480,7 +480,7 @@ function ca_content() {
 		ca_clear_cache ();
 		return;
 	}
-	
+
 	$i = 0;
 	foreach ( $result as $item ) {
 		if (is_array ( $item )) {
@@ -504,7 +504,7 @@ function ca_content() {
 			return;
 		}
 	}
-	
+
 	$code = '<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
@@ -517,23 +517,23 @@ function ca_content() {
 			}
 			if(typeof ca_toppages == "function"){
 				ca_toppages();
-			}			
+			}
 			if(typeof ca_topreferrers== "function"){
 				ca_topreferrers();
 			}
 			if(typeof ca_searches == "function"){
 				ca_searches();
 			}
-	  }		  
-	  
+	  }
+
       function ca_drawstats() {
         var data = google.visualization.arrayToDataTable([' . "
-          ['" . __ ( "Date", 'clicky-analytics' ) . "', '" . $title . "']," . $chart1_data . "  
+          ['" . __ ( "Date", 'clicky-analytics' ) . "', '" . $title . "']," . $chart1_data . "
         ]);
 
         var options = {
 		  legend: {position: 'none'},
-		  colors:['darkorange','#004411'],		  
+		  colors:['darkorange','#004411'],
 		  pointSize: 3,
           title: '" . $title . "',
 		  chartArea: {width: '80%'},
@@ -543,33 +543,33 @@ function ca_content() {
 
         var chart = new google.visualization.AreaChart(document.getElementById('ca_div'));
 		chart.draw(data, options);
-		
+
       }";
-	
+
 	if (get_option ( 'ca_pgd' )) {
 		$ca_toppages = ca_top_pages ( $api_url, $siteid, $sitekey, $from );
 		if ($ca_toppages) {
 			$code .= '
 					google.load("visualization", "1", {packages:["table"]})
 					function ca_toppages() {
-					
+
 					var datas = google.visualization.arrayToDataTable([' . "
-					  ['" . __ ( "Top Pages", 'clicky-analytics' ) . "', '" . __ ( "Visits", 'clicky-analytics' ) . "']," . $ca_toppages . "  
+					  ['" . __ ( "Top Pages", 'clicky-analytics' ) . "', '" . __ ( "Visits", 'clicky-analytics' ) . "']," . $ca_toppages . "
 					]);
-					
+
 					var options = {
 						page: 'enable',
 						pageSize: 6,
 						width: '100%',
-					};        
-					
+					};
+
 					var chart = new google.visualization.Table(document.getElementById('ca_toppages'));
 					chart.draw(datas, options);
-					
+
 				  }";
 		}
 	}
-	
+
 	if (get_option ( 'ca_rd' )) {
 		$ca_referrers = ca_top_referrers ( $api_url, $siteid, $sitekey, $from );
 		// print_r($ca_referrers);
@@ -577,24 +577,24 @@ function ca_content() {
 			$code .= '
 					google.load("visualization", "1", {packages:["table"]})
 					function ca_topreferrers() {
-					
+
 					var datas = google.visualization.arrayToDataTable([' . "
-					  ['" . __ ( "Top Referrers", 'clicky-analytics' ) . "', '" . __ ( "Visits", 'clicky-analytics' ) . "']," . $ca_referrers . "  
+					  ['" . __ ( "Top Referrers", 'clicky-analytics' ) . "', '" . __ ( "Visits", 'clicky-analytics' ) . "']," . $ca_referrers . "
 					]);
-					
+
 					var options = {
 						page: 'enable',
 						pageSize: 6,
 						width: '100%',
-					};        
-					
+					};
+
 					var chart = new google.visualization.Table(document.getElementById('ca_referrers'));
 					chart.draw(datas, options);
-					
+
 				  }";
 		}
 	}
-	
+
 	if (get_option ( 'ca_sd' )) {
 		$ca_searches = ca_top_searches ( $api_url, $siteid, $sitekey, $from );
 		// print_r($ca_searches);
@@ -602,26 +602,26 @@ function ca_content() {
 			$code .= '
 					google.load("visualization", "1", {packages:["table"]})
 					function ca_searches() {
-					
+
 					var datas = google.visualization.arrayToDataTable([' . "
-					  ['" . __ ( "Top Searches", 'clicky-analytics' ) . "', '" . __ ( "Visits", 'clicky-analytics' ) . "']," . $ca_searches . "  
+					  ['" . __ ( "Top Searches", 'clicky-analytics' ) . "', '" . __ ( "Visits", 'clicky-analytics' ) . "']," . $ca_searches . "
 					]);
-					
+
 					var options = {
 						page: 'enable',
 						pageSize: 6,
 						width: '100%',
-					};        
-					
+					};
+
 					var chart = new google.visualization.Table(document.getElementById('ca_searches'));
 					chart.draw(datas, options);
-					
+
 				  }";
 		}
 	}
-	
+
 	$code .= "</script>";
-	
+
 	$code .= '
 	<div id="clicky-dash">
 	<center>
@@ -633,9 +633,9 @@ function ca_content() {
 			<input class="clickybutton" type="button" value="' . __ ( "Last 30 Days", 'clicky-analytics' ) . '" onClick="window.location=\'?ca_period=last-30-days&ca_query=' . $ca_query . '\'" />
 		</center>
 		</div>
-		
+
 		<div id="ca_div"></div>
-		
+
 		<div id="ca_details_div">
 			<center>
 			<table class="clickytable" cellpadding="4">
@@ -656,9 +656,9 @@ function ca_content() {
 			<td width="12%" class="clickyvalue"><a href="?ca_query=bounce-rate&ca_period=' . $ca_period . '" class="clickytable">' . ( double ) $goores [5] [1] . '</a></td>
 			</tr>
 			</table>
-			</center>		
+			</center>
 		</div>
-	</center>		
+	</center>
 	</div>';
 	$metrics = 'type=visitors-online';
 	$url = $api_url . "site_id=" . $siteid . "&sitekey=" . $sitekey . "&" . $from . "&" . $metrics . "&output=json";
@@ -683,7 +683,7 @@ function ca_content() {
    };
    setInterval(online_refresh, 60000);
    </script>';
-	
+
 	$code .= '</center>';
 	if (get_option ( 'ca_pgd' ))
 		$code .= '<br /><br /><div id="ca_toppages"></div>';
@@ -691,7 +691,7 @@ function ca_content() {
 		$code .= '<div id="ca_referrers"></div>';
 	if (get_option ( 'ca_sd' ))
 		$code .= '<div id="ca_searches"></div>';
-	
+
 	echo $code;
 }
 ?>
