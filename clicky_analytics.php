@@ -4,10 +4,12 @@
  * Plugin URI: https://deconf.com
  * Description: Displays Clicky Analytics Reports in your Dashboard. Automatically inserts the tracking code in every page of your website.
  * Author: Alin Marcu
- * Version: 1.4.5
+ * Version: 1.4.6
  * Author URI: https://deconf.com
+ * Text Domain: clicky-analytics
+ * Domain Path: /languages
  */
-define( 'CADASH_CURRENT_VERSION', '1.4.5' );
+define( 'CADASH_CURRENT_VERSION', '1.4.6' );
 
 $GLOBALS['CADASH_ALLOW'] = array( 'a' => array( 'href' => array(), 'title' => array() ), 'br' => array(), 'em' => array(), 'strong' => array() );
 
@@ -47,10 +49,10 @@ function ca_dashboard_page() {
 
 function ca_dash_admin_enqueue_styles( $hook ) {
 	$valid_hooks = array( 'settings_page_Clicky_Analytics_Dashboard' );
-	
+
 	if ( ! in_array( $hook, $valid_hooks ) and 'index.php' != $hook )
 		return;
-	
+
 	wp_register_style( 'clicky_analytics', plugins_url( 'clicky_analytics.css', __FILE__ ) );
 	wp_enqueue_style( 'clicky_analytics' );
 }
@@ -89,7 +91,7 @@ function ca_dash_settings_link( $links ) {
 
 function ca_tracking() {
 	$ca_traking = get_option( 'ca_tracking' );
-	
+
 	if ( $ca_traking != 2 ) {
 		require_once 'functions.php';
 		global $current_user;
@@ -162,19 +164,19 @@ function ca_front_content( $content ) {
 	if ( ! current_user_can( get_option( 'ca_access' ) ) or ! get_option( 'ca_frontend' ) ) {
 		return $content;
 	}
-	
+
 	if ( ( is_page() || is_single() ) && ! is_preview() ) {
-		
+
 		require_once 'functions.php';
-		
+
 		$api_url = "http://api.clicky.com/api/stats/4?";
 		$siteid = get_option( 'ca_siteid' );
 		$sitekey = get_option( 'ca_sitekey' );
-		
+
 		if ( ! get_option( 'ca_cachetime' ) ) {
 			update_option( 'ca_cachetime', "3600" );
 		}
-		
+
 		$content .= '<style>
 		#ca_sdata td{
 			line-height:1.5em;
@@ -188,9 +190,9 @@ function ca_front_content( $content ) {
 			clear:both;
 		}
 		</style>';
-		
+
 		$page_url = $_SERVER["REQUEST_URI"];
-		
+
 		$post_id = $post->ID;
 		$metric = 'type=pages';
 		$from = "date=last-30-days";
@@ -229,7 +231,7 @@ function ca_front_content( $content ) {
 		} else {
 			return $content;
 		}
-		
+
 		$j = 0;
 		$ca_statsdata = "";
 		for ( $j = $i - 1; $j >= 0; $j-- ) {
@@ -237,9 +239,9 @@ function ca_front_content( $content ) {
 				$ca_statsdata .= "['" . $goores[$j][0] . "'," . $goores[$j][1] . "],";
 			}
 		}
-		
+
 		$ca_statsdata = wp_kses( rtrim( $ca_statsdata, ',' ), $GLOBALS['CADASH_ALLOW'] );
-		
+
 		$code = '<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<script type="text/javascript">
 		  google.load("visualization", "1", {packages:["corechart"]});
@@ -273,10 +275,10 @@ function ca_front_content( $content ) {
 
 		  }
 		";
-		
+
 		$code .= "</script>";
 		$content .= $code . '<p><div id="ca_div"></div></p>';
-		
+
 		$metric = 'type=segmentation&segments=searches';
 		$from = "date=last-30-days";
 		try {
@@ -292,7 +294,7 @@ function ca_front_content( $content ) {
 		} catch ( exception $e ) {
 			return $content;
 		}
-		
+
 		$i = 0;
 		if ( is_array( $result ) ) {
 			foreach ( $result as $item ) {
@@ -308,19 +310,19 @@ function ca_front_content( $content ) {
 						}
 					}
 				} else {
-					
+
 					return $content;
 				}
 			}
 		}
-		
+
 		$j = 0;
 		$ca_organicdata = "";
 		for ( $j = 0; $j <= $i - 1; $j++ ) {
-			
+
 			$ca_organicdata .= "['" . $goores[$j][0] . "'," . $goores[$j][1] . "],";
 		}
-		
+
 		$ca_organicdata = wp_kses( rtrim( $ca_organicdata, ',' ), $GLOBALS['CADASH_ALLOW'] );
 		if ( $ca_organicdata ) {
 			$code .= '<script type="text/javascript">
@@ -350,34 +352,34 @@ function ca_front_content( $content ) {
 
 function ca_content() {
 	require_once 'functions.php';
-	
+
 	$api_url = "https://api.clicky.com/api/stats/4?";
 	$siteid = get_option( 'ca_siteid' );
 	$sitekey = get_option( 'ca_sitekey' );
-	
+
 	if ( ( ! get_option( 'ca_siteid' ) ) or ( ! get_option( 'ca_sitekey' ) ) ) {
-		
+
 		echo "<p>" . __( "Check your Site ID and Site Key! For further help check", 'clicky-analytics' ) . " <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/'>" . __( "the documentation", 'clicky-analytics' ) . "</a></p>";
 		ca_clear_cache();
 		return;
 	}
-	
+
 	if ( isset( $_REQUEST['ca_query'] ) ) {
 		$ca_query = $_REQUEST['ca_query'];
 	} else {
 		$ca_query = "visits";
 	}
-	
+
 	if ( isset( $_REQUEST['ca_period'] ) ) {
 		$ca_period = $_REQUEST['ca_period'];
 	} else {
 		$ca_period = "last-30-days";
 	}
-	
+
 	$from = "date=" . $ca_period;
-	
+
 	switch ( $ca_query ) {
-		
+
 		case 'actions' :
 			$title = __( "Actions", 'clicky-analytics' );
 			$metric = "type=actions";
@@ -386,22 +388,22 @@ function ca_content() {
 			$title = __( "Searches", 'clicky-analytics' );
 			$metric = "type=traffic-sources";
 			break;
-		
+
 		case 'time-average' :
 			$title = __( "Time Average", 'clicky-analytics' );
 			$metric = "type=time-average";
 			break;
-		
+
 		case 'bounce-rate' :
 			$title = __( "Bounce Rate", 'clicky-analytics' );
 			$metric = "type=bounce-rate";
 			break;
-		
+
 		default :
 			$title = __( "Visitors", 'clicky-analytics' );
 			$metric = "type=visitors";
 	}
-	
+
 	try {
 		$serial = 'clicky_qr1' . str_replace( array( ',', '-', date( 'Y' ) ), "", $from . $metric );
 		$transient = get_transient( $serial );
@@ -418,13 +420,13 @@ function ca_content() {
 		return;
 	}
 	$i = 0;
-	
+
 	if ( ! is_array( $result ) ) {
 		echo "<p>" . __( "ERROR LOG:", 'clicky-analytics' ) . "</p><p>" . __( "Check your Site ID and Site Key! For further help check", 'clicky-analytics' ) . " <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/'>" . __( "the documentation", 'clicky-analytics' ) . "</a></p>";
 		ca_clear_cache();
 		return;
 	}
-	
+
 	foreach ( $result as $item ) {
 		if ( is_array( $item ) ) {
 			foreach ( $item as $date => $item1 ) {
@@ -437,7 +439,7 @@ function ca_content() {
 				foreach ( $item1 as $item2 ) {
 					if ( isset( $item2['title'] ) and $item2['title'] == "Searches" )
 						$goores[$i][1] = $item2['value'];
-					else 
+					else
 						if ( ! isset( $item2['title'] ) )
 							$goores[$i][1] = $item2['value'];
 				}
@@ -452,14 +454,14 @@ function ca_content() {
 	$j = 0;
 	$chart1_data = "";
 	for ( $j = $i - 1; $j >= 0; $j-- ) {
-		
+
 		$chart1_data .= "['" . $goores[$j][0] . "'," . $goores[$j][1] . "],";
 	}
-	
+
 	$chart1_data = wp_kses( rtrim( $chart1_data, ',' ), $GLOBALS['CADASH_ALLOW'] );
-	
+
 	$metrics = 'type=visitors,actions,visitors-online,traffic-sources,time-average,bounce-rate';
-	
+
 	try {
 		$serial = 'clicky_qr2' . str_replace( array( ',', '-', date( 'Y' ) ), "", $from );
 		$transient = get_transient( $serial );
@@ -475,7 +477,7 @@ function ca_content() {
 		ca_clear_cache();
 		return;
 	}
-	
+
 	$i = 0;
 	foreach ( $result as $item ) {
 		if ( is_array( $item ) ) {
@@ -489,7 +491,7 @@ function ca_content() {
 				foreach ( $item1 as $item2 ) {
 					if ( isset( $item2['title'] ) and $item2['title'] == "Searches" )
 						$goores[$i][1] = $item2['value'];
-					else 
+					else
 						if ( ! isset( $item2['title'] ) )
 							$goores[$i][1] = $item2['value'];
 				}
@@ -500,7 +502,7 @@ function ca_content() {
 			return;
 		}
 	}
-	
+
 	$code = '<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
@@ -541,7 +543,7 @@ function ca_content() {
 		chart.draw(data, options);
 
       }";
-	
+
 	if ( get_option( 'ca_pgd' ) ) {
 		$ca_toppages = ca_top_pages( $api_url, $siteid, $sitekey, $from );
 		if ( $ca_toppages ) {
@@ -565,7 +567,7 @@ function ca_content() {
 				  }";
 		}
 	}
-	
+
 	if ( get_option( 'ca_rd' ) ) {
 		$ca_referrers = ca_top_referrers( $api_url, $siteid, $sitekey, $from );
 		// print_r($ca_referrers);
@@ -590,7 +592,7 @@ function ca_content() {
 				  }";
 		}
 	}
-	
+
 	if ( get_option( 'ca_sd' ) ) {
 		$ca_searches = ca_top_searches( $api_url, $siteid, $sitekey, $from );
 		// print_r($ca_searches);
@@ -615,9 +617,9 @@ function ca_content() {
 				  }";
 		}
 	}
-	
+
 	$code .= "</script>";
-	
+
 	$code .= '
 	<div id="clicky-dash">
 	<center>
@@ -679,7 +681,7 @@ function ca_content() {
    };
    setInterval(online_refresh, 60000);
    </script>';
-	
+
 	$code .= '</center>';
 	if ( get_option( 'ca_pgd' ) )
 		$code .= '<br /><br /><div id="ca_toppages"></div>';
@@ -687,7 +689,7 @@ function ca_content() {
 		$code .= '<div id="ca_referrers"></div>';
 	if ( get_option( 'ca_sd' ) )
 		$code .= '<div id="ca_searches"></div>';
-	
+
 	echo $code;
 }
 ?>

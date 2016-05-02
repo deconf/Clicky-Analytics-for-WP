@@ -3,8 +3,8 @@ Contributors: deconf
 Donate link: https://deconf.com/donate/
 Tags: clicky,analytics,dashboard,tracking,tracking code,statistics,clicky analytics,clicky code,wpmu,multisite
 Requires at least: 2.8
-Tested up to: 4.2.2
-Stable tag: 1.4.5
+Tested up to: 4.5.1
+Stable tag: 1.4.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -84,6 +84,12 @@ A dedicated section for Wordpress Plugins is available here: [Wordpress Plugins 
 This plugin it's released under the GPLv2, you can use it free of charge on your personal or commercial website.
 
 == Changelog ==
+
+= 1.4.6 =
+* Bug Fixes:
+	* replaces get_currentuserinfo() which was deprecated since WordPress 4.5, props [Stanko Metodiev](https://profiles.wordpress.org/metodiew/)
+* Enhancements: 
+	* translation.wordpress.org ready 
 
 = v1.4.5 =
 - Bug Fix: white screen on custom dashboard
