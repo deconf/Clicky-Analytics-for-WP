@@ -23,7 +23,7 @@ function ca_tracking_code() {
 	
 	$custom_tracking = "";
 	
-	get_currentuserinfo();
+	wp_get_current_user();
 	
 	if ( $current_user->user_login ) {
 		
