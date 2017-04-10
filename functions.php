@@ -14,36 +14,36 @@ function file_get_contents_clicky( $url ) {
 	} else {
 		$data = '';
 	}
-	
+
 	return $data;
 }
 
 function ca_tracking_code() {
 	global $current_user;
-	
+
 	$custom_tracking = "";
-	
+
 	wp_get_current_user();
-	
+
 	if ( $current_user->user_login ) {
-		
+
 		if ( ( get_option( 'ca_track_username' ) ) and ( ( get_option( 'ca_track_email' ) ) ) ) {
-			
+
 			$custom_tracking = "<script type=\"text/javascript\">
   var clicky_custom = clicky_custom || {};
   clicky_custom.visitor = clicky_custom.visitor || {};
   clicky_custom.visitor [\"username\"] = '" . $current_user->user_login . "';
   clicky_custom.visitor [\"email\"] = '" . $current_user->user_email . "';
 </script>";
-		} else 
+		} else
 			if ( get_option( 'ca_track_username' ) ) {
-				
+
 				$custom_tracking = "<script type=\"text/javascript\">
   var clicky_custom = clicky_custom || {};
   clicky_custom.visitor = clicky_custom.visitor || {};
   clicky_custom.visitor [\"username\"] = '" . $current_user->user_login . "';
 </script>";
-			} else 
+			} else
 				if ( get_option( 'ca_track_email' ) ) {
 					$custom_tracking = "<script type=\"text/javascript\">
   var clicky_custom = clicky_custom || {};
@@ -52,7 +52,7 @@ function ca_tracking_code() {
 </script>";
 				}
 	}
-	
+
 	$main_tracking = "<script type=\"text/javascript\">
 var clicky_site_ids = clicky_site_ids || [];
 clicky_site_ids.push(" . get_option( 'ca_siteid' ) . ");
@@ -72,13 +72,13 @@ clicky_site_ids.push(" . get_option( 'ca_siteid' ) . ");
 	if ( get_option( 'ca_track_html5' ) ) {
 		$video_tracking .= '<script src="//static.getclicky.com/inc/javascript/video/html.js"></script>';
 	}
-	
+
 	$tracking = "\n<!-- BEGIN Clicky Analytics v" . CADASH_CURRENT_VERSION . " Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n";
-	
+
 	$tracking .= $custom_tracking . $main_tracking . $video_tracking;
-	
+
 	$tracking .= "\n<!-- END Clicky Analytics v" . CADASH_CURRENT_VERSION . " Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n";
-	
+
 	return $tracking;
 }
 
@@ -139,7 +139,7 @@ function ca_top_pages( $api_url, $siteid, $sitekey, $from ) {
 	$j = 0;
 	$ca_statsdata = "";
 	for ( $j = 0; $j <= $i - 1; $j++ ) {
-		
+
 		$ca_statsdata .= "['" . $goores[$j][0] . "'," . $goores[$j][1] . "],";
 	}
 	return wp_kses( rtrim( $ca_statsdata, ',' ), $GLOBALS['CADASH_ALLOW'] );
@@ -185,10 +185,10 @@ function ca_top_referrers( $api_url, $siteid, $sitekey, $from ) {
 	$j = 0;
 	$ca_statsdata = "";
 	for ( $j = 0; $j <= $i - 1; $j++ ) {
-		
+
 		$ca_statsdata .= "['" . $goores[$j][0] . "'," . $goores[$j][1] . "],";
 	}
-	
+
 	return wp_kses( rtrim( $ca_statsdata, ',' ), $GLOBALS['CADASH_ALLOW'] );
 }
 // Get Top searches
@@ -236,5 +236,17 @@ function ca_top_searches( $api_url, $siteid, $sitekey, $from ) {
 		}
 	}
 	return wp_kses( rtrim( $ca_statsdata, ',' ), $GLOBALS['CADASH_ALLOW'] );
+}
+
+function ca_get_sites() { // Use wp_get_sites() if WP version is lower than 4.6.0
+	global $wp_version;
+	if ( version_compare( $wp_version, '4.6.0', '<' ) ) {
+		return wp_get_sites();
+	} else {
+		foreach ( get_sites() as $blog ) {
+			$blogs[] = (array) $blog; // Convert WP_Site object to array
+		}
+		return $blogs;
+	}
 }
 ?>
