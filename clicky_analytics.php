@@ -58,6 +58,8 @@ function ca_admin_scripts( $hook ) {
 
 	wp_enqueue_script( 'googlecharts', 'https://www.gstatic.com/charts/loader.js', array(), CADASH_CURRENT_VERSION );
 
+	wp_enqueue_script( 'googlecharts', 'https://www.gstatic.com/charts/loader.js', array(), CADASH_CURRENT_VERSION );
+
 	wp_register_style( 'clicky-analytics', plugins_url( 'clicky-analytics.css', __FILE__ ) );
 	wp_enqueue_style( 'clicky-analytics' );
 }
