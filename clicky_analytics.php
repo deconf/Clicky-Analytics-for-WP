@@ -4,12 +4,12 @@
  * Plugin URI: https://deconf.com
  * Description: Displays Clicky Analytics Reports in your Dashboard. Automatically inserts the tracking code in every page of your website.
  * Author: Alin Marcu
- * Version: 1.4.6
+ * Version: 1.5
  * Author URI: https://deconf.com
  * Text Domain: clicky-analytics
  * Domain Path: /languages
  */
-define( 'CADASH_CURRENT_VERSION', '1.4.6' );
+define( 'CADASH_CURRENT_VERSION', '1.5' );
 
 $GLOBALS['CADASH_ALLOW'] = array( 'a' => array( 'href' => array(), 'title' => array() ), 'br' => array(), 'em' => array(), 'strong' => array() );
 
@@ -27,18 +27,21 @@ add_filter( 'the_content', 'ca_front_content' );
 add_action( 'wp_dashboard_setup', 'ca_setup' );
 add_action( 'admin_menu', 'ca_admin_actions' );
 add_action( 'admin_menu', 'ca_dashboard_menu' );
-add_action( 'wp_enqueue_scripts', 'ca_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'ca_front_scripts' );
 add_action( 'plugins_loaded', 'ca_init' );
 add_action( 'wp_footer', 'ca_tracking' );
 add_filter( "plugin_action_links_$plugin", 'ca_dash_settings_link' );
 // Admin Styles
-add_action( 'admin_enqueue_scripts', 'ca_dash_admin_enqueue_styles' );
+add_action( 'admin_enqueue_scripts', 'ca_admin_scripts' );
 
 function ca_dashboard_menu() {
 	add_dashboard_page( __( 'Clicky Analytics', 'clicky-analytics' ), __( 'Clicky Analytics', 'clicky' ), get_option( 'ca_access' ), 'clicky_analytics', 'ca_dashboard_page' );
 }
 
 function ca_dashboard_page() {
+$resolved = 10;
+$threads = 1;
+printf( _n( '%1$s of %2$s support threads in the last two months have been marked resolved.', '%1$s of %2$s support threads in the last two months have been marked resolved.', $threads, 'clicky-analytics' ), $resolved, $threads );
 	$siteid = get_option( 'ca_siteid' );
 	$sitekey = get_option( 'ca_sitekey' );
 	?>
@@ -47,11 +50,13 @@ function ca_dashboard_page() {
 <?php
 }
 
-function ca_dash_admin_enqueue_styles( $hook ) {
+function ca_admin_scripts( $hook ) {
 	$valid_hooks = array( 'settings_page_Clicky_Analytics_Dashboard' );
 
 	if ( ! in_array( $hook, $valid_hooks ) and 'index.php' != $hook )
 		return;
+
+	wp_enqueue_script( 'googlecharts', 'https://www.gstatic.com/charts/loader.js', array(), CADASH_CURRENT_VERSION );
 
 	wp_register_style( 'clicky_analytics', plugins_url( 'clicky_analytics.css', __FILE__ ) );
 	wp_enqueue_style( 'clicky_analytics' );
@@ -71,9 +76,13 @@ function ca_init() {
 	load_plugin_textdomain( 'clicky-analytics', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 
-function ca_enqueue_scripts() {
+function ca_front_scripts() {
 	if ( get_option( 'ca_track_youtube' ) and ! wp_script_is( 'jquery' ) ) {
 		wp_enqueue_script( 'jquery' );
+	}
+
+	if ( current_user_can( get_option( 'ca_access' ) ) && get_option( 'ca_frontend' ) ) {
+		wp_enqueue_script( 'googlecharts', 'https://www.gstatic.com/charts/loader.js', array(), CADASH_CURRENT_VERSION );
 	}
 }
 
@@ -120,8 +129,9 @@ function cadash_install() {
 
 function cadash_uninstall() {
 	global $wpdb;
+	require_once 'functions.php';
 	if ( is_multisite() ) { // Cleanup Network install
-		foreach ( wp_get_sites() as $blog ) {
+		foreach ( ca_get_sites() as $blog ) {
 			switch_to_blog( $blog['blog_id'] );
 			$sqlquery = $wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE '_transient_clicky_qr%%'" );
 			$sqlquery = $wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE '_transient_timeout_clicky_qr%%'" );
@@ -242,11 +252,11 @@ function ca_front_content( $content ) {
 
 		$ca_statsdata = wp_kses( rtrim( $ca_statsdata, ',' ), $GLOBALS['CADASH_ALLOW'] );
 
-		$code = '<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-		<script type="text/javascript">
-		  google.load("visualization", "1", {packages:["corechart"]});
+		$code = '<script type="text/javascript">
 
-		  google.setOnLoadCallback(ca_callback);
+		  google.charts.load("current", {"packages":["corechart", "table", "orgchart", "geochart"]});
+
+		  google.charts.setOnLoadCallback(ca_callback);
 
 		  function ca_callback(){
 				ca_drawstats();
@@ -326,7 +336,8 @@ function ca_front_content( $content ) {
 		$ca_organicdata = wp_kses( rtrim( $ca_organicdata, ',' ), $GLOBALS['CADASH_ALLOW'] );
 		if ( $ca_organicdata ) {
 			$code .= '<script type="text/javascript">
-					google.load("visualization", "1", {packages:["table"]})
+					google.charts.load("current", {"packages":["corechart", "table", "orgchart", "geochart"]});
+
 					function ca_drawsd() {
 
 					var datas = google.visualization.arrayToDataTable([' . "
@@ -503,10 +514,12 @@ function ca_content() {
 		}
 	}
 
-	$code = '<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	$code = '
     <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(ca_callback);
+
+	  google.charts.load("current", {"packages":["corechart", "table", "orgchart", "geochart"]});
+
+	  google.charts.setOnLoadCallback(ca_callback);
 
 	  function ca_callback(){
 			ca_drawstats();
@@ -548,7 +561,8 @@ function ca_content() {
 		$ca_toppages = ca_top_pages( $api_url, $siteid, $sitekey, $from );
 		if ( $ca_toppages ) {
 			$code .= '
-					google.load("visualization", "1", {packages:["table"]})
+					google.charts.load("current", {"packages":["corechart", "table", "orgchart", "geochart"]});
+
 					function ca_toppages() {
 
 					var datas = google.visualization.arrayToDataTable([' . "
@@ -573,7 +587,8 @@ function ca_content() {
 		// print_r($ca_referrers);
 		if ( $ca_referrers ) {
 			$code .= '
-					google.load("visualization", "1", {packages:["table"]})
+					google.charts.load("current", {"packages":["corechart", "table", "orgchart", "geochart"]});
+
 					function ca_topreferrers() {
 
 					var datas = google.visualization.arrayToDataTable([' . "
@@ -598,7 +613,8 @@ function ca_content() {
 		// print_r($ca_searches);
 		if ( $ca_searches ) {
 			$code .= '
-					google.load("visualization", "1", {packages:["table"]})
+					google.charts.load("current", {"packages":["corechart", "table", "orgchart", "geochart"]});
+
 					function ca_searches() {
 
 					var datas = google.visualization.arrayToDataTable([' . "
