@@ -3,8 +3,8 @@ Contributors: deconf
 Donate link: https://deconf.com/donate/
 Tags: clicky,analytics,dashboard,tracking,tracking code,statistics,clicky analytics,clicky code,wpmu,multisite
 Requires at least: 2.8
-Tested up to: 4.7.3
-Stable tag: 1.4.7
+Tested up to: 4.9.1
+Stable tag: 1.4.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,6 +85,10 @@ This plugin it's released under the GPLv2, you can use it free of charge on your
 
 == Changelog ==
 
+= 1.4.8 =
+* Bug Fixes:
+	* fixes some PHP notices
+	
 = 1.4.7 =
 * Bug Fixes:
 	* switch to get_sites() while maintaining compatibility with older WP installs
