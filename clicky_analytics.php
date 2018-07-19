@@ -4,12 +4,12 @@
  * Plugin URI: https://deconf.com
  * Description: Displays Clicky Analytics Reports in your Dashboard. Automatically inserts the tracking code in every page of your website.
  * Author: Alin Marcu
- * Version: 1.4.8
+ * Version: 1.5
  * Author URI: https://deconf.com
  * Text Domain: clicky-analytics
  * Domain Path: /languages
  */
-define( 'CADASH_CURRENT_VERSION', '1.4.8' );
+define( 'CADASH_CURRENT_VERSION', '1.5' );
 
 $GLOBALS['CADASH_ALLOW'] = array( 'a' => array( 'href' => array(), 'title' => array() ), 'br' => array(), 'em' => array(), 'strong' => array() );
 
@@ -39,9 +39,9 @@ function ca_dashboard_menu() {
 }
 
 function ca_dashboard_page() {
-$resolved = 10;
-$threads = 1;
-printf( _n( '%1$s of %2$s support threads in the last two months have been marked resolved.', '%1$s of %2$s support threads in the last two months have been marked resolved.', $threads, 'clicky-analytics' ), $resolved, $threads );
+	$resolved = 10;
+	$threads = 1;
+	printf( _n( '%1$s of %2$s support threads in the last two months have been marked resolved.', '%1$s of %2$s support threads in the last two months have been marked resolved.', $threads, 'clicky-analytics' ), $resolved, $threads );
 	$siteid = get_option( 'ca_siteid' );
 	$sitekey = get_option( 'ca_sitekey' );
 	?>
@@ -126,6 +126,7 @@ function cadash_install() {
 		update_option( 'ca_track_email', 1 );
 		update_option( 'ca_track_youtube', 0 );
 		update_option( 'ca_track_html5', 0 );
+		update_option( 'ca_track_olp', '/go/,/out/' );
 	}
 }
 
@@ -150,6 +151,7 @@ function cadash_uninstall() {
 			delete_option( 'ca_track_email' );
 			delete_option( 'ca_track_youtube' );
 			delete_option( 'ca_track_html5' );
+			delete_option( 'ca_track_olp' );
 		}
 		restore_current_blog();
 	} else { // Cleanup Single install
@@ -168,6 +170,7 @@ function cadash_uninstall() {
 		delete_option( 'ca_track_email' );
 		delete_option( 'ca_track_youtube' );
 		delete_option( 'ca_track_html5' );
+		delete_option( 'ca_track_olp' );
 	}
 }
 
@@ -432,7 +435,6 @@ function ca_content() {
 		ca_clear_cache();
 		return;
 	}
-	$i = 0;
 
 	if ( ! is_array( $result ) ) {
 		echo "<p>" . __( "ERROR LOG:", 'clicky-analytics' ) . "</p><p>" . __( "Check your Site ID and Site Key! For further help check", 'clicky-analytics' ) . " <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/'>" . __( "the documentation", 'clicky-analytics' ) . "</a></p>";
@@ -440,21 +442,20 @@ function ca_content() {
 		return;
 	}
 
+	$i = 0;
 	foreach ( $result as $item ) {
 		if ( is_array( $item ) ) {
 			foreach ( $item as $date => $item1 ) {
-				if ( ! $item1 ) {
-					echo "<p>" . __( "ERROR LOG:", 'clicky-analytics' ) . "</p><p>" . __( "If this is a new account, make sure that your Site ID and Site Key are correct and that Tracking is Enabled. After enough data is collected, the graphs will start showing up! For further help check", 'clicky-analytics' ) . " <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/'>" . __( "the documentation", 'clicky-analytics' ) . "</a></p>";
-					ca_clear_cache();
-					return;
-				}
 				$goores[$i][0] = $date;
-				foreach ( $item1 as $item2 ) {
-					if ( isset( $item2['title'] ) and $item2['title'] == "Searches" )
-						$goores[$i][1] = $item2['value'];
-					else
-						if ( ! isset( $item2['title'] ) )
+				if ( is_array( $item1 ) ) {
+					foreach ( $item1 as $item2 ) {
+						if ( isset( $item2['title'] ) and $item2['title'] == "Searches" )
 							$goores[$i][1] = $item2['value'];
+						else if ( ! isset( $item2['title'] ) )
+							$goores[$i][1] = $item2['value'];
+					}
+				} else {
+					$goores[$i][1] = 0;
 				}
 				$i++;
 			}
@@ -496,18 +497,14 @@ function ca_content() {
 	foreach ( $result as $item ) {
 		if ( is_array( $item ) ) {
 			foreach ( $item as $date => $item1 ) {
-				if ( ! $item1 ) {
-					echo "<p>" . __( "ERROR LOG:", 'clicky-analytics' ) . "</p><p>" . __( "If this is a new account, make sure that your Site ID and Site Key are correct and that Tracking is Enabled. After enough data is collected, the graphs will start showing up! For further help check", 'clicky-analytics' ) . " <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/'>" . __( "the documentation", 'clicky-analytics' ) . "</a></p>";
-					ca_clear_cache();
-					return;
-				}
-				$goores[$i][0] = $date;
-				foreach ( $item1 as $item2 ) {
-					if ( isset( $item2['title'] ) and $item2['title'] == "Searches" )
-						$goores[$i][1] = $item2['value'];
-					else
-						if ( ! isset( $item2['title'] ) )
+				if ( is_array( $item1 ) ) {
+					$goores[$i][0] = $date;
+					foreach ( $item1 as $item2 ) {
+						if ( isset( $item2['title'] ) and $item2['title'] == "Searches" )
 							$goores[$i][1] = $item2['value'];
+						else if ( ! isset( $item2['title'] ) )
+							$goores[$i][1] = $item2['value'];
+					}
 				}
 				$i++;
 			}
@@ -666,7 +663,7 @@ function ca_content() {
 			</tr>
 			<tr>
 			<td width="24%">' . __( "Searches", 'clicky-analytics' ) . ':</td>
-			<td width="12%" class="clickyvalue"><a href="?ca_query=traffic-sources&ca_period=' . $ca_period . '" class="clickytable">' . (int) $goores[3][1] . '</a></td>
+			<td width="12%" class="clickyvalue"><a href="?ca_query=traffic-sources&ca_period=' . $ca_period . '" class="clickytable">' . ( isset( $goores[3][1] ) ? (int) $goores[3][1] : 0 ) . '</a></td>
 			<td width="24%">' . __( "Time AVG", 'clicky-analytics' ) . ':</td>
 			<td width="12%" class="clickyvalue"><a href="?ca_query=time-average&ca_period=' . $ca_period . '" class="clickytable">' . (int) $goores[4][1] . '</a></td>
 			<td width="24%">' . __( "Bounce", 'clicky-analytics' ) . ':</td>

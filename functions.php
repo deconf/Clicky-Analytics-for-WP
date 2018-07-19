@@ -34,23 +34,44 @@ function ca_tracking_code() {
   clicky_custom.visitor = clicky_custom.visitor || {};
   clicky_custom.visitor [\"username\"] = '" . $current_user->user_login . "';
   clicky_custom.visitor [\"email\"] = '" . $current_user->user_email . "';
-</script>";
-		} else
-			if ( get_option( 'ca_track_username' ) ) {
+</script>\n";
+		} else if ( get_option( 'ca_track_username' ) ) {
 
-				$custom_tracking = "<script type=\"text/javascript\">
+			$custom_tracking = "<script type=\"text/javascript\">
   var clicky_custom = clicky_custom || {};
   clicky_custom.visitor = clicky_custom.visitor || {};
   clicky_custom.visitor [\"username\"] = '" . $current_user->user_login . "';
-</script>";
-			} else
-				if ( get_option( 'ca_track_email' ) ) {
-					$custom_tracking = "<script type=\"text/javascript\">
+</script>\n";
+		} else if ( get_option( 'ca_track_email' ) ) {
+			$custom_tracking = "<script type=\"text/javascript\">
   var clicky_custom = clicky_custom || {};
   clicky_custom.visitor = clicky_custom.visitor || {};
   clicky_custom.visitor [\"email\"] = '" . $current_user->user_email . "';
-</script>";
-				}
+</script>\n";
+		}
+	}
+
+	if ( get_option( 'ca_track_youtube' ) ) {
+	}
+	if ( get_option( 'ca_track_html5' ) ) {
+		$custom_tracking .= "<script type=\"text/javascript\">
+  var clicky_custom = clicky_custom || {};
+  clicky_custom.html_media_track = 1;
+</script>\n";
+	}
+
+	if ( get_option( 'ca_track_olp' ) ) {
+		$ca_olp = explode( ',', get_option( 'ca_track_olp' ) );
+		$ca_olp_string = "";
+		foreach ( $ca_olp as $key => $pattern ) {
+			$ca_olp_string .= "'" . $pattern . "'" . ",";
+		}
+		$ca_olp_string = '[' . rtrim( $ca_olp_string, ',' ) . ']';
+
+		$custom_tracking .= "<script type=\"text/javascript\">
+  var clicky_custom = clicky_custom || {};
+  clicky_custom.outbound_pattern = $ca_olp_string;
+</script>\n";
 	}
 
 	$main_tracking = "<script type=\"text/javascript\">
@@ -65,17 +86,10 @@ clicky_site_ids.push(" . get_option( 'ca_siteid' ) . ");
 })();
 </script>
 <noscript><p><img alt='Clicky' width='1' height='1' src='//in.getclicky.com/100746374ns.gif' /></p></noscript>";
-	$video_tracking = "";
-	if ( get_option( 'ca_track_youtube' ) ) {
-		$video_tracking .= "<script src='//static.getclicky.com/inc/javascript/video/youtube.js'></script>";
-	}
-	if ( get_option( 'ca_track_html5' ) ) {
-		$video_tracking .= '<script src="//static.getclicky.com/inc/javascript/video/html.js"></script>';
-	}
 
 	$tracking = "\n<!-- BEGIN Clicky Analytics v" . CADASH_CURRENT_VERSION . " Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n";
 
-	$tracking .= $custom_tracking . $main_tracking . $video_tracking;
+	$tracking .= $custom_tracking . $main_tracking;
 
 	$tracking .= "\n<!-- END Clicky Analytics v" . CADASH_CURRENT_VERSION . " Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n";
 
@@ -191,6 +205,7 @@ function ca_top_referrers( $api_url, $siteid, $sitekey, $from ) {
 
 	return wp_kses( rtrim( $ca_statsdata, ',' ), $GLOBALS['CADASH_ALLOW'] );
 }
+
 // Get Top searches
 function ca_top_searches( $api_url, $siteid, $sitekey, $from ) {
 	$metric = 'type=searches';

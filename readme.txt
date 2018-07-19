@@ -1,10 +1,10 @@
 === Clicky Analytics ===
 Contributors: deconf
 Donate link: https://deconf.com/donate/
-Tags: clicky,analytics,dashboard,tracking,tracking code,statistics,clicky analytics,clicky code,wpmu,multisite
+Tags: clicky,analytics,clicky analytics,stats
 Requires at least: 2.8
 Tested up to: 4.9.1
-Stable tag: 1.4.8
+Stable tag: 1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,10 +35,15 @@ Clicky Tracking features:
 - video actions tracking for HTML5
 - asynchronously load of Clicky Web Analytics tracking code
 
-Clicky Custom Dashboard
+User privacy oriented features (GDPR and other):
+
+- IP address anonymization
+- global opt-out feature
+- tools to comply with GDPR requests from your visitors
+
+Clicky Custom Dashboard:
 
 - all clicky stats are available in a custom dashboard, under your blog's administration panel.
-
 
 Some features like video analytics and custom data tracking will require a <a href="http://clicky.com/66508224" target="_blank">Clicky Analytics Pro</a> account.
  
@@ -46,7 +51,6 @@ More Reading:
 
 * [Clicky Analytics Plugin](https://deconf.com/clicky-analytics-dashboard-wordpress/) homepage
 * Other [WordPress Plugins](https://deconf.com/wordpress/) by same author
-* [Clicky Analytics Plugin](https://deconf.com/ask/) translations and support
 
 == Installation ==
 
@@ -85,6 +89,13 @@ This plugin it's released under the GPLv2, you can use it free of charge on your
 
 == Changelog ==
 
+= 1.5 =
+* Bug Fixes:
+	* some small code fixes
+* Enhancements: 
+	* ability to track Outbound Link Patterns
+	* support for HTML5 media tracking
+	
 = 1.4.8 =
 * Bug Fixes:
 	* fixes some PHP notices
