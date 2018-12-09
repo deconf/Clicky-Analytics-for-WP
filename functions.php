@@ -52,6 +52,8 @@ function ca_tracking_code() {
 	}
 
 	if ( get_option( 'ca_track_youtube' ) ) {
+		$video_tracking="";
+		$video_tracking.="<script src='//static.getclicky.com/inc/javascript/video/youtube.js'></script>";
 	}
 	if ( get_option( 'ca_track_html5' ) ) {
 		$custom_tracking .= "<script type=\"text/javascript\">
@@ -89,7 +91,7 @@ clicky_site_ids.push(" . get_option( 'ca_siteid' ) . ");
 
 	$tracking = "\n<!-- BEGIN Clicky Analytics v" . CADASH_CURRENT_VERSION . " Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n";
 
-	$tracking .= $custom_tracking . $main_tracking;
+	$tracking .= $custom_tracking . "\n" . $main_tracking . "\n" . $video_tracking;
 
 	$tracking .= "\n<!-- END Clicky Analytics v" . CADASH_CURRENT_VERSION . " Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n";
 

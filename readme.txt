@@ -3,8 +3,9 @@ Contributors: deconf
 Donate link: https://deconf.com/donate/
 Tags: clicky,analytics,clicky analytics,stats
 Requires at least: 2.8
-Tested up to: 4.9.1
-Stable tag: 1.5
+Tested up to: 5.0
+Requires PHP: 5.2.4
+Stable tag: 1.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,6 +90,10 @@ This plugin it's released under the GPLv2, you can use it free of charge on your
 
 == Changelog ==
 
+= 1.5.1 =
+* Bug Fixes:
+	* YouTube video tracking support missing
+	
 = 1.5 =
 * Bug Fixes:
 	* some small code fixes
