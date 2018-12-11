@@ -4,12 +4,12 @@
  * Plugin URI: https://deconf.com
  * Description: Displays Clicky Analytics Reports in your Dashboard. Automatically inserts the tracking code in every page of your website.
  * Author: Alin Marcu
- * Version: 1.5.1
+ * Version: 1.6
  * Author URI: https://deconf.com
  * Text Domain: clicky-analytics
  * Domain Path: /languages
  */
-define( 'CADASH_CURRENT_VERSION', '1.5.1' );
+define( 'CADASH_CURRENT_VERSION', '1.6' );
 
 $GLOBALS['CADASH_ALLOW'] = array( 'a' => array( 'href' => array(), 'title' => array() ), 'br' => array(), 'em' => array(), 'strong' => array() );
 
@@ -29,7 +29,8 @@ add_action( 'admin_menu', 'ca_admin_actions' );
 add_action( 'admin_menu', 'ca_dashboard_menu' );
 add_action( 'wp_enqueue_scripts', 'ca_front_scripts' );
 add_action( 'plugins_loaded', 'ca_init' );
-add_action( 'wp_footer', 'ca_tracking' );
+add_action( 'wp_head', 'ca_tracking' );
+add_action( 'wp_footer', 'ca_tracking_body' );
 add_filter( "plugin_action_links_$plugin", 'ca_dash_settings_link' );
 // Admin Styles
 add_action( 'admin_enqueue_scripts', 'ca_admin_scripts' );
@@ -108,6 +109,15 @@ function ca_tracking() {
 		global $current_user;
 		do_action( 'clicky_analytics_before_tracking', $current_user ); // DO NOT REMOVE THIS HOOK
 		echo ca_tracking_code();
+	}
+}
+
+function ca_tracking_body() {
+	$ca_traking = get_option( 'ca_tracking' );
+
+	if ( $ca_traking != 2 ) {
+		require_once 'functions.php';
+		echo ca_tracking_code_body();
 	}
 }
 

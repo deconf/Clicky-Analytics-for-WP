@@ -5,7 +5,7 @@ Tags: clicky,analytics,clicky analytics,stats
 Requires at least: 2.8
 Tested up to: 5.0
 Requires PHP: 5.2.4
-Stable tag: 1.5.1
+Stable tag: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,6 +89,13 @@ A dedicated section for Wordpress Plugins is available here: [Wordpress Plugins 
 This plugin it's released under the GPLv2, you can use it free of charge on your personal or commercial website.
 
 == Changelog ==
+= 1.6 =
+* Enhancements: 
+	* major tracking code upgrade, uses the latest Clicky tracking code (with navigator.sendBeacon)
+
+= 1.5.2 =
+* Bug Fixes:
+	* Fixes a PHP notice when video tracking isn't enabled
 
 = 1.5.1 =
 * Bug Fixes:

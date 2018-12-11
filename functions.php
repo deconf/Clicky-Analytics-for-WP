@@ -18,6 +18,18 @@ function file_get_contents_clicky( $url ) {
 	return $data;
 }
 
+function ca_tracking_code_body() {
+
+	$tracking = "\n<!-- BEGIN Clicky Analytics v" . CADASH_CURRENT_VERSION . " Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n";
+
+	$tracking .= '<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100669114ns.gif" /></p></noscript>';
+
+	$tracking .= "\n<!-- END Clicky Analytics v" . CADASH_CURRENT_VERSION . " Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n";
+
+	return $tracking;
+
+}
+
 function ca_tracking_code() {
 	global $current_user;
 
@@ -51,8 +63,8 @@ function ca_tracking_code() {
 		}
 	}
 
+	$video_tracking="";
 	if ( get_option( 'ca_track_youtube' ) ) {
-		$video_tracking="";
 		$video_tracking.="<script src='//static.getclicky.com/inc/javascript/video/youtube.js'></script>";
 	}
 	if ( get_option( 'ca_track_html5' ) ) {
@@ -76,18 +88,8 @@ function ca_tracking_code() {
 </script>\n";
 	}
 
-	$main_tracking = "<script type=\"text/javascript\">
-var clicky_site_ids = clicky_site_ids || [];
-clicky_site_ids.push(" . get_option( 'ca_siteid' ) . ");
-(function() {
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//static.getclicky.com/js';
-  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
-})();
-</script>
-<noscript><p><img alt='Clicky' width='1' height='1' src='//in.getclicky.com/100746374ns.gif' /></p></noscript>";
+	$main_tracking = '<script type="text/javascript">var clicky_site_ids = clicky_site_ids || [];clicky_site_ids.push(' . get_option( 'ca_siteid' ) . ');</script>';
+	$main_tracking .= '<script async src="//static.getclicky.com/js"></script>';
 
 	$tracking = "\n<!-- BEGIN Clicky Analytics v" . CADASH_CURRENT_VERSION . " Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n";
 
