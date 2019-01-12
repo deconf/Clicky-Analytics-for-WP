@@ -2,14 +2,14 @@
 /**
  * Plugin Name: Clicky Analytics
  * Plugin URI: https://deconf.com
- * Description: Displays Clicky Analytics Reports in your Dashboard. Automatically inserts the tracking code in every page of your website.
+ * Description: Displays Clicky Analytics reports into your Dashboard. Automatically inserts the tracking code in every page of your website.
  * Author: Alin Marcu
- * Version: 1.6
+ * Version: 1.6.1
  * Author URI: https://deconf.com
  * Text Domain: clicky-analytics
  * Domain Path: /languages
  */
-define( 'CADASH_CURRENT_VERSION', '1.6' );
+define( 'CADASH_CURRENT_VERSION', '1.6.1' );
 
 $GLOBALS['CADASH_ALLOW'] = array( 'a' => array( 'href' => array(), 'title' => array() ), 'br' => array(), 'em' => array(), 'strong' => array() );
 
@@ -96,7 +96,7 @@ function ca_setup() {
 }
 
 function ca_dash_settings_link( $links ) {
-	$settings_link = '<a href="options-general.php?page=Clicky_Analytics_Dashboard">' . __( "Settings", 'ca-dash' ) . '</a>';
+	$settings_link = '<a href="options-general.php?page=Clicky_Analytics_Dashboard">' . __( "Settings", 'clicky-analytics' ) . '</a>';
 	array_unshift( $links, $settings_link );
 	return $links;
 }
@@ -620,7 +620,7 @@ function ca_content() {
 
 	if ( get_option( 'ca_sd' ) ) {
 		$ca_searches = ca_top_searches( $api_url, $siteid, $sitekey, $from );
-		// print_r($ca_searches);
+
 		if ( $ca_searches ) {
 			$code .= '
 					google.charts.load("current", {"packages":["corechart", "table", "orgchart", "geochart"]});

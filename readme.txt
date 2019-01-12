@@ -1,24 +1,24 @@
 === Clicky Analytics ===
 Contributors: deconf
 Donate link: https://deconf.com/donate/
-Tags: clicky,analytics,clicky analytics,stats
+Tags: clicky, analytics, clicky analytics, stats, statistics
 Requires at least: 2.8
 Tested up to: 5.0
 Requires PHP: 5.2.4
-Stable tag: 1.6
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin will display Clicky Web Analytics data and statistics inside your WordPress Blog.
+This plugin will display Clicky Web Analytics data and statistics inside your WordPress Administration Dashboard.
 
 == Description ==
-Using a widget, [Clicky Analytics Plugin](https://deconf.com/clicky-analytics-dashboard-wordpress/) displays detailed info and statistics about: online users, number of visits, number of actions, bounce rates, organic searches, time average directly on your Admin Dashboard.
+Using a widget, [Clicky Analytics Plugin](https://deconf.com/clicky-analytics-dashboard-wordpress/) displays detailed info and stats about: online users, number of visits, number of actions, bounce rates, organic searches, time average directly on your Admin Dashboard.
 
 This plugin automatically inserts <a href="http://clicky.com/66508224" target="_blank">Clicky Web Analytics</a> tracking code in each page of your website.
 
-Authorized users can also view Clicky statistics like visitors and top searches, on frontend, at the end of each article.
+Authorized users can also view Clicky stats like visitors and top searches, on frontend, at the end of each article.
 
-Clicky Admin Dashboard features:
+#### Clicky Admin Dashboard features:
 
 - you can access your website's basic statistics in a widget on your Administration Dashboard
 - cache feature, this improves loading speeds
@@ -27,7 +27,7 @@ Clicky Admin Dashboard features:
 - option to display Clicky Analytics statistics on frontend, at the end of each article
 - has multilingual support, a POT file is available for translations.
 
-Clicky Tracking features:
+#### Clicky Tracking features:
 
 - enable/disable Clicky Web Analytics tracking code
 - user names tracking feature
@@ -36,22 +36,22 @@ Clicky Tracking features:
 - video actions tracking for HTML5
 - asynchronously load of Clicky Web Analytics tracking code
 
-User privacy oriented features (GDPR and other):
+#### User privacy oriented features (GDPR and other):
 
 - IP address anonymization
 - global opt-out feature
 - tools to comply with GDPR requests from your visitors
 
-Clicky Custom Dashboard:
+#### Clicky Custom Dashboard:
 
 - all clicky stats are available in a custom dashboard, under your blog's administration panel.
 
 Some features like video analytics and custom data tracking will require a <a href="http://clicky.com/66508224" target="_blank">Clicky Analytics Pro</a> account.
  
-More Reading:
+= Further reading =
 
-* [Clicky Analytics Plugin](https://deconf.com/clicky-analytics-dashboard-wordpress/) homepage
-* Other [WordPress Plugins](https://deconf.com/wordpress/) by same author
+* [Search Engine Insights](https://wordpress.org/plugins/search-engine-insights/) - The perfect tool for viewing Google Search Console stats in your WordPress dashboard.
+* Other [WordPress Plugins](https://deconf.com/wordpress/) by the same author
 
 == Installation ==
 
@@ -59,6 +59,7 @@ More Reading:
 2. Activate the plugin at the plugin administration page
 3. Open the plugin configuration page, which is located under Settings -> Clicky Analytics and enter your Site Key and Site ID
 4. Save your configuration
+5. Enjoy your Clicky reports and stats!
 
 A step by step tutorial is available here: [Clicky Analytics video tutorial](https://deconf.com/clicky-analytics-dashboard-wordpress/)
 
@@ -72,23 +73,23 @@ Follow this step by step video tutorial: [Clicky Analytics](https://deconf.com/c
 
 We are constantly improving our plugin, sometimes the video tutorial may be a little outdated.
 
-= More Questions? =
-
-A dedicated section for Wordpress Plugins is available here: [Wordpress Plugins Support](https://deconf.com/ask/)
-
 == Screenshots ==
 
-1. Clicky Analytics
-2. Clicky Analytics Top Pages, Top Referrers and Top Searches
+1. Clicky Analytics stats
+2. Clicky Analytics Top Pages, Top Referrers and Top Searches stats
 3. Clicky Analytics Settings
 4. Clicky Analytics statistics per page on Frontend
-5. Clicky Analytics Dashboard
+5. Clicky Analytics Dashboard statistics
 
 == License ==
 
 This plugin it's released under the GPLv2, you can use it free of charge on your personal or commercial website.
 
 == Changelog ==
+= 1.6.1 =
+* Bug Fixes:
+	* multiple text domain fixes for i18n
+
 = 1.6 =
 * Enhancements: 
 	* major tracking code upgrade, uses the latest Clicky tracking code (with navigator.sendBeacon)
@@ -160,7 +161,7 @@ This plugin it's released under the GPLv2, you can use it free of charge on your
 - all clicky analytics requests are now made using cURL 
 
 = v1.3.4 =
-- hidding error messages on frontend 
+- hidding error messages on frontend stats
 
 = v1.3.3 =
 - updates on clicky tracking code and some action hooks

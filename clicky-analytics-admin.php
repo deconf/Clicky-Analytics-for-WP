@@ -194,10 +194,10 @@ if ( is_rtl() ) {
 			<div class="meta-box-sortables">
 				<div class="postbox">
 					<h3>
-						<span><?php _e("Setup Tutorial & Demo",'clicky-analytics') ?></span>
+						<span><?php _e("Try it out, it's free!",'clicky-analytics') ?></span>
 					</h3>
 					<div class="inside">
-						<a href="https://deconf.com/clicky-analytics-dashboard-wordpress/" target="_blank"><img src="<?php echo plugins_url( 'images/clicky-analytics-dashboard.png' , __FILE__ );?>" width="100%" alt="" /></a>
+						<a href="https://wordpress.org/plugins/search-engine-insights/" target="_blank"><img src="<?php echo plugins_url( 'images/seiwp.png' , __FILE__ );?>" width="100%" alt="" /></a>
 					</div>
 				</div>
 				<div class="postbox">
@@ -224,7 +224,7 @@ if ( is_rtl() ) {
 						<div class="cadash-title">
 							<a href="https://deconf.com/move-website-https-ssl/"><img src="<?php echo plugins_url( 'images/ssl.png' , __FILE__ ); ?>" /></a>
 						</div>
-						<div class="cadash-desc"><?php echo  '<a href="https://deconf.com/move-website-https-ssl/">'.__('Improve search rankings', 'ga-dash').'</a> '.__('by moving your website to HTTPS/SSL.', 'ga-dash'); ?></div>
+						<div class="cadash-desc"><?php echo  '<a href="https://deconf.com/move-website-https-ssl/">'.__('Improve search rankings', 'clicky-analytics').'</a> '.__('by moving your website to HTTPS/SSL.', 'clicky-analytics'); ?></div>
 						<br />
 						<div class="cadash-title">
 							<a href="https://deconf.com/wordpress/"><img src="<?php echo plugins_url( 'images/wp.png' , __FILE__ ); ?>" /></a>
