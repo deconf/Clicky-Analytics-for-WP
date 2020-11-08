@@ -4,7 +4,7 @@
  * Plugin URI: https://deconf.com
  * Description: Displays Clicky Analytics reports into your Dashboard. Automatically inserts the tracking code in every page of your website.
  * Author: Alin Marcu
- * Version: 1.6.1
+ * Version: 1.6.2
  * Author URI: https://deconf.com
  * Text Domain: clicky-analytics
  * Domain Path: /languages
@@ -40,9 +40,7 @@ function ca_dashboard_menu() {
 }
 
 function ca_dashboard_page() {
-	$resolved = 10;
-	$threads = 1;
-	printf( _n( '%1$s of %2$s support threads in the last two months have been marked resolved.', '%1$s of %2$s support threads in the last two months have been marked resolved.', $threads, 'clicky-analytics' ), $resolved, $threads );
+
 	$siteid = get_option( 'ca_siteid' );
 	$sitekey = get_option( 'ca_sitekey' );
 	?>
