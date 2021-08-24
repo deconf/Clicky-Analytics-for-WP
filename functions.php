@@ -87,9 +87,8 @@ function ca_tracking_code() {
   clicky_custom.outbound_pattern = $ca_olp_string;
 </script>\n";
 	}
-
-	$main_tracking = '<script type="text/javascript">var clicky_site_ids = clicky_site_ids || [];clicky_site_ids.push(' . get_option( 'ca_siteid' ) . ');</script>';
-	$main_tracking .= '<script async src="//static.getclicky.com/js"></script>';
+	
+	$main_tracking = '<script async src="//static.getclicky.com/' . get_option( 'ca_siteid' ) . '.js"></script>';
 
 	$tracking = "\n<!-- BEGIN Clicky Analytics v" . CADASH_CURRENT_VERSION . " Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n";
 
