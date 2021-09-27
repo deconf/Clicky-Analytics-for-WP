@@ -51,7 +51,7 @@ Some features like video analytics and custom data tracking will require a <a hr
 = Further reading =
 
 * [Search Engine Insights](https://wordpress.org/plugins/search-engine-insights/) - The perfect tool for viewing Google Search Console stats in your WordPress dashboard.
-* Other [WordPress Plugins](https://deconf.com/wordpress/) by the same author
+* [Analytics Insights](https://wordpress.org/plugins/analytics-insights/) - Connects Google Analytics with your WordPress site.
 
 == Installation ==
 

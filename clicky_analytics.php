@@ -214,7 +214,7 @@ function ca_front_content( $content ) {
 		}
 		</style>';
 
-		$page_url = $_SERVER["REQUEST_URI"];
+		$page_url = esc_url( $_SERVER["REQUEST_URI"] );
 
 		$post_id = $post->ID;
 		$metric = 'type=pages';
@@ -389,13 +389,13 @@ function ca_content() {
 	}
 
 	if ( isset( $_REQUEST['ca_query'] ) ) {
-		$ca_query = $_REQUEST['ca_query'];
+		$ca_query = sanitize_text_field( $_REQUEST['ca_query'] );
 	} else {
 		$ca_query = "visits";
 	}
 
 	if ( isset( $_REQUEST['ca_period'] ) ) {
-		$ca_period = $_REQUEST['ca_period'];
+		$ca_period = sanitize_text_field( $_REQUEST['ca_period'] );
 	} else {
 		$ca_period = "last-30-days";
 	}
