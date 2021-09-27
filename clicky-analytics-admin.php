@@ -194,49 +194,36 @@ if ( is_rtl() ) {
 			<div class="meta-box-sortables">
 				<div class="postbox">
 					<h3>
-						<span><?php _e("Try it out, it's free!",'clicky-analytics') ?></span>
-					</h3>
-					<div class="inside">
-						<a href="https://wordpress.org/plugins/search-engine-insights/" target="_blank"><img src="<?php echo plugins_url( 'images/seiwp.png' , __FILE__ );?>" width="100%" alt="" /></a>
-					</div>
-				</div>
-				<div class="postbox">
-					<h3>
-						<span><?php _e("Support & Reviews",'clicky-analytics')?></span>
+						<span><?php _e("WordPress Plugins",'clicky-analytics')?></span>
 					</h3>
 					<div class="inside">
 						<div class="cadash-title">
-							<a href="https://deconf.com/clicky-analytics-dashboard-wordpress/"><img src="<?php echo plugins_url( 'images/help.png' , __FILE__ ); ?>" /></a>
+							<a href="https://wordpress.org/plugins/analytics-insights/"><img src="<?php echo plugins_url( 'images/aiwp.png' , __FILE__ ); ?>" /></a>
 						</div>
-						<div class="cadash-desc"><?php echo  __('Plugin documentation and support on','clicky-analytics') . ' <a href="https://deconf.com/clicky-analytics-dashboard-wordpress/">'.__('deconf.com','clicky-analytics').'</a>.'; ?></div>
-						<br />
-						<div class="cadash-title">
-							<a href="http://wordpress.org/support/view/plugin-reviews/clicky-analytics#plugin-info"><img src="<?php echo plugins_url( 'images/star.png' , __FILE__ ); ?>" /></a>
-						</div>
-						<div class="cadash-desc"><?php echo  __('Your feedback and review are both important,','clicky-analytics').' <a href="http://wordpress.org/support/view/plugin-reviews/clicky-analytics#plugin-info">'.__('rate this plugin','clicky-analytics').'</a>!'; ?></div>
-					</div>
-				</div>
-				<div class="postbox">
-					<h3>
-						<span><?php _e("Further Reading",'clicky-analytics')?></span>
-					</h3>
-					<div class="inside">
-						<div class="cadash-title">
-							<a href="https://deconf.com/move-website-https-ssl/"><img src="<?php echo plugins_url( 'images/ssl.png' , __FILE__ ); ?>" /></a>
-						</div>
-						<div class="cadash-desc"><?php echo  '<a href="https://deconf.com/move-website-https-ssl/">'.__('Improve search rankings', 'clicky-analytics').'</a> '.__('by moving your website to HTTPS/SSL.', 'clicky-analytics'); ?></div>
-						<br />
-						<div class="cadash-title">
-							<a href="https://deconf.com/wordpress/"><img src="<?php echo plugins_url( 'images/wp.png' , __FILE__ ); ?>" /></a>
-						</div>
-						<div class="cadash-desc"><?php echo  __('Other','clicky-analytics').' <a href="https://deconf.com/wordpress/">'.__('WordPress Plugins','clicky-analytics').'</a> '.__('written by the same author','clicky-analytics').'.'; ?></div>
+						<div class="cadash-desc"><?php echo '<a href="https://wordpress.org/plugins/analytics-insights/">'.__('Analytics Insights','clicky-analytics').'</a> '.' - '.__('Connects Google Analytics with your WordPress site.','clicky-analytics'); ?></div>
 						<br />
 						<div class="cadash-title">
 							<a href="https://deconf.com/clicky-web-analytics-review/"><img src="<?php echo plugins_url( 'images/clicky.png' , __FILE__ ); ?>" /></a>
 						</div>
-						<div class="cadash-desc"><?php echo  '<a href="https://deconf.com/clicky-web-analytics-review/">'.__('Web Analytics','clicky-analytics').'</a> '.__('service with visitors tracking at IP level.','clicky-analytics'); ?></div>
+						<div class="cadash-desc"><?php echo  '<a href="https://deconf.com/clicky-web-analytics-review/">'.__('Web Analytics','clicky-analytics').'</a> '.__('service with visitors tracking at IP level.','clicky-analytics'); ?>
 					</div>
 				</div>
 			</div>
+			<div class="postbox">
+					<h3>
+						<span><?php _e("Stay Updated",'search-engine-insights')?></span>
+					</h3>
+					<div class="inside">
+						<div class="seiwp-desc">
+							<div class="g-ytsubscribe" data-channel="TheDeConf" data-layout="default" data-count="default"></div>
+							<script src="https://apis.google.com/js/platform.js" async defer></script>
+						</div>
+						<br />
+						<div class="seiwp-desc">
+							<a href="https://twitter.com/deconfcom" class="twitter-follow-button" data-show-screen-name="false"></a>
+							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						</div>
+					</div>
+				</div>
 		</div>
 	</div>
