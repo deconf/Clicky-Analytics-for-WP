@@ -6,11 +6,9 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 require_once 'functions.php';
-
 if ( ! current_user_can( 'manage_options' ) ) {
 	return;
 }
-
 if ( isset( $_POST['Clear'] ) ) {
 	ca_clear_cache();
 	?>
@@ -26,46 +24,32 @@ if ( ca_safe_get( 'ca_hidden' ) == 'Y' ) {
 		// Form data sent
 		$sitekey = ca_safe_get( 'ca_sitekey' );
 		update_option( 'ca_sitekey', sanitize_text_field( $sitekey ) );
-
 		$siteid = ca_safe_get( 'ca_siteid' );
 		update_option( 'ca_siteid', sanitize_text_field( $siteid ) );
-
 		$dashaccess = ca_safe_get( 'ca_access' );
 		update_option( 'ca_access', $dashaccess );
-
 		$ca_pgd = ca_safe_get( 'ca_pgd' );
 		update_option( 'ca_pgd', $ca_pgd );
-
 		$ca_rd = ca_safe_get( 'ca_rd' );
 		update_option( 'ca_rd', $ca_rd );
-
 		$ca_sd = ca_safe_get( 'ca_sd' );
 		update_option( 'ca_sd', $ca_sd );
-
 		$ca_frontend = ca_safe_get( 'ca_frontend' );
 		update_option( 'ca_frontend', $ca_frontend );
-
 		$ca_cachetime = ca_safe_get( 'ca_cachetime' );
 		update_option( 'ca_cachetime', $ca_cachetime );
-
 		$ca_tracking = ca_safe_get( 'ca_tracking' );
 		update_option( 'ca_tracking', $ca_tracking );
-
 		$ca_track_username = ca_safe_get( 'ca_track_username' );
 		update_option( 'ca_track_username', $ca_track_username );
-
 		$ca_track_email = ca_safe_get( 'ca_track_email' );
 		update_option( 'ca_track_email', $ca_track_email );
-
 		$ca_track_youtube = ca_safe_get( 'ca_track_youtube' );
 		update_option( 'ca_track_youtube', $ca_track_youtube );
-
 		$ca_track_html5 = ca_safe_get( 'ca_track_html5' );
 		update_option( 'ca_track_html5', $ca_track_html5 );
-
 		$ca_track_olp = ca_safe_get( 'ca_track_olp' );
 		update_option( 'ca_track_olp', sanitize_text_field( $ca_track_olp ) );
-
 		if ( ! isset( $_POST['Clear'] ) ) {
 			?>
 <div class="updated">
@@ -85,11 +69,9 @@ if ( ca_safe_get( 'ca_hidden' ) == 'Y' ) {
 <?php
 	}
 }
-
 if ( ! get_option( 'ca_access' ) ) {
 	update_option( 'ca_access', "manage_options" );
 }
-
 $sitekey = get_option( 'ca_sitekey' );
 $siteid = get_option( 'ca_siteid' );
 $dashaccess = get_option( 'ca_access' );
@@ -104,7 +86,6 @@ $ca_track_email = get_option( 'ca_track_email' );
 $ca_track_youtube = get_option( 'ca_track_youtube' );
 $ca_track_html5 = get_option( 'ca_track_html5' );
 $ca_track_olp = get_option( 'ca_track_olp' );
-
 if ( is_rtl() ) {
 	$float_main = "right";
 	$float_note = "left";
@@ -112,7 +93,6 @@ if ( is_rtl() ) {
 	$float_main = "left";
 	$float_note = "right";
 }
-
 ?>
 <div class="wrap">
 		<?php echo "<h2>" . __( "Clicky Analytics Settings",'clicky-analytics' ) . "</h2>"; ?><hr>
@@ -207,9 +187,9 @@ if ( is_rtl() ) {
 						</div>
 						<div class="cadash-desc"><?php echo  '<a href="https://deconf.com/clicky-web-analytics-review/">'.__('Web Analytics','clicky-analytics').'</a> '.__('service with visitors tracking at IP level.','clicky-analytics'); ?>
 					</div>
+					</div>
 				</div>
-			</div>
-			<div class="postbox">
+				<div class="postbox">
 					<h3>
 						<span><?php _e("Stay Updated",'search-engine-insights')?></span>
 					</h3>
@@ -225,5 +205,5 @@ if ( is_rtl() ) {
 						</div>
 					</div>
 				</div>
+			</div>
 		</div>
-	</div>
