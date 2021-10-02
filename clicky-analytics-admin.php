@@ -180,26 +180,29 @@ if ( is_rtl() ) {
 						<div class="cadash-title">
 							<a href="https://wordpress.org/plugins/analytics-insights/"><img src="<?php echo plugins_url( 'images/aiwp.png' , __FILE__ ); ?>" /></a>
 						</div>
-						<div class="cadash-desc"><?php echo '<a href="https://wordpress.org/plugins/analytics-insights/">'.__('Analytics Insights','clicky-analytics').'</a> '.' - '.__('Connects Google Analytics with your WordPress site.','clicky-analytics'); ?></div>
+						<div class="cadash-desc">
+								<?php printf(__('%s - Connects Google Analytics with your WordPress site.', 'clicky-analytics'), sprintf('<a href="https://wordpress.org/plugins/analytics-insights/">%s</a>', __('Analytics Insights', 'clicky-analytics')));?>
+						</div>
 						<br />
 						<div class="cadash-title">
-							<a href="https://deconf.com/clicky-web-analytics-review/"><img src="<?php echo plugins_url( 'images/clicky.png' , __FILE__ ); ?>" /></a>
+							<a href="https://wordpress.org/plugins/search-engine-insights/"><img src="<?php echo plugins_url( 'images/seiwp.png' , __FILE__ ); ?>" /></a>
 						</div>
-						<div class="cadash-desc"><?php echo  '<a href="https://deconf.com/clicky-web-analytics-review/">'.__('Web Analytics','clicky-analytics').'</a> '.__('service with visitors tracking at IP level.','clicky-analytics'); ?>
+						<div class="cadash-desc">
+								<?php printf(__('%s - Add your website to Google Search Console!', 'clicky-analytics'), sprintf('<a href="https://wordpress.org/plugins/search-engine-insights/">%s</a>', __('Search Engine Insights', 'clicky-analytics')));?>
 					</div>
 					</div>
 				</div>
 				<div class="postbox">
 					<h3>
-						<span><?php _e("Stay Updated",'search-engine-insights')?></span>
+						<span><?php _e("Stay Updated",'clicky-analytics')?></span>
 					</h3>
 					<div class="inside">
-						<div class="seiwp-desc">
+						<div class="cadash-desc">
 							<div class="g-ytsubscribe" data-channel="TheDeConf" data-layout="default" data-count="default"></div>
 							<script src="https://apis.google.com/js/platform.js" async defer></script>
 						</div>
 						<br />
-						<div class="seiwp-desc">
+						<div class="cadash-desc">
 							<a href="https://twitter.com/deconfcom" class="twitter-follow-button" data-show-screen-name="false"></a>
 							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 						</div>

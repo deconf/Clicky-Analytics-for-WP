@@ -86,6 +86,11 @@ We are constantly improving our plugin, sometimes the video tutorial may be a li
 This plugin it's released under the GPLv2, you can use it free of charge on your personal or commercial website.
 
 == Changelog ==
+= 1.6.6
+* Bug Fixes:
+	* fix invalid links
+	* use sprintf for plugin i18n
+	
 = 1.6.5 =
 * Bug Fixes:
 	* code formatting
