@@ -4,12 +4,12 @@
  * Plugin URI: https://deconf.com
  * Description: Displays Clicky Analytics reports into your Dashboard. Automatically inserts the tracking code in every page of your website.
  * Author: Alin Marcu
- * Version: 1.6.5
+ * Version: 1.7
  * Author URI: https://deconf.com
  * Text Domain: clicky-analytics
  * Domain Path: /languages
  */
-define( 'CADASH_CURRENT_VERSION', '1.6.5' );
+define( 'CADASH_CURRENT_VERSION', '1.7' );
 $GLOBALS['CADASH_ALLOW'] = array( 'a' => array( 'href' => array(), 'title' => array() ), 'br' => array(), 'em' => array(), 'strong' => array() );
 /*
  * Install
@@ -178,7 +178,7 @@ function ca_front_content( $content ) {
 	}
 	if ( ( is_page() || is_single() ) && ! is_preview() ) {
 		require_once 'functions.php';
-		$api_url = "http://api.clicky.com/api/stats/4?";
+		$api_url = "https://api.clicky.com/api/stats/4?";
 		$siteid = get_option( 'ca_siteid' );
 		$sitekey = get_option( 'ca_sitekey' );
 		if ( ! get_option( 'ca_cachetime' ) ) {

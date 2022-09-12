@@ -4,7 +4,7 @@
  * Author: Alin Marcu
  * Author URI: https://deconf.com
  * License: GPLv2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 function file_get_contents_clicky( $url ) {
 	$args = array( 'timeout' => 15, 'redirection' => 1, 'httpversion' => '1.0', 'user-agent' => 'Clicky Analytics (+https://deconf.com/clicky-analytics-dashboard-wordpress/)' );

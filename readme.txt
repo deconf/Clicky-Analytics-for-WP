@@ -3,18 +3,18 @@ Contributors: deconf
 Donate link: https://deconf.com/donate/
 Tags: clicky, analytics, clicky analytics, stats, statistics
 Requires at least: 2.8
-Tested up to: 5.8
+Tested up to: 5.9
 Requires PHP: 5.2.4
-Stable tag: 1.6.5
+Stable tag: 1.7
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin will display Clicky Web Analytics data and statistics inside your WordPress Administration Dashboard.
 
 == Description ==
 Using a widget, [Clicky Analytics Plugin](https://deconf.com/clicky-analytics-dashboard-wordpress/) displays detailed info and stats about: online users, number of visits, number of actions, bounce rates, organic searches, time average directly on your Admin Dashboard.
 
-This plugin automatically inserts <a href="http://clicky.com/66508224" target="_blank">Clicky Web Analytics</a> tracking code in each page of your website.
+This plugin automatically inserts <a href="https://clicky.com/66508224" target="_blank">Clicky Web Analytics</a> tracking code in each page of your website.
 
 Authorized users can also view Clicky stats like visitors and top searches, on frontend, at the end of each article.
 
@@ -46,7 +46,7 @@ Authorized users can also view Clicky stats like visitors and top searches, on f
 
 - all clicky stats are available in a custom dashboard, under your blog's administration panel.
 
-Some features like video analytics and custom data tracking will require a <a href="http://clicky.com/66508224" target="_blank">Clicky Analytics Pro</a> account.
+Some features like video analytics and custom data tracking will require a <a href="https://clicky.com/66508224" target="_blank">Clicky Analytics Pro</a> account.
  
 = Further reading =
 
@@ -86,11 +86,13 @@ We are constantly improving our plugin, sometimes the video tutorial may be a li
 This plugin it's released under the GPLv2, you can use it free of charge on your personal or commercial website.
 
 == Changelog ==
-= 1.6.6
+= 1.7
 * Bug Fixes:
 	* fix invalid links
 	* use sprintf for plugin i18n
-	
+* Security:	
+	* switching all links and calls to HTTPS
+		
 = 1.6.5 =
 * Bug Fixes:
 	* code formatting

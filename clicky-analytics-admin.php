@@ -3,7 +3,7 @@
  * Author: Alin Marcu
  * Author URI: https://deconf.com
  * License: GPLv2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 require_once 'functions.php';
 if ( ! current_user_can( 'manage_options' ) ) {
@@ -106,7 +106,7 @@ if ( is_rtl() ) {
 						<?php wp_nonce_field('cadash_form','cadash_security'); ?>
 						<input type="hidden" name="ca_hidden" value="Y">
 		<?php echo "<h2>". __( 'Clicky Analytics API', 'clicky-analytics' )."</h2>"; ?>
-        <?php echo __("You should watch this", 'clicky-analytics')." <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/' target='_blank'>". __("Step by step video tutorial")."</a> ".__("to learn how to properly setup this plugin", 'clicky-analytics').". ".__("If you don't have a Clicky Account, you can", 'clicky-analytics')." <a href='http://clicky.com/66508224' target='_blank'>". __("create one here")."</a>.";?>
+        <?php echo __("You should watch this", 'clicky-analytics')." <a href='https://deconf.com/clicky-analytics-dashboard-wordpress/' target='_blank'>". __("Step by step video tutorial")."</a> ".__("to learn how to properly setup this plugin", 'clicky-analytics').". ".__("If you don't have a Clicky Account, you can", 'clicky-analytics')." <a href='https://clicky.com/66508224' target='_blank'>". __("create one here")."</a>.";?>
 		<p><?php echo "<strong>".__("Site ID:", 'clicky-analytics')." </strong>"; ?><input type="text" name="ca_siteid" value="<?php echo esc_attr($siteid); ?>" size="30">
 						</p>
 						<p><?php echo "<strong>".__("Site Key:", 'clicky-analytics')." </strong>"; ?><input type="text" name="ca_sitekey" value="<?php echo esc_attr($sitekey); ?>" size="30">
