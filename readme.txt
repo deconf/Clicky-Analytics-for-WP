@@ -1,11 +1,11 @@
 === Clicky Analytics ===
 Contributors: deconf
 Donate link: https://deconf.com/donate/
-Tags: clicky, analytics, clicky analytics, stats, statistics
+Tags: clicky, analytics, clicky analytics, cookieless, cookie free
 Requires at least: 2.8
-Tested up to: 5.9
+Tested up to: 6.1
 Requires PHP: 5.2.4
-Stable tag: 1.7
+Stable tag: 1.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ This plugin will display Clicky Web Analytics data and statistics inside your Wo
 == Description ==
 Using a widget, [Clicky Analytics Plugin](https://deconf.com/clicky-analytics-dashboard-wordpress/) displays detailed info and stats about: online users, number of visits, number of actions, bounce rates, organic searches, time average directly on your Admin Dashboard.
 
-This plugin automatically inserts <a href="https://clicky.com/66508224" target="_blank">Clicky Web Analytics</a> tracking code in each page of your website.
+This plugin automatically inserts <a href="https://clicky.com/66508224" target="_blank">Clicky Web Analytics</a> cookieless tracking code in each page of your website.
 
 Authorized users can also view Clicky stats like visitors and top searches, on frontend, at the end of each article.
 
@@ -29,6 +29,7 @@ Authorized users can also view Clicky stats like visitors and top searches, on f
 
 #### Clicky Tracking features:
 
+- cookieless tracking
 - enable/disable Clicky Web Analytics tracking code
 - user names tracking feature
 - e-mails tracking feature
@@ -41,6 +42,7 @@ Authorized users can also view Clicky stats like visitors and top searches, on f
 - IP address anonymization
 - global opt-out feature
 - tools to comply with GDPR requests from your visitors
+- cookie-free tracking
 
 #### Clicky Custom Dashboard:
 
@@ -86,6 +88,10 @@ We are constantly improving our plugin, sometimes the video tutorial may be a li
 This plugin it's released under the GPLv2, you can use it free of charge on your personal or commercial website.
 
 == Changelog ==
+= 1.8 =
+* Enhancements:	
+	* add option to disable Clicky Analytics widget on admin dashboard
+	
 = 1.7
 * Bug Fixes:
 	* fix invalid links

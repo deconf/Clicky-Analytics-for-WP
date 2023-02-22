@@ -4,12 +4,12 @@
  * Plugin URI: https://deconf.com
  * Description: Displays Clicky Analytics reports into your Dashboard. Automatically inserts the tracking code in every page of your website.
  * Author: Alin Marcu
- * Version: 1.7
+ * Version: 1.8
  * Author URI: https://deconf.com
  * Text Domain: clicky-analytics
  * Domain Path: /languages
  */
-define( 'CADASH_CURRENT_VERSION', '1.7' );
+define( 'CADASH_CURRENT_VERSION', '1.8' );
 $GLOBALS['CADASH_ALLOW'] = array( 'a' => array( 'href' => array(), 'title' => array() ), 'br' => array(), 'em' => array(), 'strong' => array() );
 /*
  * Install
@@ -79,7 +79,7 @@ function ca_front_scripts() {
 }
 
 function ca_setup() {
-	if ( current_user_can( get_option( 'ca_access' ) ) ) {
+	if ( current_user_can( get_option( 'ca_access' ) ) && !get_option( 'ca_disabledashboard' ) ) {
 		wp_add_dashboard_widget( 'clicky-analytics-widget', 'Clicky Analytics Dashboard', 'ca_content', $control_callback = null );
 	}
 }
@@ -116,6 +116,7 @@ function cadash_install() {
 		update_option( 'ca_pgd', 1 );
 		update_option( 'ca_rd', 1 );
 		update_option( 'ca_sd', 1 );
+		update_option( 'ca_disablewidget', 0 );
 		update_option( 'ca_frontend', 1 );
 		update_option( 'ca_cachetime', 3600 );
 		update_option( 'ca_tracking', 1 );
@@ -141,6 +142,7 @@ function cadash_uninstall() {
 			delete_option( 'ca_pgd' );
 			delete_option( 'ca_rd' );
 			delete_option( 'ca_sd' );
+			delete_option( 'ca_disablewidget' );
 			delete_option( 'ca_frontend' );
 			delete_option( 'ca_cachetime' );
 			delete_option( 'ca_tracking' );
@@ -160,6 +162,7 @@ function cadash_uninstall() {
 		delete_option( 'ca_pgd' );
 		delete_option( 'ca_rd' );
 		delete_option( 'ca_sd' );
+		delete_option( 'ca_disablewidget' );
 		delete_option( 'ca_frontend' );
 		delete_option( 'ca_cachetime' );
 		delete_option( 'ca_tracking' );

@@ -34,6 +34,8 @@ if ( ca_safe_get( 'ca_hidden' ) == 'Y' ) {
 		update_option( 'ca_rd', $ca_rd );
 		$ca_sd = ca_safe_get( 'ca_sd' );
 		update_option( 'ca_sd', $ca_sd );
+		$ca_disabledashboard = ca_safe_get( 'ca_disabledashboard' );
+		update_option( 'ca_disabledashboard', $ca_disabledashboard );
 		$ca_frontend = ca_safe_get( 'ca_frontend' );
 		update_option( 'ca_frontend', $ca_frontend );
 		$ca_cachetime = ca_safe_get( 'ca_cachetime' );
@@ -78,6 +80,7 @@ $dashaccess = get_option( 'ca_access' );
 $ca_pgd = get_option( 'ca_pgd' );
 $ca_rd = get_option( 'ca_rd' );
 $ca_sd = get_option( 'ca_sd' );
+$ca_disabledashboard = get_option( 'ca_disabledashboard' );
 $ca_frontend = get_option( 'ca_frontend' );
 $ca_cachetime = get_option( 'ca_cachetime' );
 $ca_tracking = get_option( 'ca_tracking' );
@@ -126,12 +129,14 @@ if ( is_rtl() ) {
 		<p>
 							<input name="ca_frontend" type="checkbox" id="ca_frontend" value="1" <?php if (get_option('ca_frontend')) echo " checked='checked'"; ?> /><?php _e(" show page visits and top searches in frontend (after each article)", 'clicky-analytics' ); ?></p>
 		<?php echo "<h2>" . __( 'Backend Settings', 'clicky-analytics' ). "</h2>";?>
-		<p>
+						<p>
 							<input name="ca_pgd" type="checkbox" id="ca_pgd" value="1" <?php if (get_option('ca_pgd')) echo " checked='checked'"; ?> /><?php _e(" show top pages", 'clicky-analytics' ); ?></p>
 						<p>
 							<input name="ca_rd" type="checkbox" id="ca_rd" value="1" <?php if (get_option('ca_rd')) echo " checked='checked'"; ?> /><?php _e(" show top referrers", 'clicky-analytics' ); ?></p>
 						<p>
 							<input name="ca_sd" type="checkbox" id="ca_sd" value="1" <?php if (get_option('ca_sd')) echo " checked='checked'"; ?> /><?php _e(" show top searches", 'clicky-analytics' ); ?></p>
+						<p>
+							<input name="ca_disabledashboard" type="checkbox" id="ca_disabledashboard" value="1" <?php if (get_option('ca_disabledashboard')) echo " checked='checked'"; ?> /><?php _e(" disable widget on admin dashboard", 'clicky-analytics' ); ?></p>
 						<hr>
 		<?php echo "<h2>" . __( 'Cache Settings', 'clicky-analytics' ). "</h2>";?>
 		<p><?php _e("Cache Time: ", 'clicky-analytics' ); ?>
