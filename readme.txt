@@ -86,7 +86,8 @@ We are constantly improving our plugin, sometimes the video tutorial may be a li
 This plugin it's released under the GPLv2, you can use it free of charge on your personal or commercial website.
 
 == Changelog ==
-= 2.0 =
+
+= 2.0 (2023.08.07) =
 * Enhancements:	
 	* new UI design and lots of UX improvements
 	* complete code refactoring
