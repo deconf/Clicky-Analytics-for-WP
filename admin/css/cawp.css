@@ -1,0 +1,229 @@
+/**
+ * Author: Alin Marcu 
+ * Author URI: https://deconf.com
+ * Copyright 2013 Alin Marcu 
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+/* Tab navigation */
+#cawp-config, #cawp-sysinfo, #cawp-errors {
+	display: none;
+}
+
+#cawp-autodismiss {
+	position: fixed;
+	top: 35px;
+	left: 48%;
+	transform: translate(-50%, 0);
+	z-index: 2;
+	margin-left: 0px;
+}
+
+/* Options pages */
+table.cawp-settings-options {
+	padding-left: 10px;
+	width: 100%;
+}
+
+.cawp-settings-options td {
+	padding: 0px 5px 5px 5px;
+}
+
+td.cawp-settings-title, td.info {
+	width: 140px;
+	padding-left: 20px;
+}
+
+td.cawp-settings-title-s {
+	width: 300px;
+}
+
+.cawp-help {
+	padding-left: 15px;
+}
+
+td.cawp-settings-info {
+	padding-bottom: 15px;
+}
+
+td.cawp-settings-title label {
+	font-size: 1em;
+}
+
+.cawp-title {
+	float: left;
+	margin-right: 10px;
+	margin-top: 2px;
+	clear: left;
+}
+
+.cawp-desc {
+	font-size: 1em;
+}
+
+.cawp-top {
+	vertical-align: top;
+}
+
+pre.cawp-settings-logdata {
+	white-space: pre-wrap; /* Since CSS 2.1 */
+	white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+pre.cawp-settings-logdata span {
+	color: #b30000;
+	font-weight: 800;
+}
+
+table.cawp-settings-logdata {
+	table-layout: fixed;
+	width: 100%;
+}
+
+td.cawp-settings-roles {
+	padding-bottom: 15px;
+}
+
+#capi-access-code, .cawp-red {
+	color: red !important;
+}
+
+.cawp-green {
+	color: green !important;
+}
+
+#poststuff.cawp h2 {
+	padding-bottom: 0;
+	font-size: 19.5px;
+	font-weight: normal;
+	padding: 0;
+	margin: 20px 0 15px 0;
+}
+
+#poststuff.cawp h2.nav-tab-wrapper {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 0;
+}
+
+/* ON/OFF Switch */
+.cawp-onoffswitch {
+	position: relative;
+	width: 55px;
+	display: inline-block;
+	font-size: 80%;
+	font-size: 1.1em;
+	float: left;
+}
+
+.cawp-onoffswitch .cawp-onoffswitch-label {
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	border: 1px solid #E5E5E5;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	margin: 0;
+}
+
+.cawp-onoffswitch .cawp-onoffswitch-inner {
+	width: 200%;
+	margin-left: -100%;
+	-webkit-transition: margin 0.15s ease-in-out;
+	-o-transition: margin 0.15s ease-in-out;
+	-moz-transition: margin 0.15s ease-in-out;
+	transition: margin 0.15s ease-in-out;
+}
+
+.cawp-onoffswitch .cawp-onoffswitch-inner:before, .cawp-onoffswitch .cawp-onoffswitch-inner:after {
+	float: left;
+	width: 50%;
+	height: 24px;
+	padding: 0;
+	line-height: 24px;
+	font-size: 80%;
+	color: #FFFFFF;
+	font-weight: normal;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.cawp-onoffswitch .cawp-onoffswitch-inner:before {
+	content: "ON";
+	padding-left: 10px;
+	background-color: #0083B7;
+	color: #FFFFFF;
+}
+
+.cawp-onoffswitch .cawp-onoffswitch-inner:after {
+	content: "OFF";
+	padding-right: 10px;
+	background-color: #F9F9F9;
+	color: #3D3D3D;
+	text-align: right;
+}
+
+.cawp-onoffswitch .cawp-onoffswitch-switch {
+	width: 22px;
+	height: 22px;
+	margin: 0;
+	background: #FFFFFF;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	position: absolute;
+	top: 2px;
+	bottom: 0;
+	right: 35px;
+	-webkit-transition: right 0.15s ease-in-out;
+	-o-transition: right 0.15s ease-in-out;
+	-moz-transition: right 0.15s ease-in-out;
+	transition: right 0.15s ease-in-out;
+}
+
+.cawp-togglegroup {
+	position: relative;
+	height: 27px;
+	top: 50%;
+	left: 20px;
+	margin-top: 3px;
+	margin-left: -20px;
+}
+
+.cawp-togglegroup input[type=checkbox] {
+	display: none;
+	position: absolute;
+	left: 10px;
+}
+
+.cawp-togglegroup input[type=checkbox]:checked ~ .cawp-onoffswitch .cawp-onoffswitch-label .cawp-onoffswitch-inner {
+	margin-left: 0;
+}
+
+.cawp-togglegroup input[type=checkbox]:checked ~ .cawp-onoffswitch .cawp-onoffswitch-label .cawp-onoffswitch-switch {
+	right: 1px;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.cawp-togglegroup input[type=checkbox]:focus ~ .cawp-onoffswitch {
+	outline: thin dotted #333;
+	outline: 0;
+}
+
+.cawp-togglegroup label {
+	position: absolute;
+	cursor: pointer;
+	padding-left: 65px;
+	display: inline-block;
+	text-align: left;
+	line-height: 24px;
+	width: 100%;
+	z-index: 1;
+	height: 24px;
+}

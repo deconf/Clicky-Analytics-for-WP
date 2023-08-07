@@ -3,9 +3,9 @@ Contributors: deconf
 Donate link: https://deconf.com/donate/
 Tags: clicky, analytics, clicky analytics, cookieless, cookie free
 Requires at least: 2.8
-Tested up to: 6.1
+Tested up to: 6.2
 Requires PHP: 5.2.4
-Stable tag: 1.8
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,6 @@ Using a widget, [Clicky Analytics Plugin](https://deconf.com/clicky-analytics-da
 
 This plugin automatically inserts <a href="https://clicky.com/66508224" target="_blank">Clicky Web Analytics</a> cookieless tracking code in each page of your website.
 
-Authorized users can also view Clicky stats like visitors and top searches, on frontend, at the end of each article.
 
 #### Clicky Admin Dashboard features:
 
@@ -42,7 +41,7 @@ Authorized users can also view Clicky stats like visitors and top searches, on f
 - IP address anonymization
 - global opt-out feature
 - tools to comply with GDPR requests from your visitors
-- cookie-free tracking
+- cookie-free/cookieless tracking
 
 #### Clicky Custom Dashboard:
 
@@ -80,14 +79,18 @@ We are constantly improving our plugin, sometimes the video tutorial may be a li
 1. Clicky Analytics stats
 2. Clicky Analytics Top Pages, Top Referrers and Top Searches stats
 3. Clicky Analytics Settings
-4. Clicky Analytics statistics per page on Frontend
-5. Clicky Analytics Dashboard statistics
+4. Clicky Analytics Dashboard statistics
 
 == License ==
 
 This plugin it's released under the GPLv2, you can use it free of charge on your personal or commercial website.
 
 == Changelog ==
+= 2.0 =
+* Enhancements:	
+	* new UI design and lots of UX improvements
+	* complete code refactoring
+	
 = 1.8 =
 * Enhancements:	
 	* add option to disable Clicky Analytics widget on admin dashboard

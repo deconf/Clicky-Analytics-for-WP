@@ -1,0 +1,218 @@
+/**
+ * Author: Alin Marcu 
+ * Author URI: https://deconf.com
+ * Copyright 2013 Alin Marcu 
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+/* Backend Item Reports */
+.column-cawp_stats {
+	width: 30px;
+}
+
+.cawp-icon {
+	color: #555;
+}
+
+.cawp-icon:hover {
+	color: #2ea2cc;
+}
+
+.cawp-icon-oldwp {
+	padding-top: 5px;
+}
+
+[id^=cawp-container-] {
+	width: 400px;
+}
+
+[id^=cawp-areachart-] {
+	height: 280px;
+}
+
+[id^=cawp-progressbar-] {
+	width: 100%;
+	height: 3px;
+	clear: both;
+	margin: 5px 0 0px 0;
+}
+
+[id^=cawp-summary-] {
+	width: 100%;
+}
+
+[id^=cawp-summary-] .inside {
+	display: table;
+	margin: 0 1% 0 1%;
+	min-width: 100%;
+	padding: 0px;
+}
+
+[id^=cawp-summary-] .inside .small-box {
+	margin-top: 10px;
+	width: 24%;
+	float: left;
+	background: #fff;
+	text-align: center;
+	border: 1px solid;
+	border-color: rgba(0, 0, 0, 0.25);
+	border-right: 0px;
+}
+
+[id^=cawp-summary-] .inside .small-box.first {
+	background: #E04747;
+}
+
+[id^=cawp-summary-] .inside .small-box.second {
+	background: #673ab7;
+}
+
+[id^=cawp-summary-] .inside .small-box.third {
+	background: #009688;
+}
+
+[id^=cawp-summary-] .inside .small-box.last {
+	background: #366DC4;
+	border-right: 1px solid;
+	border-color: rgba(0, 0, 0, 0.25);
+}
+
+[id^=cawp-summary-] .inside .small-box h3 {
+	font-size: 1em;
+	color: white;
+	padding: 5px 5px 0px 5px;
+	margin: 0px 0px 0px 0px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+[id^=cawp-summary-] .inside .small-box p {
+	font-size: 1.2em;
+	margin: 7px 0px 10px 0px;
+	font-weight: 500;
+	color: white;
+}
+
+.cawp-floatwraper {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+[id^=cawp-piechart-].halfsize {
+	width: 47%;
+	margin: 10px 0 0 0;
+	height: 200px;
+	float: left;
+}
+
+[id^=cawp-piechart-].floatleft {
+	float: left;
+}
+
+[id^=cawp-piechart-].floatright {
+	float: right;
+}
+
+[id^=cawp-tablechart-] {
+	line-height: 1.5em !important;
+	width: 98%;
+	height: 100%;
+	margin: 2px auto 10px 0;
+}
+
+[id^=cawp-sel-period-], .cawp-dashboard-control input {
+	-webkit-box-sizing: border-box !important;
+	-moz-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+	width:auto !important;
+	font-size: 14px !important;
+	height: 28px !important;
+	float: left;
+	color: #32373c;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	border: 1px solid #ddd !important;
+	box-shadow: inset 0 1px 2px rgba( 0, 0, 0, 0.07 ) !important;
+	background-color: #fff !important;
+}
+
+[id^=cawp-sel-report-] {
+	-webkit-box-sizing: border-box !important;
+	-moz-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+	width:auto !important;
+	font-size: 14px !important;
+	margin-left: 5px;
+	height: 28px !important;
+	color: #32373c;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	border: 1px solid #ddd;
+	box-shadow: inset 0 1px 2px rgba( 0, 0, 0, 0.07 );
+	background-color: #fff;
+}
+
+.cawp-dashboard-control input {
+	height: 20px !important;
+	content: "Search ...";
+}
+
+.cawp-dashboard-control input::placeholder {
+    /* modern browser */
+    color: #999;
+}
+
+.ui-dialog.cawp {
+	font-size: 13px;
+	-webkit-box-sizing: initial;
+	-moz-box-sizing: initial;
+}
+
+.ui-dialog.cawp table {
+	margin: auto;
+	width: auto;
+}
+
+.cawp .ui-dialog-titlebar {
+	font-size: 1.1em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	padding-top: 5px;
+}
+
+.cawp-orgchart{
+	border: 0px;
+	border-radius: 10px;
+	color: white;
+	font-size: 1em !important;
+	font-family: inherit !important;
+	background-color: #2c5fb2;
+}
+
+.cawp-orgchart-selected{
+	border: 0px;
+	border-radius: 10px;
+	color: white;
+	font-size: 1em !important;
+	font-family: inherit !important;
+	background-color: #3E7CE0;
+}
+
+@media screen and (max-width: 500px) {
+	[id^=cawp-container-] {
+		width: 400px;
+	}
+	[id^=cawp-summary-] .inside .small-box {
+		width: 30.8%;
+	}
+}
+
+@media screen and (max-width: 410px) {
+	[id^=cawp-container-] {
+		width: 260px;
+	}
+	[id^=cawp-summary-] .inside .small-box {
+		width: 46%;
+	}
+}

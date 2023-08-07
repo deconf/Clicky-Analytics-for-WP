@@ -1,0 +1,366 @@
+/**
+ * Author: Alin Marcu 
+ * Author URI: https://deconf.com
+ * Copyright 2013 Alin Marcu 
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+/* Frontend Item Reports */
+.column-cawp_stats {
+	width: 70px;
+}
+
+.cawp-icon {
+	color: #555;
+}
+
+.cawp-icon:hover {
+	color: #2ea2cc;
+}
+
+.cawp-icon-oldwp {
+	padding-top: 5px;
+}
+
+[id^=cawp-container-] {
+	width: 400px;
+}
+
+[id^=cawp-areachart-] {
+	height: 280px;
+}
+
+[id^=cawp-progressbar-] {
+	width: 100%;
+	height: 3px;
+	clear: both;	
+	margin: 5px 0 0px 0;
+}
+
+[id^=cawp-summary-] {
+	width: 100%;
+}
+
+[id^=cawp-summary-] .inside {
+	display: table;
+	margin: 0 1% 0 1%;
+	min-width: 100%;
+	padding: 0px;
+}
+
+[id^=cawp-summary-] .inside .small-box {
+	margin-top: 10px;
+	width: 24%;
+	float: left;
+	background: #fff;
+	text-align: center;
+	border: 1px solid;
+	border-color: rgba(0, 0, 0, 0.25);
+	border-right: 0px;
+}
+
+[id^=cawp-summary-] .inside .small-box.first {
+	background: #E04747;
+}
+
+[id^=cawp-summary-] .inside .small-box.second {
+	background: #673ab7;
+}
+
+[id^=cawp-summary-] .inside .small-box.third {
+	background: #009688;
+}
+
+[id^=cawp-summary-] .inside .small-box.last {
+	background: #366DC4;
+	border-right: 1px solid;
+	border-color: rgba(0, 0, 0, 0.25);
+}
+
+[id^=cawp-summary-] .inside .small-box h3 {
+	font-size: 1em;
+	color: white;
+	padding: 5px 5px 0px 5px;
+	margin: 0px 0px 0px 0px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+[id^=cawp-summary-] .inside .small-box p {
+	font-size: 1.2em;
+	margin: 7px 0px 10px 0px;
+	font-weight: 500;
+	color: white;
+}
+
+.cawp-floatwraper {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+[id^=cawp-piechart-].halfsize {
+	width: 47%;
+	margin: 10px 0 0 0;
+	height: 200px;
+	float: left;
+}
+
+[id^=cawp-piechart-].floatleft {
+	float: left;
+}
+
+[id^=cawp-piechart-].floatright {
+	float: right;
+}
+
+[id^=cawp-tablechart-] {
+	line-height: 1.5em !important;
+	width: 98%;
+	height: 100%;
+	margin: 2px auto 10px 0;
+}
+
+.cawp-dashboard-control {
+	padding-bottom: 10px;	
+}
+
+.cawp-dashboard-control input {
+	height: 20px !important;
+	content: "Search ...";
+	font-size: 0.8em;
+}
+
+.cawp-dashboard-control input::placeholder {
+    /* modern browser */
+    color: #999;
+}
+
+.ui-dialog.cawp {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-size: 13px;
+	-webkit-box-sizing: initial;
+	-moz-box-sizing: initial;
+	width: min-content !important;
+}
+
+.ui-dialog.cawp select, .ui-dialog.cawp input {
+    --wp-admin--admin-bar--height: 32px;
+    -webkit-font-smoothing: subpixel-antialiased;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-weight: inherit;
+    margin: 0 1px;
+    border: 1px solid #8c8f94;
+    font-size: 14px;
+    line-height: 2;
+    color: #2c3338;
+    border-color: #8c8f94;
+    box-shadow: none;
+    border-radius: 3px;
+    padding: 0 24px 0 8px;
+    min-height: 30px;
+    -webkit-appearance: none;
+    background: #fff url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E') no-repeat right 5px top 55%;
+    background-size: 16px 16px;
+    cursor: pointer;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+.ui-dialog.cawp select:hover, .ui-dialog.cawp input:hover {
+	color: #2271b1;
+}
+
+.ui-dialog.cawp select:focus, .ui-dialog.cawp input:focus {
+	border-color: #2271b1;
+	outline-offset: 0px;
+	outline: 0px;
+	color: #0a4b78;
+	box-shadow: 0 0 0 1px #2271b1;
+}
+
+.ui-dialog.cawp select:active, .ui-dialog.cawp input:active {
+	border-color: #8c8f94;
+	box-shadow: none;
+}
+
+.ui-dialog.cawp select.disabled,
+.ui-dialog.cawp select:disabled,
+.ui-dialog.cawp input.disabled,
+.ui-dialog.cawp input:disabled  {
+	color: #a7aaad;
+	border-color: #dcdcde;
+	background-color: #f6f7f7;
+	/* The SVG is arrow-down-alt2 from Dashicons. */
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23a0a5aa%22%2F%3E%3C%2Fsvg%3E');
+	box-shadow: none;
+	text-shadow: 0 1px 0 #fff;
+	cursor: default;
+	transform: none;
+}
+
+/* Reset Firefox inner outline that appears on :focus. */
+/* This ruleset overrides the color change on :focus thus needs to be after select:focus. */
+.ui-dialog.cawp select:-moz-focusring, .ui-dialog.cawp input:-moz-focusring {
+	color: transparent;
+	text-shadow: 0 0 0 #0a4b78;
+}
+
+/* Remove background focus style from IE11 while keeping focus style available on option elements. */
+.ui-dialog.cawp select::-ms-value, .ui-dialog.cawp input::-ms-value {
+	background: transparent;
+	color: #50575e;
+}
+
+.ui-dialog.cawp select:hover::-ms-value, .ui-dialog.cawp input:hover::-ms-value {
+	color: #2271b1;
+}
+
+.ui-dialog.cawp select:focus::-ms-value, .ui-dialog.cawp input:focus::-ms-value {
+	color: #0a4b78;
+}
+
+.ui-dialog.cawp select.disabled::-ms-value,
+.ui-dialog.cawp select:disabled::-ms-value,
+.ui-dialog.cawp input.disabled::-ms-value,
+.ui-dialog.cawp input:disabled::-ms-value {
+	color: #a7aaad;
+}
+
+/* Hide the native down arrow for select element on IE. */
+.ui-dialog.cawp select::-ms-expand, .ui-dialog.cawp input::-ms-expand {
+	display: none;
+}
+
+.ui-dialog.cawp select option {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 2;
+    cursor: pointer;
+    color: #2c3338;
+}
+
+.ui-dialog.cawp button{
+	color: #646970;
+	background-color: inherit !important;
+}
+
+.ui-dialog.cawp table {
+	margin: auto;
+	width: auto;
+}
+
+.cawp .ui-dialog-titlebar {
+	font-size: 1.1em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	padding-top: 5px;
+}
+
+.cawp-dashboard-control input {
+	-webkit-box-sizing: border-box !important;
+	-moz-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+	width: auto !important;
+	font-size: 14px !important;
+	height: 28px !important;
+	float: left;
+	color: #32373c;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	border: 1px solid #ddd !important;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07) !important;
+	background-color: #fff !important;
+	padding: 0 5px 0 5px !important;
+}
+
+[id^=cawp-tablechart-] .google-visualization-table-page-numbers {
+	line-height: 1.2em !important;
+}
+
+[id^=cawp-tablechart-] a:link, [id^=aiwp-tablechart-] a:visited, [id^=aiwp-tablechart-] a:hover {
+	color: black;
+}
+
+.cawp-orgchart {
+	border: 0px;
+	border-radius: 10px;
+	color: white;
+	font-size: 1em !important;
+	font-family: inherit !important;
+	background-color: #2c5fb2;
+	line-height: 1.5em !important;
+}
+
+.cawp-orgchart-selected {
+	border: 0px;
+	border-radius: 10px;
+	color: white;
+	font-size: 1em !important;
+	font-family: inherit !important;
+	background-color: #3E7CE0;
+	line-height: 1.5em !important;
+}
+
+.google-visualization-table-div-page {
+	line-height: 1.5em !important;
+}
+
+@media screen and (max-width: 500px) {
+	[id^=cawp-container-] {
+		width: 400px;
+	}
+	[id^=cawp-summary-] .inside .small-box {
+		width: 30.8%;
+	}
+}
+
+@media screen and (max-width: 410px) {
+	[id^=cawp-container-] {
+		width: 260px;
+	}
+	[id^=cawp-summary-] .inside .small-box {
+		width: 46%;
+	}
+}
+
+/* Toolbar Node (Analytics menu item) */
+#wpadminbar #wp-admin-bar-cawp-1>.ab-item:before {
+	content: '\f183';
+	top: 2px;
+}
+
+.no-font-face #wpadminbar #wp-admin-bar-cawp-1>.ab-item {
+	text-indent: 0;
+}
+
+@media screen and ( max-width: 782px ) {
+	#wpadminbar #wp-admin-bar-cawp-1>.ab-item {
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		width: 52px;
+		padding: 0;
+		color: #999;
+		position: relative;
+	}
+	#wpadminbar #wp-admin-bar-cawp-1>.ab-item:before {
+		display: block;
+		text-indent: 0;
+		font: normal 32px/1 'dashicons';
+		speak: none;
+		top: 7px;
+		width: 52px;
+		text-align: center;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+	#wpadminbar li#wp-admin-bar-cawp-1 {
+		display: block;
+	}
+	#wpadminbar #wp-admin-bar-cawp-1 {
+		position: static;
+	}
+}
