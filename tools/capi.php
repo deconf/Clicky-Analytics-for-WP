@@ -9,7 +9,6 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) )
 	exit();
-
 if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 
 	final class CAWP_CAPI_Controller {
@@ -20,26 +19,17 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 
 		private $cawp;
 
-
 		/**
 		 * Google API Client Initialization
 		 */
 		public function __construct() {
-
 			$this->cawp = CAWP();
-
 			// add cURL server settings to Guzzle
-
 			$httpoptions = array();
-
 			$origin = CAWP_Tools::strip_protocol( get_site_url() );
-
-			$httpoptions [ 'headers' ] = array( 'referer' => CAWP_CURRENT_VERSION, 'User-Agent' => $origin );
-
+			$httpoptions['headers'] = array( 'referer' => CAWP_CURRENT_VERSION, 'User-Agent' => $origin );
 			$security = wp_create_nonce( 'cawp_security' );
-
 			$this->sitekey = $this->cawp->config->options['sitekey'];
-
 		}
 
 		/**
@@ -125,48 +115,40 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 		 * @return int|array
 		 */
 		private function handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions, $options, $filters, $serial ) {
-
 			$transient = CAWP_Tools::get_cache( $serial );
 			if ( false === $transient ) {
 				if ( $this->capi_errors_handler() ) {
 					return $this->capi_errors_handler();
 				}
-
-				//Disable filters
+				// Disable filters
 				$filters = '';
-
-				$request = CAWP_ENDPOINT_URL . "site_id=" . $projectId . "&sitekey=" . $this->sitekey . "&date=" . $from . "," . $to . "&type=" . $metrics . $dimensions . $filters . "&output=php";;
-
+				$request = CAWP_ENDPOINT_URL . "site_id=" . $projectId . "&sitekey=" . $this->sitekey . "&date=" . $from . "," . $to . "&type=" . $metrics . $dimensions . $filters . "&output=php";
 				$args = array( 'timeout' => 15, 'redirection' => 1, 'httpversion' => '1.0', 'user-agent' => 'Clicky Analytics (+https://deconf.com/clicky-analytics-dashboard-wordpress/)' );
 				$result = wp_remote_get( $request, $args );
 				if ( is_array( $result ) and 200 == $result['response']['code'] ) {
 					$data = unserialize( $result['body'] );
 				} else {
-						if( is_wp_error( $result ) ) {
-							$timeout = $this->get_timeouts();
-							CAWP_Tools::set_error( $result, $timeout );
-							return $result->get_error_code();
+					if ( is_wp_error( $result ) ) {
+						$timeout = $this->get_timeouts();
+						CAWP_Tools::set_error( $result, $timeout );
+						return $result->get_error_code();
 					}
 				}
-
-				if ($from === $to){
+				if ( $from === $to ) {
 					CAWP_Tools::set_cache( $serial, $data, $this->get_timeouts( 'houtly' ) );
-				}else{
+				} else {
 					CAWP_Tools::set_cache( $serial, $data, $this->get_timeouts( 'daily' ) );
 				}
-
 				return $data;
-
 			} else {
 				$data = $transient;
 			}
-
 			$this->cawp->config->options['api_backoff'] = 0;
 			$this->cawp->config->set_plugin_options();
-			if ( !empty( $data ) ) {
+			if ( ! empty( $data ) ) {
 				return $data;
 			} else {
-				$data = array(array());
+				$data = array( array() );
 				return $data;
 			}
 		}
@@ -211,23 +193,18 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 				default :
 					$title = __( "Visitors", 'clicky-analytics' );
 			}
-
-			if ($from === $to){
+			if ( $from === $to ) {
 				$dimensions = '&hourly=1';
 			} else {
 				$dimensions = '&daily=1';
 			}
-
 			$metrics = $query;
-
 			$options = '';
-
 			if ( $filter ) {
-				$filters = '&href=' . urlencode($filter);
+				$filters = '&href=' . urlencode( $filter );
 			} else {
 				$filters = '';
 			}
-
 			$serial = 'qr2_' . $this->get_serial( $projectId . $from . $to . $filter . $metrics );
 			$data = $this->handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions, $options, $filters, $serial );
 			if ( is_numeric( $data ) ) {
@@ -237,14 +214,13 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 				// unable to render it as an Area Chart, returns a numeric value to be handled by reportsx.js
 				return 621;
 			}
-
-			if ( '&hourly=1' == $dimensions ){
+			if ( '&hourly=1' == $dimensions ) {
 				foreach ( $data as $items ) {
-						foreach ( $items as $date ) {
-							foreach ( $date as $item ) {
-								foreach ( $item as $key=>$values ) {
-									foreach ( $values as $hour=>$value ) {
-										$cawp_data[] = array( (int) $hour . ':00', round( $value, 2 ) );
+					foreach ( $items as $date ) {
+						foreach ( $date as $item ) {
+							foreach ( $item as $key => $values ) {
+								foreach ( $values as $hour => $value ) {
+									$cawp_data[] = array( (int) $hour . ':00', round( $value, 2 ) );
 								}
 							}
 						}
@@ -252,7 +228,7 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 				}
 			} else {
 				foreach ( $data as $item ) {
-					foreach ( $item as $date=>$value ) {
+					foreach ( $item as $date => $value ) {
 						/*
 						 * translators:
 						 * Example: 'l, F j, Y' will become 'Thusday, November 17, 2015'
@@ -262,11 +238,8 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 					}
 				}
 			}
-
 			$cawp_data[] = array( __( "Date", 'clicky-analytics' ), $title );
-
 			return array_reverse( $cawp_data );
-
 		}
 
 		/**
@@ -283,40 +256,31 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 		 * @return array|int
 		 */
 		private function get_summary( $projectId, $from, $to, $filter = '' ) {
-
 			$dimensions = '';
 			$options = '';
-			$metrics='visitors,actions-pageviews,time-average,bounce-rate';
-
+			$metrics = 'visitors,actions-pageviews,time-average,bounce-rate';
 			if ( $filter ) {
-				$filters = '&href=' . urlencode($filter);
+				$filters = '&href=' . urlencode( $filter );
 			} else {
 				$filters = '';
 			}
-
 			$serial = 'qr3_' . $this->get_serial( $projectId . $from . $to . $filter . $metrics . '0' );
-
 			$data = $this->handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions, $options, $filters, $serial );
-
 			if ( is_numeric( $data ) ) {
 				return $data;
 			}
-
 			$rawdata = array();
 			foreach ( $data as $item ) {
-				foreach ( $item as $date=>$value ) {
-								$rawdata[] = $value[0]['value'];
-							}
+				foreach ( $item as $date => $value ) {
+					$rawdata[] = $value[0]['value'];
+				}
 			}
-
 			// i18n support
 			$cawp_data[0] = empty( $rawdata[0] ) ? 0 : CAWP_Tools::number_to_kmb( $rawdata[0] );
 			$cawp_data[1] = empty( $rawdata[1] ) ? 0 : CAWP_Tools::number_to_kmb( $rawdata[1] );
 			$cawp_data[2] = empty( $rawdata[2] ) ? '00:00' : CAWP_Tools::secondstohms( $rawdata[2] );
 			$cawp_data[3] = empty( $rawdata[3] ) ? '0%' : number_format_i18n( $rawdata[3], 2 ) . '%';
-
 			return $cawp_data;
-
 		}
 
 		/**
@@ -335,53 +299,52 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 		 * @return array|int
 		 */
 		private function get_locations( $projectId, $from, $to, $metric, $filter = '' ) {
-
-			$metrics = '';
+			$metrics = 'visitors-list';
 			$options = '';
-			$dimensions = 'visitors-list';
-
+			$dimensions = '&visitor-details=geolocation&limit=all&page=';
 			$title = __( "Countries", 'clicky-analytics' );
-			$serial = 'qr4_' . $this->get_serial( $projectId . $from . $to . $filter . $dimensions );
-
 			if ( $filter ) {
-				$filters = '&href=' . urlencode($filter);
+				$filters = '&href=' . urlencode( $filter );
 			} else {
 				$filters = '';
 			}
-
-			$data = $this->handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions, $options, $filters, $serial );
-			if ( is_numeric( $data ) ) {
-				return $data;
-			}
-
+			$page = 1;
+			$data['visitors-list'][0] = true;
 			$rawdata = array();
-			foreach ( $data as $item ) {
-				foreach ( $item as $date=>$location ) {
-					foreach ( $location as $geo ) {
-						$country = explode(',',$geo['geolocation']);
-						if ( isset( $country[1] ) ){
-							if ( isset( $rawdata[trim( $country[1] )] ) ) {
-								$rawdata[trim( $country[1] )] ++;
-							} else {
-								$rawdata[trim( $country[1] )] = 1;
-							}
-						} else {
-							if ( isset( $rawdata[trim( $country[0] )] ) ) {
-								$rawdata[trim( $country[0] )] ++;
-							} else {
-								$rawdata[trim( $country[0] )] = 1;
+			while ( ! empty( array_values( $data['visitors-list'] )[0] ) ) {
+				$serial = 'qr4_' . $this->get_serial( $projectId . $from . $to . $filter . $dimensions . $page );
+				$data = $this->handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions . $page, $options, $filters, $serial );
+				if ( is_numeric( $data ) ) {
+					return $data;
+				}
+				if ( ! empty( array_values( $data['visitors-list'] )[0] ) ) {
+					foreach ( $data as $item ) {
+						foreach ( $item as $date => $location ) {
+							foreach ( $location as $geo ) {
+								$country = explode( ',', $geo['geolocation'] );
+								if ( isset( $country[1] ) ) {
+									if ( isset( $rawdata[trim( $country[1] )] ) ) {
+										$rawdata[trim( $country[1] )]++;
+									} else {
+										$rawdata[trim( $country[1] )] = 1;
+									}
+								} else {
+									if ( isset( $rawdata[trim( $country[0] )] ) ) {
+										$rawdata[trim( $country[0] )]++;
+									} else {
+										$rawdata[trim( $country[0] )] = 1;
+									}
+								}
 							}
 						}
 					}
 				}
+				$page++;
 			}
-
 			$cawp_data = array( array( $title, __( ucfirst( $metric ), 'clicky-analytics' ) ) );
-
-			foreach ( $rawdata as $item=>$value ) {
-				$cawp_data[] = array( esc_html( $item ) , (float) $value );
+			foreach ( $rawdata as $item => $value ) {
+				$cawp_data[] = array( esc_html( $item ), (float) $value );
 			}
-
 			return $cawp_data;
 		}
 
@@ -403,30 +366,32 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 		private function get_pages( $projectId, $from, $to, $metric, $filter = '' ) {
 			$metrics = '';
 			$options = '';
-			$dimensions = 'pages';
-
+			$dimensions = 'pages&limit=all&page=';
 			if ( $filter ) {
-				$filters = '&href=' . urlencode($filter);
+				$filters = '&href=' . urlencode( $filter );
 			} else {
 				$filters = '';
 			}
-
-			$serial = 'qr5_' . $this->get_serial( $projectId . $from . $to . $filter . $dimensions );
-			$data = $this->handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions, $options, $filters, $serial );
-			if ( is_numeric( $data ) ) {
-				return $data;
-			}
-
 			$cawp_data = array( array( __( "Pages", 'clicky-analytics' ), __( ucfirst( $metric ), 'clicky-analytics' ) ) );
-
-			foreach ( $data as $items ) {
-				foreach ( $items as $date=>$item ) {
-					foreach ( $item as $value ) {
-					$cawp_data[] = array( esc_html( $value['title'] ), (float) $value['value'] );
+			$page = 1;
+			$data['pages'][0] = true;
+			while ( ! empty( array_values( $data['pages'] )[0] ) ) {
+				$serial = 'qr5_' . $this->get_serial( $projectId . $from . $to . $filter . $dimensions . $page );
+				$data = $this->handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions . $page, $options, $filters, $serial );
+				if ( is_numeric( $data ) ) {
+					return $data;
 				}
+				if ( ! empty( array_values( $data['pages'] )[0] ) ) {
+					foreach ( $data as $items ) {
+						foreach ( $items as $date => $item ) {
+							foreach ( $item as $value ) {
+								$cawp_data[] = array( esc_html( $value['title'] ), (float) $value['value'] );
+							}
+						}
+					}
+				}
+				$page++;
 			}
-			}
-
 			return $cawp_data;
 		}
 
@@ -448,32 +413,34 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 		private function get_referrers( $projectId, $from, $to, $metric, $filter = '' ) {
 			$metrics = '';
 			$options = '';
-			$dimensions = 'links-domains';
-
+			$dimensions = 'links-domains&limit=all&page=';
 			if ( $filter ) {
-				$filters = '&href=' . urlencode($filter);
+				$filters = '&href=' . urlencode( $filter );
 			} else {
 				$filters = '';
 			}
-
-			$serial = 'qr6_' . $this->get_serial( $projectId . $from . $to . $filter . $dimensions );
-			$data = $this->handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions, $options, $filters, $serial );
-			if ( is_numeric( $data ) ) {
-				return $data;
-			}
-
 			$cawp_data = array( array( __( "Referrers", 'clicky-analytics' ), __( ucfirst( $metric ), 'clicky-analytics' ) ) );
-
-			foreach ( $data as $items ) {
-				foreach ( $items as $date=>$item ) {
-					foreach ( $item as $value ) {
-						$cawp_data[] = array( esc_html( $value['title'] ), (float) $value['value'] );
+			$page = 1;
+			$data['links-domains'][0] = true;
+			while ( ! empty( array_values( $data['links-domains'] )[0] ) ) {
+				$serial = 'qr6_' . $this->get_serial( $projectId . $from . $to . $filter . $dimensions . $page );
+				$data = $this->handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions . $page, $options, $filters, $serial );
+				if ( is_numeric( $data ) ) {
+					return $data;
+				}
+				if ( ! empty( array_values( $data['links-domains'] )[0] ) ) {
+					foreach ( $data as $items ) {
+						foreach ( $items as $date => $item ) {
+							foreach ( $item as $value ) {
+								$cawp_data[] = array( esc_html( $value['title'] ), (float) $value['value'] );
+							}
+						}
 					}
 				}
+				$page++;
 			}
 			return $cawp_data;
 		}
-
 
 		/**
 		 * Clicky Analytics data for Org Charts (site performance)
@@ -493,17 +460,14 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 		 * @return array|int
 		 */
 		private function get_orgchart_data( $projectId, $from, $to, $query, $metric, $filter = '' ) {
-
-			$options='';
-			$metrics='';
+			$options = '';
+			$metrics = '';
 			$dimensions = 'actions-pageviews,actions-downloads,actions-outbounds,actions-clicks';
-
 			if ( $filter ) {
-				$filters = '&href=' . urlencode($filter);
+				$filters = '&href=' . urlencode( $filter );
 			} else {
 				$filters = '';
 			}
-
 			$serial = 'qr7_' . $this->get_serial( $projectId . $from . $to . $filter . $dimensions );
 			$data = $this->handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions, $options, $filters, $serial );
 			if ( is_numeric( $data ) ) {
@@ -513,19 +477,17 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 				// unable to render as an Org Chart, returns a numeric value to be handled by reportsx.js
 				return 621;
 			}
-
 			$rawdata = array();
 			foreach ( $data as $item ) {
-				foreach ( $item as $date=>$value ) {
+				foreach ( $item as $date => $value ) {
 					$rawdata[] = $value[0]['value'];
 				}
 			}
-
 			$res_data['Pageviews'] = empty( $rawdata[0] ) ? 0 : CAWP_Tools::number_to_kmb( $rawdata[0] );
 			$res_data['Downloads'] = empty( $rawdata[1] ) ? 0 : CAWP_Tools::number_to_kmb( $rawdata[1] );
 			$res_data['Outbounds'] = empty( $rawdata[2] ) ? 0 : CAWP_Tools::number_to_kmb( $rawdata[2] );
-			$res_data['Clicks'] = empty( $rawdata[2] ) ? 0 : CAWP_Tools::number_to_kmb( $rawdata[3] );;
-
+			$res_data['Clicks'] = empty( $rawdata[2] ) ? 0 : CAWP_Tools::number_to_kmb( $rawdata[3] );
+			;
 			if ( $filters ) {
 				$block = __( "Site Performance", 'clicky-analytics' );
 			} else {
@@ -568,7 +530,7 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 				return $this->get_locations( $projectId, $from, $to, $metric, $filter );
 			}
 			if ( 'pages' == $query ) {
-				return $this->get_pages( $projectId, $from, $to, $metric, $filter  );
+				return $this->get_pages( $projectId, $from, $to, $metric, $filter );
 			}
 			if ( 'channelGrouping' == $query || 'deviceCategory' == $query ) {
 				return $this->get_orgchart_data( $projectId, $from, $to, $query, $metric, $filter );
