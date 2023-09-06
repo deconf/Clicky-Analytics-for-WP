@@ -3,9 +3,9 @@ Contributors: deconf
 Donate link: https://deconf.com/donate/
 Tags: clicky, analytics, clicky analytics, cookieless, cookie free
 Requires at least: 2.8
-Tested up to: 6.2
+Tested up to: 6.3
 Requires PHP: 5.2.4
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,6 +87,13 @@ This plugin it's released under the GPLv2, you can use it free of charge on your
 
 == Changelog ==
 
+= 2.0.2 (2023.09.06) =
+* Enhancements:	
+	* Clicky Analytics UI improvements on area chart
+	* Clicky Analytics API call optimization	
+* Bug Fixes:
+	* fixes a bug preventing other roles to view the clicky stats on admin dashboard 
+	
 = 2.0.1 (2023.08.08) =
 * Bug Fixes:
 	* multiple fixes for Location, Pages and Referrers reports

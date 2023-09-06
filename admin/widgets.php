@@ -36,14 +36,12 @@ if ( ! class_exists( 'CAWP_Backend_Widgets' ) ) {
 				return;
 			}
 
-			if ( current_user_can( 'manage_options' ) ) {
 				if ( $this->cawp->config->options['siteid'] ) {
 					$projectId = $this->cawp->config->options['siteid'];
 				} else {
 					echo '<p>' . __( "An admin should asign a default Clicky Analytics Site ID / Site Key.", 'clicky-analytics' ) . '</p><form action="' . menu_page_url( 'cawp_setup', false ) . '" method="POST">' . get_submit_button( __( "Add credentials", 'clicky-analytics' ), 'secondary' ) . '</form>';
 					return;
 				}
-			}
 
 			if ( ! ( $projectId ) ) {
 				echo '<p>' . __( "Something went wrong while retrieving property data. You need to create and properly configure a Clicky Analytics account:", 'clicky-analytics' ) . '</p> <form action="https://deconf.com/clicky-analytics-dashboard-wordpress/" method="POST">' . get_submit_button( __( "Find out more!", 'clicky-analytics' ), 'secondary' ) . '</form>';

@@ -557,9 +557,9 @@ jQuery.fn.extend( {
 					legend : {
 						position : 'none'
 					},
-					pointSize : 1.2,
+					pointSize : 3,
 					colors : [ cawpItemData.colorVariations[ 0 ], cawpItemData.colorVariations[ 4 ] ],
-					areaOpacity : 0.9,
+					areaOpacity : 0.7,
 					chartArea : {
 						width : '99%',
 						height : '90%'

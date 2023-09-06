@@ -24,7 +24,6 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 		 */
 		public function __construct() {
 			$this->cawp = CAWP();
-			// add cURL server settings to Guzzle
 			$httpoptions = array();
 			$origin = CAWP_Tools::strip_protocol( get_site_url() );
 			$httpoptions['headers'] = array( 'referer' => CAWP_CURRENT_VERSION, 'User-Agent' => $origin );
@@ -122,7 +121,7 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 				}
 				// Disable filters
 				$filters = '';
-				$request = CAWP_ENDPOINT_URL . "site_id=" . $projectId . "&sitekey=" . $this->sitekey . "&date=" . $from . "," . $to . "&type=" . $metrics . $dimensions . $filters . "&output=php";
+				$request = CAWP_ENDPOINT_URL . "site_id=" . $projectId . "&sitekey=" . $this->sitekey . "&date=" . $from . "," . $to . "&type=" . $metrics . $dimensions . $options . $filters . "&output=php";
 				$args = array( 'timeout' => 15, 'redirection' => 1, 'httpversion' => '1.0', 'user-agent' => 'Clicky Analytics (+https://deconf.com/clicky-analytics-dashboard-wordpress/)' );
 				$result = wp_remote_get( $request, $args );
 				if ( is_array( $result ) and 200 == $result['response']['code'] ) {
@@ -300,8 +299,8 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 		 */
 		private function get_locations( $projectId, $from, $to, $metric, $filter = '' ) {
 			$metrics = 'visitors-list';
-			$options = '';
-			$dimensions = '&visitor-details=geolocation&limit=all&page=';
+			$options = '&limit=all&page=';
+			$dimensions = '&visitor-details=geolocation';
 			$title = __( "Countries", 'clicky-analytics' );
 			if ( $filter ) {
 				$filters = '&href=' . urlencode( $filter );
@@ -309,19 +308,27 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 				$filters = '';
 			}
 			$page = 1;
-			$data['visitors-list'][0] = true;
+			$count = 1000;
 			$rawdata = array();
-			while ( ! empty( array_values( $data['visitors-list'] )[0] ) ) {
-				$serial = 'qr4_' . $this->get_serial( $projectId . $from . $to . $filter . $dimensions . $page );
-				$data = $this->handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions . $page, $options, $filters, $serial );
+			// Iterate pages: free account 100 results per page / pro account 1000 results per page
+			while ( 100 == $count || 1000 == $count ) {
+				$serial = 'qr4_' . $this->get_serial( $projectId . $from . $to . $filter . $dimensions . $options . $page );
+				$data = $this->handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions, $options . $page, $filters, $serial );
 				if ( is_numeric( $data ) ) {
 					return $data;
 				}
-				if ( ! empty( array_values( $data['visitors-list'] )[0] ) ) {
+				$count = count( array_values( $data['visitors-list'] )[0] );
+				if ( $count > 0 ) {
 					foreach ( $data as $item ) {
 						foreach ( $item as $date => $location ) {
 							foreach ( $location as $geo ) {
 								$country = explode( ',', $geo['geolocation'] );
+
+								// If USA, move Country name over State name
+								if ( isset( $country[2] ) ) {
+									$country[1] = $country[2];
+								}
+
 								if ( isset( $country[1] ) ) {
 									if ( isset( $rawdata[trim( $country[1] )] ) ) {
 										$rawdata[trim( $country[1] )]++;
@@ -365,8 +372,8 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 		 */
 		private function get_pages( $projectId, $from, $to, $metric, $filter = '' ) {
 			$metrics = '';
-			$options = '';
-			$dimensions = 'pages&limit=all&page=';
+			$options = '&limit=all&page=';
+			$dimensions = 'pages';
 			if ( $filter ) {
 				$filters = '&href=' . urlencode( $filter );
 			} else {
@@ -374,14 +381,16 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 			}
 			$cawp_data = array( array( __( "Pages", 'clicky-analytics' ), __( ucfirst( $metric ), 'clicky-analytics' ) ) );
 			$page = 1;
-			$data['pages'][0] = true;
-			while ( ! empty( array_values( $data['pages'] )[0] ) ) {
-				$serial = 'qr5_' . $this->get_serial( $projectId . $from . $to . $filter . $dimensions . $page );
-				$data = $this->handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions . $page, $options, $filters, $serial );
+			$count = 1000;
+			// Iterate pages: free account 100 results per page / pro account 1000 results per page
+			while ( 100 == $count || 1000 == $count ) {
+				$serial = 'qr5_' . $this->get_serial( $projectId . $from . $to . $filter . $dimensions . $options . $page );
+				$data = $this->handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions, $options . $page, $filters, $serial );
 				if ( is_numeric( $data ) ) {
 					return $data;
 				}
-				if ( ! empty( array_values( $data['pages'] )[0] ) ) {
+				$count = count( array_values( $data['pages'] )[0] );
+				if ( $count > 0 ) {
 					foreach ( $data as $items ) {
 						foreach ( $items as $date => $item ) {
 							foreach ( $item as $value ) {
@@ -412,8 +421,8 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 		 */
 		private function get_referrers( $projectId, $from, $to, $metric, $filter = '' ) {
 			$metrics = '';
-			$options = '';
-			$dimensions = 'links-domains&limit=all&page=';
+			$options = '&limit=all&page=';
+			$dimensions = 'links-domains';
 			if ( $filter ) {
 				$filters = '&href=' . urlencode( $filter );
 			} else {
@@ -421,14 +430,16 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 			}
 			$cawp_data = array( array( __( "Referrers", 'clicky-analytics' ), __( ucfirst( $metric ), 'clicky-analytics' ) ) );
 			$page = 1;
-			$data['links-domains'][0] = true;
-			while ( ! empty( array_values( $data['links-domains'] )[0] ) ) {
-				$serial = 'qr6_' . $this->get_serial( $projectId . $from . $to . $filter . $dimensions . $page );
-				$data = $this->handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions . $page, $options, $filters, $serial );
+			$count = 1000;
+			// Iterate pages: free account 100 results per page / pro account 1000 results per page
+			while ( 100 == $count || 1000 == $count ) {
+				$serial = 'qr6_' . $this->get_serial( $projectId . $from . $to . $filter . $dimensions . $options . $page );
+				$data = $this->handle_clickyanalytics_reports( $projectId, $from, $to, $metrics, $dimensions, $options . $page, $filters, $serial );
 				if ( is_numeric( $data ) ) {
 					return $data;
 				}
-				if ( ! empty( array_values( $data['links-domains'] )[0] ) ) {
+				$count = count( array_values( $data['links-domains'] )[0] );
+				if ( $count > 0 ) {
 					foreach ( $data as $items ) {
 						foreach ( $items as $date => $item ) {
 							foreach ( $item as $value ) {
