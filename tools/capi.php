@@ -317,7 +317,13 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 				if ( is_numeric( $data ) ) {
 					return $data;
 				}
-				$count = count( array_values( $data['visitors-list'] )[0] );
+
+				if ( NULL !== array_values( $data['visitors-list'] )[0] ) {
+					$count = count( array_values( $data['visitors-list'] )[0] );
+				} else {
+					$count = 0;
+				}
+
 				if ( $count > 0 ) {
 					foreach ( $data as $item ) {
 						foreach ( $item as $date => $location ) {
@@ -389,7 +395,13 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 				if ( is_numeric( $data ) ) {
 					return $data;
 				}
-				$count = count( array_values( $data['pages'] )[0] );
+
+				if ( NULL !== array_values( $data['pages'] )[0] ) {
+					$count = count( array_values( $data['pages'] )[0] );
+				} else {
+					$count = 0;
+				}
+
 				if ( $count > 0 ) {
 					foreach ( $data as $items ) {
 						foreach ( $items as $date => $item ) {
@@ -438,7 +450,13 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 				if ( is_numeric( $data ) ) {
 					return $data;
 				}
-				$count = count( array_values( $data['links-domains'] )[0] );
+
+				if ( NULL !== array_values( $data['links-domains'] )[0] ) {
+					$count = count( array_values( $data['links-domains'] )[0] );
+				} else {
+					$count = 0;
+				}
+
 				if ( $count > 0 ) {
 					foreach ( $data as $items ) {
 						foreach ( $items as $date => $item ) {
