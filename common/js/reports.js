@@ -212,7 +212,7 @@ jQuery.fn.extend( {
 				tpl += '<div id="cawp-reports' + slug + '"></div>';
 				tpl += '<div style="text-align:right;width:100%;font-size:0.8em;clear:both;margin-right:5px;margin-top:10px;">';
 				tpl += cawpItemData.i18n[ 14 ];
-				tpl += ' <a href="https://deconf.com/clicky-analytics/" rel="nofollow" style="text-decoration:none;font-size:1em;color:#0073aa;">Clicky Analytics</a>&nbsp;';
+				tpl += ' <a href="https://deconf.com/clicky-analytics-dashboard-wordpress/" rel="nofollow" style="text-decoration:none;font-size:1em;color:#0073aa;">Clicky Analytics</a>&nbsp;';
 				tpl += '</div>';
 				tpl += '</div>',
 

@@ -280,7 +280,7 @@
 	line-height: 1.2em !important;
 }
 
-[id^=cawp-tablechart-] a:link, [id^=aiwp-tablechart-] a:visited, [id^=aiwp-tablechart-] a:hover {
+[id^=cawp-tablechart-] a:link, [id^=cawp-tablechart-] a:visited, [id^=cawp-tablechart-] a:hover {
 	color: black;
 }
 

@@ -9,7 +9,7 @@
 				<span><?php _e("Setup Tutorial",'clicky-analytics') ?></span>
 			</h3>
 			<div class="inside">
-				<a href="https://deconf.com/clicky-analytics/" target="_blank"><img src="<?php echo plugins_url( '../images/cawp-tutorial.png' , __FILE__ );?>" width="100%" alt="" /></a>
+				<a href="https://deconf.com/clicky-analytics-dashboard-wordpress/" target="_blank"><img src="<?php echo plugins_url( '../images/cawp-tutorial.png' , __FILE__ );?>" width="100%" alt="" /></a>
 			</div>
 		</div>
 		<div class="postbox">

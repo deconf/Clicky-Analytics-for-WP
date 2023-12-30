@@ -91,7 +91,7 @@ final class CAWP_Settings {
 							</tr>
 							<tr>
 												<tr>
-													<td class="seiwp-settings-title">
+													<td class="cawp-settings-title">
 														<label for="site_jail"><?php _e("Tracking Code:", 'clicky-analytics' ); ?></label>
 													</td>
 													<td>
@@ -428,7 +428,7 @@ final class CAWP_Settings {
 			return;
 		}
 		$options = self::update_options( 'setup' );
-		printf( '<div id="capi-warning" class="updated"><p>%1$s <a href="https://deconf.com/clicky-analytics/">%2$s</a></p></div>', __( 'Loading the required libraries. If this results in a blank screen or a fatal error, try this solution:', 'clicky-analytics' ), __( 'Library conflicts between WordPress plugins', 'clicky-analytics' ) );
+		printf( '<div id="capi-warning" class="updated"><p>%1$s <a href="https://deconf.com/clicky-analytics-dashboard-wordpress/">%2$s</a></p></div>', __( 'Loading the required libraries. If this results in a blank screen or a fatal error, try this solution:', 'clicky-analytics' ), __( 'Library conflicts between WordPress plugins', 'clicky-analytics' ) );
 		if ( null === $cawp->capi_controller ) {
 			$cawp->capi_controller = new CAWP_CAPI_Controller();
 		}

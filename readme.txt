@@ -5,7 +5,7 @@ Tags: clicky, analytics, statistics, stats
 Requires at least: 2.8
 Tested up to: 6.4
 Requires PHP: 5.2.4
-Stable tag: 2.0.4
+Stable tag: 2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -86,6 +86,10 @@ We are constantly improving our plugin, sometimes the video tutorial may be a li
 This plugin it's released under the GPLv2, you can use it free of charge on your personal or commercial website.
 
 == Changelog ==
+
+= 2.1 (2023.12.20) =
+* Bug Fixes:
+	* multiple CSS and URI fixes
 
 = 2.0.4 (2023.12.02) =
 * Bug Fixes:

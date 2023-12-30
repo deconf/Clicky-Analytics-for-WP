@@ -284,7 +284,7 @@ if ( ! class_exists( 'CAWP_Backend_Setup' ) ) {
 			if ( get_option( 'cawp_got_updated' ) ) :
 				?>
 <div id="cawp-notice" class="notice is-dismissible">
-	<p><?php echo sprintf( __('Clicky Analytics has been updated to version %s.', 'clicky-analytics' ), CAWP_CURRENT_VERSION).' '.sprintf( __('For details, check out %1$s.', 'clicky-analytics' ), sprintf(' <a href="https://deconf.com/clicky-analytics/">%s</a>', __('the plugin documentation', 'clicky-analytics') ) ); ?></p>
+	<p><?php echo sprintf( __('Clicky Analytics has been updated to version %s.', 'clicky-analytics' ), CAWP_CURRENT_VERSION).' '.sprintf( __('For details, check out %1$s.', 'clicky-analytics' ), sprintf(' <a href="https://deconf.com/clicky-analytics-dashboard-wordpress/">%s</a>', __('the plugin documentation', 'clicky-analytics') ) ); ?></p>
 </div>
 <?php
 			endif;
