@@ -228,6 +228,7 @@ jQuery.fn.extend( {
 
 		reports = {
 			oldViewPort : 0,
+			inProgress : 0,
 			orgChartTableChartData : '',
 			tableChartData : '',
 			orgChartPieChartsData : '',
@@ -806,36 +807,54 @@ jQuery.fn.extend( {
 			},
 
 			init : function () {
-
-				try {
-					CAWPNProgress.configure( {
-						parent : "#cawp-progressbar" + slug,
-						showSpinner : false
-					} );
-					CAWPNProgress.start();
-				} catch ( e ) {
-					reports.alertMessage( cawpItemData.i18n[ 0 ] );
-				}
-
-				reports.render( jQuery( '#cawp-sel-property' + slug ).val(), jQuery( 'input[name="cawp-sel-period' + slug + '"]' ).val(), jQuery( '#cawp-sel-report' + slug ).val() );
-
-				jQuery( window ).resize( function () {
-					var diff = jQuery( window ).width() - reports.oldViewPort;
-					if ( ( diff < -5 ) || ( diff > 5 ) ) {
-						reports.oldViewPort = jQuery( window ).width();
-						reports.refresh(); // refresh only on over 5px viewport width changes
+			
+				if ( !reports.inProgress ) {
+					
+					reports.inProgress = 1;
+					
+					try {
+						CAWPNProgress.configure( {
+							parent : "#cawp-progressbar" + slug,
+							showSpinner : false
+						} );
+						CAWPNProgress.start();
+					} catch ( e ) {
+						reports.alertMessage( cawpItemData.i18n[ 0 ] );
 					}
-				} );
+	
+					reports.render( jQuery( '#cawp-sel-property' + slug ).val(), jQuery( 'input[name="cawp-sel-period' + slug + '"]' ).val(), jQuery( '#cawp-sel-report' + slug ).val() );
+	
+					jQuery( window ).resize( function () {
+						var diff = jQuery( window ).width() - reports.oldViewPort;
+						if ( ( diff < -5 ) || ( diff > 5 ) ) {
+							reports.oldViewPort = jQuery( window ).width();
+							reports.refresh(); // refresh only on over 5px viewport width changes
+						}
+					} );
+					
+					reports.inProgress = 1;
+				}	
 			}
 		}
 
 		template.init();
 
 		reports.init();
-
-		jQuery( '#cawp-sel-property' + slug ).change( function () {
-			reports.init();
-		} );
+		
+		setTimeout(
+		  function() {
+			jQuery( '#cawp-sel-property' + slug ).change( function () {
+				reports.init();
+			} );
+			
+			jQuery( 'input[name="cawp-sel-period' + slug + '"]' ).change( function () {
+				reports.init();
+			} );
+	
+			jQuery( '#cawp-sel-report' + slug ).change( function () {
+				reports.init();
+			} );		
+		}, 1000);		
 
 		jQuery( function () {
 			jQuery( 'input[name="cawp-sel-period' + slug + '"]' ).daterangepicker( {
@@ -855,14 +874,6 @@ jQuery.fn.extend( {
 					format : 'YYYY-MM-DD'
 				}
 			}, function(start, end, label) { tools.setCookie( 'default_interval', label ); } );
-		} );
-
-		jQuery( 'input[name="cawp-sel-period' + slug + '"]' ).change( function () {
-			reports.init();
-		} );
-
-		jQuery( '#cawp-sel-report' + slug ).change( function () {
-			reports.init();
 		} );
 
 		jQuery( '[id^=cawp-swmetric-]' ).click( function () {

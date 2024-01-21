@@ -87,6 +87,10 @@ This plugin it's released under the GPLv2, you can use it free of charge on your
 
 == Changelog ==
 
+= 2.2 (2024.01.19) =
+* Bug Fixes:
+	* prevent multiple Clicky Analytics reports calls at first widget render	
+
 = 2.1 (2023.12.20) =
 * Bug Fixes:
 	* multiple CSS and URI fixes
