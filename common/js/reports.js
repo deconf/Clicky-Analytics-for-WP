@@ -832,7 +832,7 @@ jQuery.fn.extend( {
 						}
 					} );
 					
-					reports.inProgress = 1;
+					reports.inProgress = 0;
 				}	
 			}
 		}

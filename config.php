@@ -106,6 +106,8 @@ if ( ! class_exists( 'CAWP_Config' ) ) {
 		private function maintain_compatibility() {
 			$flag = false;
 
+			CAWP_Tools::delete_expired_cache();
+
 			$prevver = get_option( 'cawp_version' );
 			if ( $prevver && CAWP_CURRENT_VERSION != $prevver ) {
 				$flag = true;
