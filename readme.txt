@@ -5,7 +5,7 @@ Tags: clicky, analytics, statistics, stats
 Requires at least: 2.8
 Tested up to: 6.4
 Requires PHP: 5.2.4
-Stable tag: 2.1
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,11 +87,11 @@ This plugin it's released under the GPLv2, you can use it free of charge on your
 
 == Changelog ==
 
-= 2.2 (2024.01.19) =
+= 2.2.1 (2024.01.26) =
 * Bug Fixes:
 	* prevent multiple Clicky Analytics reports calls at first widget render	
 * Enhancements:
-	* automatically clear expired cache	
+	* clear expired cache daily using WP Cron
 
 = 2.1 (2023.12.20) =
 * Bug Fixes:

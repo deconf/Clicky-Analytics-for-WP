@@ -4,7 +4,7 @@
  * Plugin URI: https://deconf.com
  * Description: Displays Clicky Analytics reports into your Dashboard. Automatically inserts the tracking code in every page of your website.
  * Author: Alin Marcu
- * Version: 2.1
+ * Version: 2.2.1
  * Author URI: https://deconf.com
  * Text Domain: clicky-analytics
  * Domain Path: /languages
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) )
 
 // Plugin Version
 if ( ! defined( 'CAWP_CURRENT_VERSION' ) ) {
-	define( 'CAWP_CURRENT_VERSION', '2.1' );
+	define( 'CAWP_CURRENT_VERSION', '2.2.1' );
 }
 
 if ( ! defined( 'CAWP_ENDPOINT_URL' ) ) {

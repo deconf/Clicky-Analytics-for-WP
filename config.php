@@ -28,6 +28,24 @@ if ( ! class_exists( 'CAWP_Config' ) ) {
 			if ( is_multisite() ) {
 				add_filter( 'plugins_update_check_locales', array( $this, 'translation_updates' ), 10, 1 );
 			}
+			/**
+			 * Clear expired cache using WP Cron
+			 */
+			if ( ! wp_next_scheduled( 'aiwp_expired_cache_hook' ) ) {
+
+				$datetime = new DateTime('tomorrow', new DateTimeZone(wp_timezone_string()));
+				$timestamp = $datetime->getTimestamp();
+
+				wp_schedule_event($timestamp, 'daily', 'aiwp_expired_cache_hook');
+
+			}
+
+			add_action ( 'aiwp_expired_cache_hook', array( $this, 'delete_expired_cache' ) );
+
+		}
+
+		public function delete_expired_cache (){
+			CAWP_Tools::delete_expired_cache();
 		}
 
 		/**
@@ -105,8 +123,6 @@ if ( ! class_exists( 'CAWP_Config' ) ) {
 		 */
 		private function maintain_compatibility() {
 			$flag = false;
-
-			CAWP_Tools::delete_expired_cache();
 
 			$prevver = get_option( 'cawp_version' );
 			if ( $prevver && CAWP_CURRENT_VERSION != $prevver ) {

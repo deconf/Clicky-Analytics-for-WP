@@ -175,7 +175,7 @@ if ( ! class_exists( 'CAWP_Tools' ) ) {
 		 */
 		public static function clear_cache() {
 			global $wpdb;
-			$sqlquery = $wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE '_cawp_cache_qr%%'" );
+			$sqlquery = $wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE '%%cawp_cache_%%'" );
 		}
 
 		public static function delete_expired_cache() {

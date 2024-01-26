@@ -18,13 +18,13 @@ class CAWP_Uninstall {
 		if ( is_multisite() ) { // Cleanup Network install
 			foreach ( CAWP_Tools::get_sites( array( 'number' => apply_filters( 'cawp_sites_limit', 100 ) ) ) as $blog ) {
 				switch_to_blog( $blog['blog_id'] );
-				$sqlquery = $wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE 'cawp_cache_%%'" );
+				$sqlquery = $wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE '%%cawp_cache_%%'" );
 				delete_option( 'cawp_options' );
 				restore_current_blog();
 			}
 			delete_site_option( 'cawp_network_options' );
 		} else { // Cleanup Single install
-			$sqlquery = $wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE 'cawp_cache_%%'" );
+			$sqlquery = $wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE '%%cawp_cache_%%'" );
 			delete_option( 'cawp_options' );
 		}
 		CAWP_Tools::unset_cookie( 'default_metric' );
