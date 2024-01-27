@@ -6,11 +6,9 @@
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
-
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) )
 	exit();
-
 if ( ! class_exists( 'CAWP_Tools' ) ) {
 
 	class CAWP_Tools {
@@ -63,14 +61,14 @@ if ( ! class_exists( 'CAWP_Tools' ) ) {
 				$per = abs( $per );
 				for ( $x = 0; $x < 3; $x++ ) {
 					$c = hexdec( substr( $colour, ( 2 * $x ), 2 ) ) - $per;
-					$c = ( $c < 0 ) ? 0 : dechex( (int)$c );
+					$c = ( $c < 0 ) ? 0 : dechex( (int) $c );
 					$rgb .= ( strlen( $c ) < 2 ) ? '0' . $c : $c;
 				}
 			} else {
 				// Lighter
 				for ( $x = 0; $x < 3; $x++ ) {
 					$c = hexdec( substr( $colour, ( 2 * $x ), 2 ) ) + $per;
-					$c = ( $c > 255 ) ? 'ff' : dechex( (int)$c );
+					$c = ( $c > 255 ) ? 'ff' : dechex( (int) $c );
 					$rgb .= ( strlen( $c ) < 2 ) ? '0' . $c : $c;
 				}
 			}
@@ -99,7 +97,7 @@ if ( ! class_exists( 'CAWP_Tools' ) ) {
 		 * @param boolean $flag
 		 * @return boolean
 		 */
-		public static function check_roles( $access_level, $flag = false) {
+		public static function check_roles( $access_level, $flag = false ) {
 			if ( is_user_logged_in() && isset( $access_level ) ) {
 				$current_user = wp_get_current_user();
 				$roles = (array) $current_user->roles;
@@ -131,7 +129,7 @@ if ( ! class_exists( 'CAWP_Tools' ) ) {
 		 * @param mixed $value
 		 * @param number $expiration
 		 */
-		public static function set_cache( $name, $value, $expiration = 0) {
+		public static function set_cache( $name, $value, $expiration = 0 ) {
 			update_option( '_cawp_cache_' . $name, $value, 'no' );
 			update_option( '_cawp_cache_timeout_' . $name, time() + (int) $expiration, 'no' );
 		}
@@ -156,11 +154,9 @@ if ( ! class_exists( 'CAWP_Tools' ) ) {
 		public static function get_cache( $name ) {
 			$value = get_option( '_cawp_cache_' . $name );
 			$expires = get_option( '_cawp_cache_timeout_' . $name );
-
 			if ( false === $value || ! isset( $value ) || ! isset( $expires ) ) {
 				return false;
 			}
-
 			if ( $expires < time() ) {
 				delete_option( '_cawp_cache_' . $name );
 				delete_option( '_cawp_cache_timeout_' . $name );
@@ -180,55 +176,30 @@ if ( ! class_exists( 'CAWP_Tools' ) ) {
 
 		public static function delete_expired_cache() {
 			global $wpdb;
-
 			if ( wp_using_ext_object_cache() ) {
 				return;
 			}
-
-			$wpdb->query(
-				$wpdb->prepare(
-					"DELETE a, b FROM {$wpdb->options} a, {$wpdb->options} b
+			$wpdb->query( $wpdb->prepare( "DELETE a, b FROM {$wpdb->options} a, {$wpdb->options} b
 			WHERE a.option_name LIKE %s
 			AND a.option_name NOT LIKE %s
 			AND b.option_name = CONCAT( '_cawp_cache_timeout_', SUBSTRING( a.option_name, 13 ) )
-			AND b.option_value < %d",
-			$wpdb->esc_like( '_cawp_cache_' ) . '%',
-			$wpdb->esc_like( '_cawp_cache_timeout_' ) . '%',
-			time()
-				)
-				);
-
+			AND b.option_value < %d", $wpdb->esc_like( '_cawp_cache_' ) . '%', $wpdb->esc_like( '_cawp_cache_timeout_' ) . '%', time() ) );
 			if ( ! is_multisite() ) {
 				// Single site stores site transients in the options table.
-				$wpdb->query(
-					$wpdb->prepare(
-						"DELETE a, b FROM {$wpdb->options} a, {$wpdb->options} b
+				$wpdb->query( $wpdb->prepare( "DELETE a, b FROM {$wpdb->options} a, {$wpdb->options} b
 				WHERE a.option_name LIKE %s
 				AND a.option_name NOT LIKE %s
 				AND b.option_name = CONCAT( '_site_cawp_cache_timeout_', SUBSTRING( a.option_name, 18 ) )
-				AND b.option_value < %d",
-				$wpdb->esc_like( '_site_cawp_cache_' ) . '%',
-				$wpdb->esc_like( '_site_cawp_cache_timeout_' ) . '%',
-				time()
-					)
-					);
+				AND b.option_value < %d", $wpdb->esc_like( '_site_cawp_cache_' ) . '%', $wpdb->esc_like( '_site_cawp_cache_timeout_' ) . '%', time() ) );
 			} elseif ( is_multisite() && is_main_site() && is_main_network() ) {
 				// Multisite stores site transients in the sitemeta table.
-				$wpdb->query(
-					$wpdb->prepare(
-						"DELETE a, b FROM {$wpdb->sitemeta} a, {$wpdb->sitemeta} b
+				$wpdb->query( $wpdb->prepare( "DELETE a, b FROM {$wpdb->sitemeta} a, {$wpdb->sitemeta} b
 				WHERE a.meta_key LIKE %s
 				AND a.meta_key NOT LIKE %s
 				AND b.meta_key = CONCAT( '_site_cawp_cache_timeout_', SUBSTRING( a.meta_key, 18 ) )
-				AND b.meta_value < %d",
-				$wpdb->esc_like( '_site_cawp_cache_' ) . '%',
-				$wpdb->esc_like( '_site_cawp_cache_timeout_' ) . '%',
-				time()
-					)
-					);
+				AND b.meta_value < %d", $wpdb->esc_like( '_site_cawp_cache_' ) . '%', $wpdb->esc_like( '_site_cawp_cache_timeout_' ) . '%', time() ) );
 			}
 		}
-
 
 		/**
 		 * Loads a view file
@@ -239,7 +210,7 @@ if ( ! class_exists( 'CAWP_Tools' ) ) {
 		 * @param array $data - data to pass along to the template
 		 * @return boolean - If template file was found
 		 **/
-		public static function load_view( $path, $data = array()) {
+		public static function load_view( $path, $data = array() ) {
 			if ( file_exists( CAWP_DIR . $path ) ) {
 				require_once ( CAWP_DIR . $path );
 				return true;
@@ -258,7 +229,6 @@ if ( ! class_exists( 'CAWP_Tools' ) ) {
 					/* translators: %s: version number */
 					$version = sprintf( __( 'This message was added in version %s.', 'clicky-analytics' ), $version );
 				}
-
 				/* translators: Developer debugging message. 1: PHP function name, 2: Explanatory message, 3: Version information message */
 				trigger_error( sprintf( __( '%1$s was called <strong>incorrectly</strong>. %2$s %3$s', 'clicky-analytics' ), $function, $message, $version ) );
 			}
@@ -301,11 +271,9 @@ if ( ! class_exists( 'CAWP_Tools' ) ) {
 		 */
 		public static function anonymize_options( $options ) {
 			global $wp_version;
-
 			if ( defined( 'SCRIPT_DEBUG' ) and SCRIPT_DEBUG ) {
-				return $options; //don't hide credentials when DEBUG is enabled
+				return $options; // don't hide credentials when DEBUG is enabled
 			}
-
 			$options['wp_version'] = $wp_version;
 			$options['cawp_version'] = CAWP_CURRENT_VERSION;
 			if ( $options['sitekey'] ) {
@@ -314,7 +282,6 @@ if ( ! class_exists( 'CAWP_Tools' ) ) {
 			if ( $options['siteid'] ) {
 				$options['siteid'] = 'HIDDEN';
 			}
-
 			return $options;
 		}
 
@@ -358,7 +325,6 @@ if ( ! class_exists( 'CAWP_Tools' ) ) {
 			}
 			$gzip_status = ( $gzip ) ? 'Yes' : 'No';
 			$info .= 'Gzip: ' . $gzip_status . "\n";
-
 			return $info;
 		}
 
@@ -377,7 +343,6 @@ if ( ! class_exists( 'CAWP_Tools' ) ) {
 
 		public static function number_to_kmb( $number ) {
 			$number_format = '';
-
 			if ( $number < 1000 ) {
 				// Anything less than a thousand
 				$number_format = number_format_i18n( $number );
@@ -391,21 +356,41 @@ if ( ! class_exists( 'CAWP_Tools' ) ) {
 				// At least a billion
 				$number_format = number_format_i18n( $number / 1000000000, 2 ) . 'B';
 			}
-
 			return $number_format;
 		}
 
-		public static function secondstohms( $value ){
-
+		public static function secondstohms( $value ) {
+			$value = (float) $value;
 			$hours = floor( $value / 3600 );
 			$hours = $hours < 10 ? '0' . $hours : (string) $hours;
-			$minutes = floor( ( $value / 60 ) % 60 );
+			$minutes = floor( (int) ( $value / 60 ) % 60 );
 			$minutes = $minutes < 10 ? '0' . $minutes : (string) $minutes;
-			$seconds = $value % 60;
+			$seconds = floor( $value % 60 );
 			$seconds = $seconds < 10 ? '0' . $seconds : (string) $seconds;
-
 			return $hours . ':' . $minutes . ':' . $seconds;
+		}
 
+		/** Keeps compatibility with WP < 5.3.0
+		 *
+		 * @return string
+		 */
+		public static function timezone_string() {
+			$timezone_string = get_option( 'timezone_string' );
+
+			if ( $timezone_string ) {
+				return $timezone_string;
+			}
+
+			$offset  = (float) get_option( 'gmt_offset' );
+			$hours   = (int) $offset;
+			$minutes = ( $offset - $hours );
+
+			$sign      = ( $offset < 0 ) ? '-' : '+';
+			$abs_hour  = abs( $hours );
+			$abs_mins  = abs( $minutes * 60 );
+			$tz_offset = sprintf( '%s%02d:%02d', $sign, $abs_hour, $abs_mins );
+
+			return $tz_offset;
 		}
 
 	}

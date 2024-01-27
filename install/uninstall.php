@@ -31,5 +31,10 @@ class CAWP_Uninstall {
 		CAWP_Tools::unset_cookie( 'default_dimension' );
 		CAWP_Tools::unset_cookie( 'default_view' );
 		CAWP_Tools::unset_cookie( 'default_swmetric' );
+
+		$timestamp = wp_next_scheduled( 'cawp_expired_cache_hook' );
+		wp_unschedule_event( $timestamp, 'cawp_expired_cache_hook' );
+
+
 	}
 }
