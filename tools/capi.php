@@ -192,7 +192,7 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 				default :
 					$title = __( "Visitors", 'clicky-analytics' );
 			}
-			if ( $from === $to ) {
+			if ( ( $from === $to ) && ( 'bounce-rate' !== $query && 'time-average' !== $query ) ) {
 				$dimensions = '&hourly=1';
 			} else {
 				$dimensions = '&daily=1';
