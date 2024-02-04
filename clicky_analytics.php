@@ -53,6 +53,8 @@ if ( ! class_exists( 'CAWP_Manager' ) ) {
 
 		public $capi_controller = null;
 
+		public $tracking = null;
+
 		/**
 		 * Construct forbidden
 		 */

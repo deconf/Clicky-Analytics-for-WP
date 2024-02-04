@@ -87,6 +87,10 @@ This plugin it's released under the GPLv2, you can use it free of charge on your
 
 == Changelog ==
 
+= 2.2.3 (2024.02.05) =
+* Bug Fixes:
+	* fixes PHP 8.3 deprecated warnings
+
 = 2.2.2 (2024.01.27) =
 * Bug Fixes:
 	* fixes PHP 8.x deprecated warnings
