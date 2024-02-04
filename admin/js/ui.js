@@ -15,7 +15,7 @@ jQuery( document ).ready( function () {
 		cawp_security_dismiss_notices : cawp_ui_data.security,
 	}
 
-	jQuery( "#cawp-notice .notice-dismiss" ).click( function () {
+	jQuery( "#cawp-notice .notice-dismiss" ).on("click",  function () {
 		jQuery.post( cawp_ui_data.ajaxurl, cawp_ui );
 	} );
 

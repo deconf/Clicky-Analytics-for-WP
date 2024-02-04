@@ -117,7 +117,10 @@ jQuery.fn.extend( {
 				div = document.createElement( 'div' );
 				div.appendChild( document.createTextNode( str ) );
 				return div.innerHTML;
-			}
+			},
+			isNumeric : function (string) {
+				return !isNaN(parseFloat(string)) && isFinite(string);
+			},				
 		}
 
 		template = {
@@ -277,9 +280,9 @@ jQuery.fn.extend( {
 				}
 
 				reports.areachartSummaryData = response;
-				if ( jQuery.isArray( response ) ) {
-					if ( !jQuery.isNumeric( response[ 0 ] ) ) {
-						if ( jQuery.isArray( response[ 0 ] ) ) {
+				if ( Array.isArray( response ) ) {
+					if ( !tools.isNumeric( response[ 0 ] ) ) {
+						if ( Array.isArray( response[ 0 ] ) ) {
 							if ( postData.query == 'visitBounceRate,summary' ) {
 								reports.drawareachart( response[ 0 ], true );
 							} else {
@@ -291,8 +294,8 @@ jQuery.fn.extend( {
 					} else {
 						reports.throwError( '#cawp-areachart' + slug, response[ 0 ], "125px" );
 					}
-					if ( !jQuery.isNumeric( response[ 1 ] ) ) {
-						if ( jQuery.isArray( response[ 1 ] ) ) {
+					if ( !tools.isNumeric( response[ 1 ] ) ) {
+						if ( Array.isArray( response[ 1 ] ) ) {
 							reports.drawSummary( response[ 1 ] );
 						} else {
 							reports.throwDebug( response[ 1 ] );
@@ -327,9 +330,9 @@ jQuery.fn.extend( {
 				}
 
 				reports.orgChartPieChartsData = response;
-				if ( jQuery.isArray( response ) ) {
-					if ( !jQuery.isNumeric( response[ 0 ] ) ) {
-						if ( jQuery.isArray( response[ 0 ] ) ) {
+				if ( Array.isArray( response ) ) {
+					if ( !tools.isNumeric( response[ 0 ] ) ) {
+						if ( Array.isArray( response[ 0 ] ) ) {
 							
 							reports.drawOrgChart( response[ 0 ] );
 						} else {
@@ -341,8 +344,8 @@ jQuery.fn.extend( {
 					}
 
 					for ( i = 1; i < response.length; i++ ) {
-						if ( !jQuery.isNumeric( response[ i ] ) ) {
-							if ( jQuery.isArray( response[ i ] ) ) {
+						if ( !tools.isNumeric( response[ i ] ) ) {
+							if ( Array.isArray( response[ i ] ) ) {
 								
 								reports.drawPieChart( 'piechart-' + i, response[ i ], reports.i18n[ i ] );
 							} else {
@@ -375,9 +378,9 @@ jQuery.fn.extend( {
 				}
 
 				reports.geoChartTableChartData = response;
-				if ( jQuery.isArray( response ) ) {
-					if ( !jQuery.isNumeric( response[ 0 ] ) ) {
-						if ( jQuery.isArray( response[ 0 ] ) ) {
+				if ( Array.isArray( response ) ) {
+					if ( !tools.isNumeric( response[ 0 ] ) ) {
+						if ( Array.isArray( response[ 0 ] ) ) {
 							reports.drawGeoChart( response[ 0 ] );
 							reports.drawTableChart( response[ 0 ] );
 						} else {
@@ -410,9 +413,9 @@ jQuery.fn.extend( {
 				}
 
 				reports.orgChartTableChartData = response
-				if ( jQuery.isArray( response ) ) {
-					if ( !jQuery.isNumeric( response[ 0 ] ) ) {
-						if ( jQuery.isArray( response[ 0 ] ) ) {
+				if ( Array.isArray( response ) ) {
+					if ( !tools.isNumeric( response[ 0 ] ) ) {
+						if ( Array.isArray( response[ 0 ] ) ) {
 							
 							reports.drawOrgChart( response[ 0 ] );
 						} else {
@@ -423,8 +426,8 @@ jQuery.fn.extend( {
 						reports.throwError( '#cawp-orgchart' + slug, response[ 0 ], "125px" );
 					}
 
-					if ( !jQuery.isNumeric( response[ 1 ] ) ) {
-						if ( jQuery.isArray( response[ 1 ] ) ) {
+					if ( !tools.isNumeric( response[ 1 ] ) ) {
+						if ( Array.isArray( response[ 1 ] ) ) {
 							reports.drawTableChart( response[ 1 ] );
 						} else {
 							reports.throwDebug( response[ 1 ] );
@@ -450,9 +453,9 @@ jQuery.fn.extend( {
 				}
 
 				reports.tableChartData = response
-				if ( jQuery.isArray( response ) ) {
-					if ( !jQuery.isNumeric( response[ 0 ] ) ) {
-						if ( jQuery.isArray( response[ 0 ] ) ) {
+				if ( Array.isArray( response ) ) {
+					if ( !tools.isNumeric( response[ 0 ] ) ) {
+						if ( Array.isArray( response[ 0 ] ) ) {
 							
 							reports.drawTableChart( response[ 0 ] );
 						} else {
@@ -789,19 +792,19 @@ jQuery.fn.extend( {
 			},
 
 			refresh : function () {
-				if ( jQuery( '#cawp-areachartsummary' + slug ).length > 0 && jQuery.isArray( reports.areachartSummaryData ) ) {
+				if ( jQuery( '#cawp-areachartsummary' + slug ).length > 0 && Array.isArray( reports.areachartSummaryData ) ) {
 					reports.areachartSummary( reports.areachartSummaryData );
 				}
-				if ( jQuery( '#cawp-orgchartpiecharts' + slug ).length > 0 && jQuery.isArray( reports.orgChartPieChartsData ) ) {
+				if ( jQuery( '#cawp-orgchartpiecharts' + slug ).length > 0 && Array.isArray( reports.orgChartPieChartsData ) ) {
 					reports.orgChartPieCharts( reports.orgChartPieChartsData );
 				}
-				if ( jQuery( '#cawp-geocharttablechart' + slug ).length > 0 && jQuery.isArray( reports.geoChartTableChartData ) ) {
+				if ( jQuery( '#cawp-geocharttablechart' + slug ).length > 0 && Array.isArray( reports.geoChartTableChartData ) ) {
 					reports.geoChartTableChart( reports.geoChartTableChartData );
 				}
-				if ( jQuery( '#cawp-orgcharttablechart' + slug ).length > 0 && jQuery.isArray( reports.orgChartTableChartData ) ) {
+				if ( jQuery( '#cawp-orgcharttablechart' + slug ).length > 0 && Array.isArray( reports.orgChartTableChartData ) ) {
 					reports.orgChartTableChart( reports.orgChartTableChartData );
 				}
-				if ( jQuery( '#cawp-404tablechart' + slug ).length > 0 && jQuery.isArray( reports.tableChartData ) ) {
+				if ( jQuery( '#cawp-404tablechart' + slug ).length > 0 && Array.isArray( reports.tableChartData ) ) {
 					reports.tableChart( reports.tableChartData );
 				}
 			},
@@ -824,7 +827,7 @@ jQuery.fn.extend( {
 	
 					reports.render( jQuery( '#cawp-sel-property' + slug ).val(), jQuery( 'input[name="cawp-sel-period' + slug + '"]' ).val(), jQuery( '#cawp-sel-report' + slug ).val() );
 	
-					jQuery( window ).resize( function () {
+					jQuery( window ).on("resize",  function () {
 						var diff = jQuery( window ).width() - reports.oldViewPort;
 						if ( ( diff < -5 ) || ( diff > 5 ) ) {
 							reports.oldViewPort = jQuery( window ).width();
@@ -843,15 +846,15 @@ jQuery.fn.extend( {
 		
 		setTimeout(
 		  function() {
-			jQuery( '#cawp-sel-property' + slug ).change( function () {
+			jQuery( '#cawp-sel-property' + slug ).on("change",  function () {
 				reports.init();
 			} );
 			
-			jQuery( 'input[name="cawp-sel-period' + slug + '"]' ).change( function () {
+			jQuery( 'input[name="cawp-sel-period' + slug + '"]' ).on("change",  function () {
 				reports.init();
 			} );
 	
-			jQuery( '#cawp-sel-report' + slug ).change( function () {
+			jQuery( '#cawp-sel-report' + slug ).on("change",  function () {
 				reports.init();
 			} );		
 		}, 1000);		
@@ -876,7 +879,7 @@ jQuery.fn.extend( {
 			}, function(start, end, label) { tools.setCookie( 'default_interval', label ); } );
 		} );
 
-		jQuery( '[id^=cawp-swmetric-]' ).click( function () {
+		jQuery( '[id^=cawp-swmetric-]' ).on("click",  function () {
 			swmetric = this.id.replace( 'cawp-swmetric-', '' );
 			tools.setCookie( 'default_swmetric', swmetric );
 			jQuery( '#' + this.id ).css( "color", "#008ec2" );
@@ -910,14 +913,14 @@ function CAWPReportLoad () {
 	if ( cawpItemData.scope == 'admin-widgets' ) {
 		jQuery( '#cawp-window-1' ).cawpItemReport( 1 );
 	} else if ( cawpItemData.scope == 'front-item' ) {
-		jQuery( cawpItemData.getSelector( cawpItemData.scope ) ).click( function () {
+		jQuery( cawpItemData.getSelector( cawpItemData.scope ) ).on("click",  function () {
 			if ( !jQuery( "#cawp-window-1" ).length > 0 ) {
 				jQuery( "body" ).append( '<div id="cawp-window-1"></div>' );
 			}
 			jQuery( '#cawp-window-1' ).cawpItemReport( 1 );
 		} );
 	} else {
-		jQuery( cawpItemData.getSelector( cawpItemData.scope ) ).click( function () {
+		jQuery( cawpItemData.getSelector( cawpItemData.scope ) ).on("click",  function () {
 			if ( !jQuery( "#cawp-window-" + cawpItemData.getID( this ) ).length > 0 ) {
 				jQuery( "body" ).append( '<div id="cawp-window-' + cawpItemData.getID( this ) + '"></div>' );
 			}
@@ -926,7 +929,7 @@ function CAWPReportLoad () {
 	}
 
 	// on window resize
-	jQuery( window ).resize( function () {
+	jQuery( window ).on("resize",  function () {
 		cawpItemData.responsiveDialog();
 	} );
 

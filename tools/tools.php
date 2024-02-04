@@ -365,7 +365,7 @@ if ( ! class_exists( 'CAWP_Tools' ) ) {
 			$hours = $hours < 10 ? '0' . $hours : (string) $hours;
 			$minutes = floor( (int) ( $value / 60 ) % 60 );
 			$minutes = $minutes < 10 ? '0' . $minutes : (string) $minutes;
-			$seconds = floor( $value % 60 );
+			$seconds = floor( (int)$value % 60 );
 			$seconds = $seconds < 10 ? '0' . $seconds : (string) $seconds;
 			return $hours . ':' . $minutes . ':' . $seconds;
 		}
