@@ -73,9 +73,9 @@ if ( ! class_exists( 'CAWP_Tracking' ) ) {
 </script>\n";
 			}
 			$main_tracking = '<script async src="//static.getclicky.com/' . esc_js($this->cawp->config->options['siteid']) . '.js"></script>';
-			$tracking = "\n<!-- BEGIN Clicky Analytics v" . CAWP_CURRENT_VERSION . " Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n";
+			$tracking = "\n<!-- BEGIN Clicky Analytics v" . CAWP_CURRENT_VERSION . " Tracking - https://wordpress.org/plugins/clicky-analytics/ -->\n";
 			$tracking .= $custom_tracking . "\n" . $main_tracking . "\n" . $video_tracking;
-			$tracking .= "\n<!-- END Clicky Analytics v" . CAWP_CURRENT_VERSION . " Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->\n\n";
+			$tracking .= "\n<!-- END Clicky Analytics v" . CAWP_CURRENT_VERSION . " Tracking -->\n\n";
 			echo $tracking;
 		}
 	}

@@ -3,7 +3,7 @@ Contributors: deconf
 Donate link: https://deconf.com/donate/
 Tags: clicky, analytics, statistics, stats
 Requires at least: 2.8
-Tested up to: 6.4
+Tested up to: 6.6
 Requires PHP: 5.2.4
 Stable tag: 2.2.3
 License: GPLv2 or later
