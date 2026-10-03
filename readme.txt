@@ -3,9 +3,9 @@ Contributors: deconf
 Donate link: https://deconf.com/donate/
 Tags: clicky, analytics, statistics, stats
 Requires at least: 2.8
-Tested up to: 6.9
+Tested up to: 7.1
 Requires PHP: 5.2.4
-Stable tag: 2.2.4
+Stable tag: 2.2.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -86,6 +86,10 @@ We are constantly improving our plugin, sometimes the video tutorial may be a li
 This plugin it's released under the GPLv2, you can use it free of charge on your personal or commercial website.
 
 == Changelog ==
+
+= 2.2.5 (2026.10.03) =
+* Bug Fixes:
+	* minor PHP fixes
 
 = 2.2.4 (2025.04.27) =
 * Bug Fixes:

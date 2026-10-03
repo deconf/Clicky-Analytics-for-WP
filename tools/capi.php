@@ -227,13 +227,15 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 				}
 			} else {
 				foreach ( $data as $item ) {
-					foreach ( $item as $date => $value ) {
-						/*
-						 * translators:
-						 * Example: 'l, F j, Y' will become 'Thusday, November 17, 2015'
-						 * For details see: http://php.net/manual/en/function.date.php#refsect1-function.date-parameters
-						 */
-						$cawp_data[] = array( date_i18n( __( 'l, F j, Y', 'clicky-analytics' ), strtotime( $date ) ), round( $value[0]['value'], 2 ) );
+					if ( is_array( $item ) ){
+						foreach ( $item as $date => $value ) {
+							/*
+							 * translators:
+							 * Example: 'l, F j, Y' will become 'Thusday, November 17, 2015'
+							 * For details see: http://php.net/manual/en/function.date.php#refsect1-function.date-parameters
+							 */
+							$cawp_data[] = array( date_i18n( __( 'l, F j, Y', 'clicky-analytics' ), strtotime( $date ) ), round( $value[0]['value'], 2 ) );
+						}
 					}
 				}
 			}
@@ -270,8 +272,10 @@ if ( ! class_exists( 'CAWP_CAPI_Controller' ) ) {
 			}
 			$rawdata = array();
 			foreach ( $data as $item ) {
-				foreach ( $item as $date => $value ) {
-					$rawdata[] = $value[0]['value'];
+				if ( is_array( $item ) ){
+					foreach ( $item as $date => $value ) {
+						$rawdata[] = $value[0]['value'];
+					}
 				}
 			}
 			// i18n support
